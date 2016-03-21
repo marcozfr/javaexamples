@@ -6,10 +6,24 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
 
 public class Executing {
     
     public static void main (String ... args){
+        Runtime r = Runtime.getRuntime();
+        System.out.println("available processors: " +r.availableProcessors() );
+        
+        tryForkJoin();
+        //tryCallabes();
+    }
+    
+    public static void tryForkJoin(){
+        ForkJoinPool fjp = new ForkJoinPool();
+        
+    }
+    
+    public static void tryCallabes(){
         Callable<String> c = new CallObject();
         ExecutorService es = Executors.newCachedThreadPool();
         Future<String> f =  es.submit(c);
