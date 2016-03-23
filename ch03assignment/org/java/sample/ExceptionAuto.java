@@ -4,12 +4,12 @@ import java.io.*;
 
 public class ExceptionAuto {
     
-    public static void main(String args[]){
+    public static void main(String args[]) throws MyException{
         
         try(ReadIO r = new ReadIO(); ProxyIO p = new ProxyIO();){
-            r.close();
+            //r.close();
             System.out.println("operating over object obj");
-            throw new MyException();
+            //throw new MyException();
             
         }catch(MyException | IOException e){
             // p.close(); // p object is out of scope.
@@ -20,6 +20,7 @@ public class ExceptionAuto {
         }finally{
             // r.close(); // r object is out of scope.
             System.out.println("finally ");
+            //throw new MyException();
         }
         
     }
@@ -34,7 +35,7 @@ class ReadIO implements AutoCloseable {
 }
 
 class WriteIO implements Closeable {
-    public void close() throws IOException {
+    public void close() {
         System.out.println("closing write obj");
         
     }
