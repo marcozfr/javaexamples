@@ -18,11 +18,6 @@ public class Executing {
         //tryCallabes();
     }
     
-    public static void tryForkJoin(){
-        ForkJoinPool fjp = new ForkJoinPool();
-        
-    }
-    
     public static void tryCallabes(){
         Callable<String> c = new CallObject();
         ExecutorService es = Executors.newCachedThreadPool();
@@ -37,6 +32,7 @@ public class Executing {
         }
     }
 }
+
 
 class CallObject implements Callable<String>{
     
