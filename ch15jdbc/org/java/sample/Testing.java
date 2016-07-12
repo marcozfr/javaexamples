@@ -7,7 +7,7 @@ public class Testing {
     public static void main (String a[]){
         
         try{
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila?useSSL=false","root","root");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila?useSSL=false","root","myqsl");
             Statement st = c.createStatement();
             ResultSet rs = st.executeQuery("select * from category order by name limit 5");
             while(rs.next()){

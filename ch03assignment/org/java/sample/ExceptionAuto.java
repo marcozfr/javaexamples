@@ -7,7 +7,7 @@ public class ExceptionAuto {
     public static void main(String args[]){
         
         try(ReadIO r = new ReadIO(); ProxyIO p = new ProxyIO();){
-            r.close();
+           // r.close();
             System.out.println("operating over object obj");
             throw new MyException();
             
@@ -42,8 +42,14 @@ class WriteIO implements Closeable {
 
 class ProxyIO implements AutoCloseable {
     public void close() throws MyException {
-        System.out.println("closing proxy obj");
+        try{
+            System.out.println("closing proxy obj");
          throw new MyMyException();
+        }finally{
+            System.out.println("finnaly proxy obj");
+            throw new MyException();
+        }
+        
     }
 }
 

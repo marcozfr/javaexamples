@@ -15,6 +15,7 @@ import java.util.concurrent.LinkedTransferQueue;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.concurrent.TimeUnit;
 
 public class Collects{
@@ -26,26 +27,28 @@ public class Collects{
     } 
     
     public static void tryingCopyOnWriteArrays(){
-        Collection<Integer> al =  //new CopyOnWriteArrayList<>();
-            new CopyOnWriteArraySet<>();
-        al.add(4); al.add(16); al.add(9);al.add(4);
+        CopyOnWriteArrayList<Integer> aa =  //new CopyOnWriteArrayList<>();
+            new CopyOnWriteArrayList<>();
+        aa.add(4); aa.add(16); aa.add(9);aa.add(4);
         
-        for(Integer i : al){
+        for(Integer i : aa){
             System.out.print(i+" ");
-            al.add(10); // will add but reflected only after iterator is closed
-            al.remove(9);
+            aa.add(10); // will add but reflected only after iterator is closed
+            aa.remove(new Integer(9));
+            aa.addIfAbsent(9);
+            aa.set(0,10);
         }
         
         System.out.println();
-        for(Integer i : al){
+        for(Integer i : aa){
             System.out.print(i+" "); // reflects additions during previous iteration
         }
         
         System.out.println();
-        Iterator it = al.iterator();
+        ListIterator<Integer> it = aa.listIterator();
         while(it.hasNext()){
             System.out.print(it.next()+" ");
-            //it.remove(); //when using iterator to remove, UnsupportedOperationException is thrown
+            //it.add(3); //when using iterator to remove, UnsupportedOperationException is thrown
         }
     }
     
@@ -121,9 +124,9 @@ public class Collects{
              //sq.peek(); // always returns null
              //sq.element(); // exception?? yes. exception always
              Thread.sleep(500);
-             System.out.println(sq.poll()); // tries to retrieve, but fails. Already taken by prev thread.
+             System.out.println("pool:"+sq.poll()); // tries to retrieve, but fails. Already taken by prev thread.
              sq.offer("byebye"); // will only put the element, if some other is waiting.
-             System.out.println(sq.poll()); 
+             System.out.println("peek:"+sq.peek()); 
             // wowwwwww!!
             
        }catch(InterruptedException e){
@@ -136,7 +139,7 @@ public class Collects{
        // elements must implement Delayed
         try{
             Thread.sleep(500);
-            DelayQueue<Holder> dq = new DelayQueue<>();
+            DelayQueue<? super Holder> dq = new DelayQueue<>();
             System.out.println("put into delay queue");
             dq.put(new Holder(4));
             dq.put(new Holder(6));
@@ -161,6 +164,9 @@ public class Collects{
                      while(true){
                          System.out.println(tq.take()); // if no elements, hangs forever
                          System.out.println("transfered the element, success!");
+                         if(count ==4){
+                             Thread.sleep(1000);
+                         }
                          if(++count >= 5){
                             break;
                          }
