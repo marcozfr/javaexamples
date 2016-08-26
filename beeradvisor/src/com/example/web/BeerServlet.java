@@ -23,6 +23,7 @@ public class BeerServlet extends HttpServlet {
 			
 		String trace = request.getParameter("trace");	
 		if(trace!= null && trace.equals("y")){
+			System.out.println("cookies: " + Arrays.asList(request.getCookies()));
 			System.out.println("user port: " + request.getRemotePort());
 			System.out.println("local port: " + request.getLocalPort());
 			System.out.println("server port: " + request.getServerPort());
