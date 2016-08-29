@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <html>
 	<head>
 		<style>
@@ -12,10 +13,10 @@
 			<div>
 			<p>Select characteristics</p>
 			<select name="color" size="1">
-				<option>light</option>
-				<option>amber</option>
-				<option>brown</option>
-				<option>dark</option>
+				<option>ale</option>
+				<option>lager</option>
+				<option>red</option>
+				<option>black</option>
 			</select>
 			<input type="checkbox" name="trace" value="y">Trace request</input>
 			<input type="submit" value="Send" />
