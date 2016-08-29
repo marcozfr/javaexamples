@@ -13,6 +13,10 @@ public class BeerServlet extends HttpServlet {
 		System.out.println("static init");
 	}
 	
+	public BeerServlet(){
+		System.out.println("servlet constructor");
+	}
+	
 	public void init() throws ServletException {
 		System.out.println("servlet init");
 	}
