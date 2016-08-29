@@ -2,6 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
+	<!-- Servlet 1 -->
+
 	<servlet>
 		<servlet-name>Beer Selection</servlet-name>
 		<display-name>Beer Selection Servlet Demo</display-name>
@@ -13,5 +15,64 @@
 		<servlet-name>Beer Selection</servlet-name>
 		<url-pattern>/SelectBeer</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Servlet 1.1 -->
+
+	<servlet>
+		<servlet-name>Beer Register</servlet-name>
+		<servlet-class>com.example.web.BeerRegisterServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Beer Register</servlet-name>
+		<url-pattern>/RegisterBeer</url-pattern>
+	</servlet-mapping>
+
+	<!-- Servlet 2 -->
+
+	<servlet>
+		<servlet-name>Test Init Params</servlet-name>
+		<servlet-class>com.example.web.InitParamsServlet</servlet-class>
+		<init-param>
+			<param-name>developer</param-name>
+			<param-value>marco flores</param-value>
+		</init-param>
+		<init-param>
+			<param-name>company</param-name>
+			<param-value>verizon</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Test Init Params</servlet-name>
+		<url-pattern>/InitParams</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>version</param-name>
+		<param-value>1.0</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>dbtype</param-name>
+		<param-value>memory</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>com.example.web.listener.AppContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.example.web.listener.StylesAttributeListener</listener-class>
+	</listener>
+	<!--
+	<listener>
+		<listener-class>com.example.web.listener.MyHttpSessionListener</listener-class>
+	</listener>
+	-->
+
+	<session-config>
+		<session-timeout>2</session-timeout>
+	</session-config>
 	
 </web-app>
