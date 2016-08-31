@@ -7,21 +7,20 @@ import java.util.*;
 
 import com.example.model.*;
 
-public class BeerRegisterServlet extends HttpServlet {
+public class StyleRegisterServlet extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws IOException, ServletException{
 		
-		String styleName = request.getParameter("style");	
-		String beerName= request.getParameter("name");
+		String styleName = request.getParameter("name");	
 
-		if(beerName==null || styleName==null){
+		if(styleName==null){
 			response.getWriter().println("not enough parameters");
 			return;
 		}
 
 		try{
-			BeerRepository.getInstance().addBeer(styleName,beerName);	
+			BeerRepository.getInstance().addStyle(styleName);	
 		}catch(RuntimeException e){
 			e.printStackTrace();
 			response.getWriter().println("exception thrown :" + e.getMessage());

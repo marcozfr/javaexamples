@@ -45,6 +45,17 @@ public class BeerRepository {
 		addStyle(new Style(id,name,beers));
 	}
 
+	public void addStyle(String name){
+		if(getStyle(name)!=null){
+			throw new RuntimeException("Style already exists");
+		}
+		addStyle(new Style(getNextStyleId(),name,new ArrayList()));
+	}
+
+	public Integer getNextStyleId(){
+		return getStyles().stream().map(Style::getId).collect(Collectors.maxBy((a,b) -> a-b)).orElse(1);
+	}
+
 	public void addStyle(Style style){
 		styles.add(style);
 	}
@@ -68,7 +79,7 @@ public class BeerRepository {
 	public Style getStyle(String name){
 		return getStyles().stream()
 			.filter(x -> x.getName().compareTo(name) == 0)
-			.findFirst().orElseThrow(()-> new RuntimeException("Style not found"));
+			.findFirst().orElse(null);
 	}
 
 	public Integer getNextBeerId(){
@@ -76,7 +87,11 @@ public class BeerRepository {
 	}
 
 	public void addBeer(String styleName, String beerName){
-		addBeer(new Beer(getNextBeerId(),beerName,getStyle(styleName)));
+		Style style = getStyle(styleName);
+		if(style == null){
+			throw new RuntimeException("style not found");
+		}
+		addBeer(new Beer(getNextBeerId(),beerName,style));
 	}
 
 	public void addBeer(Integer id, String name, Style style){

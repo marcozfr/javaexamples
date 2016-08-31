@@ -7,6 +7,8 @@ import java.util.*;
 import java.io.*;
 
 public class RequestUtil{
+
+	public static final String COOKIE_NAME = "name";
 	
 	public static void printRequestInfo(HttpServletRequest request) throws IOException{
 
@@ -25,5 +27,13 @@ public class RequestUtil{
 			String headerValue = request.getHeader(headerName);
 			System.out.println(headerName + " : "+ headerValue);
 		}
+	}
+
+	public static Cookie getUserNameCookie(HttpServletRequest request){
+		if(request.getCookies()!=null){
+			return Arrays.asList(request.getCookies())
+			.stream().filter(c -> c.getName().equals(COOKIE_NAME)).findAny().orElse(null);
+		}
+		return null;
 	}
 }

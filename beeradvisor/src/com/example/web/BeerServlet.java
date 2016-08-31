@@ -9,18 +9,13 @@ import com.example.model.*;
 
 public class BeerServlet extends HttpServlet {
 	
-	static {
-		System.out.println("static init");
-	}
 	
 	public BeerServlet(){
-		System.out.println("servlet constructor");
+		System.out.println("BeerServlet initialized");
 	}
 	
 	public void init() throws ServletException {
-//		System.out.println("App version: " + getServletContext().getInitParameter("version"));
-		System.out.println("App version: " + getServletContext().getAttribute("app-version"));
-//		beerRepository = BeerRepository.getInstance();
+		System.out.println("Context Init param, version: " + getServletContext().getAttribute("app-version"));
 	}
 	
 	
@@ -45,6 +40,13 @@ public class BeerServlet extends HttpServlet {
 		}
 		savedSearch.add(styles);
 		session.setAttribute(key,savedSearch);
+
+		String userName = (String)request.getParameter("userName");
+		if(userName != null && RequestUtil.getUserNameCookie(request)==null){
+			Cookie cookie = new Cookie(RequestUtil.COOKIE_NAME,userName);
+			cookie.setMaxAge(10*60);
+			response.addCookie(cookie);
+		}
 
 		System.out.println("saved search for "+session.getId()+" : "+ savedSearch);
 		

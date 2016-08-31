@@ -8,6 +8,9 @@ public class Style {
 	private String name;
 	private List<Beer> beers;
 
+	public Style(){
+	}
+
 	public Style(int id, String name, List<Beer> beers){
 		this.id = id;
 		this.name = name;

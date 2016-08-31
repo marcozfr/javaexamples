@@ -6,6 +6,10 @@ public class Beer {
 	private String name;
 	private Integer id;
 
+	public Beer(){
+		this.style = new Style();
+	}
+
 	public Beer(Integer id, String name, Style style){
 		this.id = id;
 		this.name = name;
