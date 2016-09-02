@@ -36,4 +36,13 @@ public class RequestUtil{
 		}
 		return null;
 	}
+
+	public static String getUserNameCookieValue(HttpServletRequest request){
+		Cookie c = getUserNameCookie(request);
+		if(c!=null){
+			return c.getValue();
+		}
+		return null;
+
+	}
 }
