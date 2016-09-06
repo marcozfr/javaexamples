@@ -49,7 +49,7 @@ public class BeerRepository {
 		if(getStyle(name)!=null){
 			throw new RuntimeException("Style already exists");
 		}
-		addStyle(new Style(getNextStyleId(),name,new ArrayList()));
+		addStyle(new Style(getNextStyleId(),name,new ArrayList<Beer>()));
 	}
 
 	public Integer getNextStyleId(){

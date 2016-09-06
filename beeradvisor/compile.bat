@@ -1,5 +1,6 @@
-javac -cp "C:\opt\apache-tomcat-8.0.33\lib\*;lib\*" -sourcepath src -d web\beeradvisor\WEB-INF\classes src\com\example\model\*.java src\com\example\web\*.java src\com\example\web\listener\*.java src\com\example\web\tags\*.java
-rmdir /s /q C:\opt\apache-tomcat-8.0.33\webapps\beeradvisor
-mkdir C:\opt\apache-tomcat-8.0.33\webapps\beeradvisor
-xcopy web\beeradvisor C:\opt\apache-tomcat-8.0.33\webapps\beeradvisor /s /e /y
-xcopy lib C:\opt\apache-tomcat-8.0.33\webapps\beeradvisor\WEB-INF\lib /s /e /y
+set SERVER_DIR=C:\opt\apache-tomcat-8.5.4
+javac -cp "%SERVER_DIR%\lib\*;lib\*" -sourcepath src -d web\beeradvisor\WEB-INF\classes src\com\example\model\*.java src\com\example\web\*.java src\com\example\web\listener\*.java src\com\example\web\tags\*.java
+rmdir /s /q %SERVER_DIR%\webapps\beeradvisor
+mkdir %SERVER_DIR%\webapps\beeradvisor
+xcopy web\beeradvisor %SERVER_DIR%\webapps\beeradvisor /s /e /y
+xcopy lib %SERVER_DIR%\webapps\beeradvisor\WEB-INF\lib /s /e /y

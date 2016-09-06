@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/webjsptaglibrary_2_0.xsd" version="2.0">
+	<tlib-version>1.2</tlib-version>
+	<short-name>Styles Tag</short-name>
+	<uri>http://java.sun.com/jsp/beer/styles</uri>
+	<tag>
+		<name>options</name>
+		<tag-class>com.example.web.tags.StylesOptionTagHandler</tag-class>
+		<empty-body>JSP</empty-body>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
