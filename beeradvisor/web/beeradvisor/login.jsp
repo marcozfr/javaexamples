@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page session="false" %>
 <html>
 	<title>
 		Login failed
@@ -9,7 +10,9 @@
 			<input type="text" name="j_username" />
 			<br><br>
 			<label for="j_password">Password: </label>
-			<input type="text" name="j_password" />
+			<input type="password" name="j_password" />
+			<br><br>
+			<input type="submit" name="submit" value="Login">
 		</form>
 	</body>
 </html>

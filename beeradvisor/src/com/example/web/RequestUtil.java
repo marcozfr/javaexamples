@@ -13,6 +13,7 @@ public class RequestUtil{
 	public static void printRequestInfo(HttpServletRequest request) throws IOException{
 
 		System.out.println("cookies: " + Arrays.asList(request.getCookies()));
+		System.out.println("remote user: " + request.getRemoteUser());
 		System.out.println("user port: " + request.getRemotePort());
 		System.out.println("local port: " + request.getLocalPort());
 		System.out.println("server port: " + request.getServerPort());
