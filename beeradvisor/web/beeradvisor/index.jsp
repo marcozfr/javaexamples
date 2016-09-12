@@ -48,11 +48,11 @@
 			<input type="submit" value="Submit" />
 			<br><br>
 			<div>
-				<a href="register.jsp" >Register</a> 
-				<a href="registerStyle.jsp" >Add Style</a> 
+				<a href="admin/register.jsp" >Register</a> 
+				<a href="admin/registerStyle.jsp" >Add Style</a> 
 			</div>
 			<br><br><br><br>
-			<span><beer:random user="${cookie.name.value}" /></span>
+			<span><beer:random user="${cookie.name.value}" >Duuuude..</beer:random> </span>
 			</div>
 		</form>
 

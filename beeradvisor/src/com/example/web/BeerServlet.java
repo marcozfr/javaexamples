@@ -34,9 +34,9 @@ public class BeerServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();		
 		String key = "track-"+session.getId();
-		List savedSearch = (List)session.getAttribute(key);
+		List<List<String>> savedSearch = (List<List<String>>)session.getAttribute(key);
 		if(savedSearch == null){
-			savedSearch = new ArrayList();
+			savedSearch = new ArrayList<List<String>>();
 		}
 		savedSearch.add(styles);
 		session.setAttribute(key,savedSearch);

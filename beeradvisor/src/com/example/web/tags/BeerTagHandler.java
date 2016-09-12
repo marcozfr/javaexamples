@@ -23,6 +23,9 @@ public class BeerTagHandler extends SimpleTagSupport {
 			sb.append(", "+user);
 		}
 		sb.append(": " +BeerTagHandler.getRandomBeer());
+
+		getJspBody().invoke(null);
+
 		getJspContext().getOut().write(sb.toString());
 	}
 
