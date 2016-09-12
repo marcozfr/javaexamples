@@ -13,6 +13,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <security-role>
     <role-name>tomcat</role-name>
   </security-role>
@@ -49,4 +50,17 @@
     <exception-type>java.lang.Throwable</exception-type>
     <location>/error/deferror.jsp</location>
   </error-page>
+  
+  <servlet>
+    <servlet-name>ExampleJsp</servlet-name>
+    <jsp-file>/admin/example.jsp</jsp-file>
+    <init-param>
+        <param-name>examplev</param-name>
+        <param-value>45</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExampleJsp</servlet-name>
+    <url-pattern>/example</url-pattern>
+  </servlet-mapping>
 </web-app>
