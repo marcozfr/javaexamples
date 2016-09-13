@@ -7,11 +7,7 @@
 <title>Example</title>
 </head>
 <body>
-<%!
-public void _jspInit() {
-	System.out.println("Init Example JSP");
-}
-%>
+
  Example Boss
 </body>
 </html>
