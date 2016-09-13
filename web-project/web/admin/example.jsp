@@ -7,7 +7,6 @@
 <title>Example</title>
 </head>
 <body>
-
- Example Boss
+Example Boss
 </body>
 </html>
