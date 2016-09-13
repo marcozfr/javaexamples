@@ -6,33 +6,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.example.web.bean.Employee;
 
 /**
- * Servlet implementation class ForwardServlet
+ * Servlet implementation class InvalidateServlet
  */
-@WebServlet("/ForwardServlet")
-public class ForwardServlet extends HttpServlet {
+@WebServlet("/InvalidateServlet")
+public class InvalidateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ForwardServlet() {
+    public InvalidateServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getRequestURI());
-		
-		request.getRequestDispatcher(response.encodeURL("/admin/fwded.jsp?test=5")).forward(request, response);
-		
-		
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getServletPath()).append(" Invalidating session.");
+
+		request.getSession().invalidate();
 	}
+
 }

@@ -22,7 +22,7 @@ public class ReqAttrInterceptorListener implements ServletRequestAttributeListen
      * @see ServletRequestAttributeListener#attributeRemoved(ServletRequestAttributeEvent)
      */
     public void attributeRemoved(ServletRequestAttributeEvent arg0)  { 
-         // TODO Auto-generated method stub
+    	System.out.println("Request attribute removed : " + arg0.getName() + " : " + arg0.getValue());
     }
 
 	/**
