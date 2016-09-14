@@ -47,5 +47,18 @@
      <c:remove var="emp2" />                                                            <!-- REMOVE -->
      
       <div><c:out value="Employee 2 stage 2 : ${empty emp2 ? 'no emp2 exists' : emp2}"></c:out></div>
+	  
+	  
+	  	<div>
+		<c:out value="Result : " />
+		<my:multiply value2="5" value1="4"></my:multiply>
+	</div>
+	<div>
+		<c:out value="Result 2: " />
+		<my:multiply>
+			<jsp:attribute name="value1" >4</jsp:attribute>
+			<jsp:attribute name="value2" >90</jsp:attribute>
+		</my:multiply>
+	</div>
 </body>
 </html>

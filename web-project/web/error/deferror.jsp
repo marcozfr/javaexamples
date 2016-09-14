@@ -10,6 +10,6 @@
 <body>
     <div><p>Bad things happens.. Reload the page to try again</p></div>
     <div><p><%=((Throwable)request.getAttribute("javax.servlet.error.exception"))%></p></div>
-    <div>${exception}</div>
+    <div>${pageContext.exception}</div>
 </body>
 </html>
