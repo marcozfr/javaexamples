@@ -42,9 +42,11 @@ public class CreateSessionServlet extends HttpServlet {
 		
 		session.setMaxInactiveInterval(60*2);
 		
-		response.getWriter().append("<div>Creation time:").append((new Date(session.getCreationTime())).toString()).append("<div>");
+		Date creation =  new Date(session.getCreationTime());
 		
-		response.getWriter().append("<div>").append(request.getSession().isNew()? "Session is new" : "").append("<div>");
+		request.setAttribute("sessioncreationTime", creation);
+		
+		request.getRequestDispatcher("/admin/sessionCreated.jsp").forward(request, response);
 	}
 
 }

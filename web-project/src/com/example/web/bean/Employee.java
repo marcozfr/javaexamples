@@ -1,15 +1,16 @@
 package com.example.web.bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
-import com.example.web.listener.SessionActivationListener;
-
-public class Employee implements HttpSessionBindingListener {
+public class Employee extends Person implements HttpSessionBindingListener {
 	
 	private Integer id;
 	private String firstName;
 	private String lastName;
+	private List<String> badges;
 	
 	public void valueBound(HttpSessionBindingEvent evt){
 		System.out.println(" Value bound as: " + evt.getName() + ": " + evt.getValue());
@@ -17,6 +18,10 @@ public class Employee implements HttpSessionBindingListener {
 	
 	public void valueUnbound(HttpSessionBindingEvent evt){
 		System.out.println(" Value unbound as: " + evt.getName() + ": " + evt.getValue());
+	}
+	
+	public Employee() {
+		// def
 	}
 
 	public Employee(Integer id, String firstName, String lastName) {
@@ -50,9 +55,25 @@ public class Employee implements HttpSessionBindingListener {
 		this.lastName = lastName;
 	}
 
+	public List<String> getBadges() {
+		return badges;
+	}
+
+	public void setBadges(List<String> badges) {
+		this.badges = badges;
+	}
+
+	
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", badges=" + badges
+				+ "]";
+	}
+
+	@Override
+	public String getCountry() {
+		return "Peru";
 	}
 
 }

@@ -8,6 +8,8 @@
 <title>Scriplets</title>
 </head>
 <body>
+    <%@ include file="/WEB-INF/include/header.jsp"%>
+    
     <%!Employee e = new Employee(45, "John", "Doe");
     
         public void jspInit(ServletConfig cfg) {

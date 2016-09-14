@@ -9,5 +9,13 @@
 <body>
     <div>Version Context Init Param: ${initParam.version}</div>
     <div>Default Locale: ${applicationScope['DefaultLocale']}</div>
+    <div>Person first name: ${employee["firstName"]}</div>
+    <div>Person first badge: ${employee.badges[0]}</div>
+    <div>Param values: ${paramValues}</div>
+    <div>Param: ${param}</div>
+    <div>Headers: ${headerValues}</div>
+    <div>Host Header: ${header.host}</div>
+    <div>Init Param Version: ${initParam['app-version']}</div>
+    <div>Cookie: ${cookie}</div>
 </body>
 </html>
