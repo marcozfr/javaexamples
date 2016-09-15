@@ -32,7 +32,5 @@ public class ForwardServlet extends HttpServlet {
 		
 		request.getRequestDispatcher(response.encodeURL("/admin/fwded.jsp?test=5")).forward(request, response);
 		
-		
-		
 	}
 }

@@ -22,4 +22,43 @@
 			<required>true</required>
 		</attribute>
 	</tag>
+	
+	<tag>
+	   <name>sum</name>
+	   <tag-class>com.example.web.tags.MyClassicTagsHandler</tag-class>
+	   <body-content>empty</body-content>
+	  
+	   <dynamic-attributes>true</dynamic-attributes>
+	</tag>
+	
+	
+	<tag>
+	   <name>list</name>
+	   <tag-class>com.example.web.tags.ListTagHandler</tag-class>
+	   <body-content>scriptless</body-content>
+	   <attribute>
+	       <name>title</name>
+	       <rtexprvalue>true</rtexprvalue>
+	       <required>false</required>
+	   </attribute>
+	</tag>
+	
+    <tag>
+       <name>listItem</name>
+       <tag-class>com.example.web.tags.ListItemTagHandler</tag-class>
+       <body-content>empty</body-content>
+       <attribute>
+           <name>value</name>
+           <rtexprvalue>true</rtexprvalue>
+           <required>true</required>
+       </attribute>
+    </tag>
+    
+    <tag>
+        <name>body</name>
+        <dynamic-attributes>false</dynamic-attributes>
+        <tag-class>com.example.web.tags.BodySupportHandler</tag-class>
+        <body-content>tagdependent</body-content>
+    </tag>
+    
 </taglib>
