@@ -20,6 +20,7 @@
 			<c:param name="rest" value="9" />
 		</c:url>  <!-- encoding -->
 	</div>
+	<%-- lols--%>
 	
 	<c:import url="/include/footer.jsp" >
 		<c:param name="message" value="Visit us at ${pageContext.request.requestURL}" />
