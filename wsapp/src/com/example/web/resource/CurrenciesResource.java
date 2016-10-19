@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Path("/")
+@Path("/money")
 public class CurrenciesResource {
     
     private Map<String, AppCurrency> currencyMap = new HashMap<>();
