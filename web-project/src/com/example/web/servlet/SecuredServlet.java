@@ -1,15 +1,25 @@
 package com.example.web.servlet;
 
 import java.io.IOException;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d621bd165561d338549813825690b1c8bb6c0e9e
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.HttpMethodConstraint;
 import javax.servlet.annotation.ServletSecurity;
+<<<<<<< HEAD
+=======
+import javax.servlet.annotation.ServletSecurity.EmptyRoleSemantic;
+import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
+>>>>>>> d621bd165561d338549813825690b1c8bb6c0e9e
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 /**
  * Servlet implementation class SecuredServlet
  */
@@ -44,4 +54,27 @@ public class SecuredServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+=======
+@WebServlet(value="/SecuredServlet",name="Secured Servlet")
+/*
+@ServletSecurity(
+        @HttpConstraint(rolesAllowed="tomcat")
+)*/
+
+@ServletSecurity(
+        httpMethodConstraints={
+                @HttpMethodConstraint(value="OPTIONS"),
+                @HttpMethodConstraint(value="POST",rolesAllowed="tomcat"),
+                @HttpMethodConstraint(value="GET",rolesAllowed={"tomcat","role1"},emptyRoleSemantic=EmptyRoleSemantic.DENY)
+        }
+)
+public class SecuredServlet extends HttpServlet {
+
+    
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
+    }
+    
+>>>>>>> d621bd165561d338549813825690b1c8bb6c0e9e
 }
