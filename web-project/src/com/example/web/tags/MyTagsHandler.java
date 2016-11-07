@@ -68,8 +68,6 @@ public class MyTagsHandler extends SimpleTagSupport {
         getJspContext().getOut().append(res.toString());
     }
     
-    
-    
     public Integer getValue1() {
         return value1;
     }

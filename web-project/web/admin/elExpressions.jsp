@@ -17,5 +17,6 @@
     <div>Host Header: ${header.host}</div>
     <div>Init Param Version: ${initParam['app-version']}</div>
     <div>Cookie: ${cookie}</div>
+    <div>TEst: ${"5" lt 4}</div>
 </body>
 </html>
