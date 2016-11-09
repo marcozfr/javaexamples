@@ -41,11 +41,8 @@ public class RequestExaminerFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
 		
-		// pass the request along the filter chain
-		//
 		System.out.println("Filtering request " + req.getMethod() + " ## "+req.getRequestURI());
 		
-		//response.getWriter().write("Ending on filter");
 		chain.doFilter(request, response);
 	}
 
