@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.frasac.com/furniturecatalog"
+	elementFormDefault="unqualified"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:fr="http://www.frasac.com/furniturecatalog">
+	
+	<xs:annotation>
+		<xs:documentation>furniture catalog store</xs:documentation>
+	</xs:annotation>
+	<xs:element name="catalog" type="fr:catalogType"></xs:element>
+
+	<xs:complexType name="productType">
+		<xs:sequence>
+			<xs:element name="height" type="xs:double" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="width" type="xs:double" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="depth" type="xs:double" maxOccurs="1" minOccurs="1"></xs:element>
+			<xs:element name="woodType" type="xs:string"></xs:element>
+			<xs:element name="color" type="xs:string"></xs:element>
+			<xs:element name="code" type="xs:string"></xs:element>
+			<xs:element name="creationDate" type="xs:date"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"></xs:attribute>
+	</xs:complexType>
+
+
+	<xs:complexType name="catalogType">
+		<xs:sequence>
+			<xs:element name="product" type="fr:productType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

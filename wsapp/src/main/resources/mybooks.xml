@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:catalog xmlns:tns="http://www.example.org/books" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.example.org/books books.xsd ">
+  <tns:book>
+    <tns:author>tns:author</tns:author>
+    <tns:title>tns:title</tns:title>
+    <tns:genre>tns:genre</tns:genre>
+    <tns:price>0.0</tns:price>
+    <tns:publish_date>2001-01-01</tns:publish_date>
+    <tns:description>tns:description</tns:description>
+  </tns:book>
+
+</tns:catalog>

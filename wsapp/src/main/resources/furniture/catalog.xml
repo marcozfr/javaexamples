@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fr:catalog xmlns:fr="http://www.frasac.com/furniturecatalog" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.frasac.com/furniturecatalog furniturecatalog.xsd ">
+	<product id="FR-0012">
+		<height>45.023</height>
+		<width>43.334</width>
+		<depth>20.33</depth>
+		<woodType>roble</woodType>
+		<color>negro</color>
+		<code>0012</code>
+		<creationDate>2016-03-04</creationDate>
+	</product>
+	<product id="FR-0013">
+		<height>45.023</height>
+		<width>23.334</width>
+		<depth>10.33</depth>
+		<woodType>caoba</woodType>
+		<color>blanco</color>
+		<code>0013</code>
+		<creationDate>2016-03-02</creationDate>
+	</product>
+</fr:catalog>

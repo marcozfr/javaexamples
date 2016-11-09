@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This web.xml file is not required when using Servlet 3.0 container, 
+	see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html -->
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<!-- 
+	<servlet>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>org.foo.MyApplication</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>com.example.web.rest.resource</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jersey.config.server.provider.scanning.recursive</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+	 -->
+	 
+	 <!-- restlet -->
+	 <servlet>
+	 	<servlet-name>Restlet Servlet</servlet-name>
+	 	<servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+	 	<init-param>
+	 		<param-name>org.restlet.application</param-name>
+	 		<param-value>com.example.web.rest.restlet.RestletAppConfig</param-value>
+	 	</init-param>
+	 	<load-on-startup>1</load-on-startup>
+	 </servlet>
+	 <servlet-mapping>
+	 	<servlet-name>Restlet Servlet</servlet-name>
+	 	<url-pattern>/restlet/*</url-pattern>
+	 </servlet-mapping>
+	 
+	 <listener>
+	 	<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	 </listener>
+	 <servlet>
+	 	<servlet-name>JAXWS</servlet-name>
+	 	<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	 	<servlet-name>JAXWS</servlet-name>
+	 	<url-pattern>/jaxrs/*</url-pattern>
+	 	<url-pattern>/jaxws/*</url-pattern>
+	 </servlet-mapping>
+	 
+</web-app>
