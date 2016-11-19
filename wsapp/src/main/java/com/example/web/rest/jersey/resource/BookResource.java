@@ -12,10 +12,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
@@ -29,9 +32,14 @@ public class BookResource {
     private long maxRows;
     
     public BookResource(@DefaultValue("100") @QueryParam("max")  long maxRows){
+        super();
         this.maxRows = maxRows;
     }
     
+    public BookResource() {
+        System.out.println("Init book resource");
+    }
+
     @GET
     @Produces({MediaType.APPLICATION_XML})
     public AppCatalog getBooks(){
@@ -44,10 +52,12 @@ public class BookResource {
     @POST
     @Path("add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public JAXBElement<AppBook> addBook(@Context UriInfo uriInfo){
+    public JAXBElement<AppBook> addBook(@Context UriInfo uriInfo, @Context HttpHeaders headers){
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         AppBook book = new AppBook();
-        // TODO Add Book Implementation 
+        book.setId(queryParams.getFirst("id"));
+        book.setAuthor(queryParams.getFirst("author"));
+        book.setDescription(queryParams.getFirst("description"));
         return new JAXBElement<AppBook>(new QName("book"), AppBook.class, book);
     }
     
@@ -55,6 +65,11 @@ public class BookResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public JAXBElement<AppBook> getBookById(@PathParam("id") String id){
+        
+        if(id == null){
+            throw new WebApplicationException(Status.NOT_FOUND);
+        }
+        
         Optional<AppBook> book = CatalogRepository.getAppCatalog().getBooks().stream()
                 .filter(b -> b.getId().equals(id)).findFirst();
         if(book.isPresent()){

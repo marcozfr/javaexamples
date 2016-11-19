@@ -1,0 +1,5 @@
+<jaxws:bindings 
+	wsdlLocation="http://localhost:8180/wsapp/jaxws/catalogWService?wsdl" 
+	xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+	<jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+</jaxws:bindings>

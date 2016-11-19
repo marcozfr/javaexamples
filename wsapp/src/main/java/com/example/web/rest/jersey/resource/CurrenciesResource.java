@@ -39,7 +39,7 @@ public class CurrenciesResource {
     }
 
     @GET
-    @Path("/currency/{code: [A-Z]+}")
+    @Path("/currency/{code:[A-Z]+}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCurrency(@PathParam("code") String code) throws JsonProcessingException {
         
