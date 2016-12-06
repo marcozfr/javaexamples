@@ -18,10 +18,7 @@
     <div>Host Header: ${header.host}</div>
     <div>Init Param Version: ${initParam['app-version']}</div>
     <div>Cookie: ${cookie}</div>
-<<<<<<< HEAD
     <div>TEst: ${"5" lt 4}</div>
-=======
     <div>${pageContext.request.contextPath}</div>
->>>>>>> d621bd165561d338549813825690b1c8bb6c0e9e
 </body>
 </html>

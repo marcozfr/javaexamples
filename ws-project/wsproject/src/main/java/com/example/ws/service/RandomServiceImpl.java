@@ -4,8 +4,11 @@ import java.util.Random;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.jws.soap.SOAPBinding.Style;
 
 @WebService //(endpointInterface="com.example.ws.service.RandomService")
+@SOAPBinding(style=Style.DOCUMENT)
 public class RandomServiceImpl implements RandomService {
 
 	private static final int maxRands = 16;
