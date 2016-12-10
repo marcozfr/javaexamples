@@ -1,5 +1,7 @@
 package com.example.web.rest.jersey.resource;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -26,6 +29,9 @@ import javax.xml.namespace.QName;
 import com.example.web.model.AppBook;
 import com.example.web.model.AppCatalog;
 import com.example.web.repository.CatalogRepository;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookResource {
     
@@ -41,24 +47,36 @@ public class BookResource {
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML})
-    public AppCatalog getBooks(){
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getBooks(){
         List<AppBook> books = CatalogRepository.getAppCatalog().getBooks().stream().limit(maxRows).collect(Collectors.toList());
-        AppCatalog cat = new AppCatalog();
-        cat.setBooks(books);
-        return cat;
+//        GenericEntity<List<AppBook>> entity = new GenericEntity<List<AppBook>>(books){};
+        return Response.ok().entity(books).build();
     }
     
     @POST
     @Path("add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public JAXBElement<AppBook> addBook(@Context UriInfo uriInfo, @Context HttpHeaders headers){
-        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+    //@Notification(fire="a new book was added")
+    public JAXBElement<AppBook> addBook(MultivaluedMap<String, String> qParams, @Context HttpHeaders headers){
         AppBook book = new AppBook();
-        book.setId(queryParams.getFirst("id"));
-        book.setAuthor(queryParams.getFirst("author"));
-        book.setDescription(queryParams.getFirst("description"));
+        book.setId(qParams.getFirst("id"));
+        book.setAuthor(qParams.getFirst("author"));
+        book.setTitle(qParams.getFirst("title"));
+        book.setPrice(Double.valueOf(qParams.getFirst("price")));
+        book.setDescription(qParams.getFirst("description"));
+        CatalogRepository.getAppCatalog().getBooks().add(book);
         return new JAXBElement<AppBook>(new QName("book"), AppBook.class, book);
+    }
+    
+    @POST
+    @Path("add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public AppBook addBook(InputStream is) throws JsonParseException, JsonMappingException, IOException{
+        AppBook book = new ObjectMapper().readValue(is, AppBook.class);
+        CatalogRepository.getAppCatalog().getBooks().add(book);
+        return book;
     }
     
     @GET

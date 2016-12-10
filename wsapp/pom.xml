@@ -51,7 +51,18 @@
 			<artifactId>jersey-client</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
-
+		<!-- 
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+ -->
 		<!-- restlet stuff -->
 		<dependency>
 			<groupId>org.restlet.jse</groupId>
@@ -105,7 +116,7 @@
 			<version>${metro.version}</version>
 			<scope>compile</scope>
 		</dependency>
- 	
+
 		<!-- xstream for xml management -->
 		<dependency>
 			<groupId>xstream</groupId>
@@ -113,7 +124,7 @@
 			<version>1.2.2</version>
 		</dependency>
 
-		<!-- hibernate with JPA Support		--> 
+		<!-- hibernate with JPA Support -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -122,12 +133,8 @@
 
 
 		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
-			<version>2.6.4</version>
-		</dependency>
--->
+			<dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>eclipselink</artifactId> 
+			<version>2.6.4</version> </dependency> -->
 		<!-- mysql driver -->
 		<dependency>
 			<groupId>mysql</groupId>

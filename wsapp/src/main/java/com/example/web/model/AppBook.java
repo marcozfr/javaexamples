@@ -11,6 +11,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AppBook {
 
+    public AppBook(){
+        
+    }
     
     @XmlAttribute
     private String id;
