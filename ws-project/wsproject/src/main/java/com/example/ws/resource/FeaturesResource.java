@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 import com.example.ws.annotation.MaxAge;
+import com.example.ws.annotation.Performance;
 
 @Path("features")
 public class FeaturesResource {
@@ -79,7 +80,21 @@ public class FeaturesResource {
 		return Response.ok("Ok").build();
 	}
 	
-	
+	@Path("checkperformance")
+	@Produces("text/html")
+	@Performance
+	@GET
+	public Response getCheckPerformance(){
+		
+		int i = 10000;
+		int k = 1;
+		for(int j = 0 ; j < i ; j++){
+			k = k + j;
+			System.out.println(k);
+		}
+		
+		return Response.ok(k).build();
+	}
 
 
 }
