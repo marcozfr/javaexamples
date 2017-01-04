@@ -1,0 +1,34 @@
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>ws-jaxrs project</display-name>
+	<description>jaxrs project with portalbe implementation</description>
+
+	<!-- 
+		1. Case of No Application Subclass Exists. 
+		   Should add this map. 
+		   All root resources are discoverable
+	<servlet>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<url-pattern>/resources/rs/*</url-pattern>
+	</servlet-mapping>-->
+	
+	<!-- 
+		2. Case of Application subclass exists.
+		   Should add this map
+		   All root resources are discoverable
+		   
+	<servlet>
+		<servlet-name>com.example.ws.DeclarativeApplication</servlet-name>
+	</servlet>	
+		  
+	<servlet-mapping>
+		<servlet-name>com.example.ws.DeclarativeApplication</servlet-name>
+		<url-pattern>/resources/myrs/*</url-pattern>
+	</servlet-mapping> 
+	-->
+	
+</web-app>

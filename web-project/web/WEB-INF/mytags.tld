@@ -8,7 +8,7 @@
 	<tag>
 		<name>multiply</name>
 		<tag-class>com.example.web.tags.MyTagsHandler</tag-class>
-		<body-content>empty</body-content>
+		<body-content>scriptless</body-content>
 		<attribute>
 			<name>value1</name>
 			<type>java.lang.Integer</type>
