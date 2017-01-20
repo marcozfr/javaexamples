@@ -12,8 +12,4 @@ public class AnnotatedApplication extends Application {
         System.out.println("instantiating resources");
     }
 
-    @Override
-    public Set<Class<?>> getClasses() {
-        return super.getClasses();
-    }
 }
