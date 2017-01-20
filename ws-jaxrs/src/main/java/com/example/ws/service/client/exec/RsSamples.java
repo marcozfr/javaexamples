@@ -1,5 +1,8 @@
 package com.example.ws.service.client.exec;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.RedirectionException;
@@ -15,10 +18,37 @@ public class RsSamples {
 	public static final String SERVICES_URL = "http://www.thomas-bayer.com/sqlrest/";
 	
 	public static void main (String args[]){
-		RsSamples rsSamples = new RsSamples();
+		RsSamples.testCaptcha();
+	}
+	
+	public static void testCaptcha(){
 		Client client = ClientBuilder.newClient();
-		rsSamples.getCustomer(client, "2");
-		rsSamples.getProduct(client, "323", 2);
+//		http://localhost/vec/public/stream/captcha
+//		https://vecportalqa4.ebiz.verizon.com/vec/public/stream/captcha
+		Builder b = client.target("http://localhost/vec/public/stream/captcha").request();
+		Invocation inv = b.buildGet();
+		
+		ExecutorService es = Executors.newFixedThreadPool(2);
+		
+		for(int i = 0; i < 10000; i ++ ){
+			try {
+				es.execute(() -> {
+						Response r = inv.invoke();
+						String idHeader = (String)r.getHeaders().getFirst("_cid");
+						System.out.println(idHeader);
+				});
+				
+				try {
+					Thread.sleep(2000);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (Exception e) {
+				System.out.println("Exception: " + e.getMessage());
+			}
+		}
+		
 		client.close();
 	}
 	
