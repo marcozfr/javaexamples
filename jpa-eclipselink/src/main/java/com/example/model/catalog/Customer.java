@@ -2,6 +2,7 @@ package com.example.model.catalog;
 
 import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,8 +19,6 @@ public class Customer {
     
     private String firstName;
     private String lastName;
-    private String email;
-    private String phoneNumber;
     
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
@@ -30,11 +29,20 @@ public class Customer {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;
     
+    @Embedded
+    private ContactInfo contactInfo;
+    
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public ContactInfo getContactInfo() {
+        return contactInfo;
+    }
+    public void setContactInfo(ContactInfo contactInfo) {
+        this.contactInfo = contactInfo;
     }
     public Integer getAge() {
         return age;
@@ -54,18 +62,6 @@ public class Customer {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -78,7 +74,5 @@ public class Customer {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-    
-    
 
 }
