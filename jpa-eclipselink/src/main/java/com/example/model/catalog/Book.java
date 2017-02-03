@@ -16,12 +16,12 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="getBookById",query="select b from Book b where b.id = :id ")
+@NamedQuery(name="getBookById",query="select b from Book b where b.bookId = :id ")
 public class Book {
 
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE)
-    private int id;
+    private int bookId;
     
     @Column(length = 200, nullable = false)
     private String title;
@@ -46,11 +46,11 @@ public class Book {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
     public String getTitle() {
         return title;

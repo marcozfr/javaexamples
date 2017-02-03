@@ -35,7 +35,7 @@ public class AddressTest extends AbstractTest {
         
         tx.commit();
         
-        assertNotNull(address.getId());
+        assertNotNull(address.getAddressId());
         
     }
     

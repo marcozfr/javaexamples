@@ -19,6 +19,14 @@ public class NewsId implements Serializable {
     public String getLanguage() {
         return language;
     }
+    public NewsId() {
+        super();
+    }
+    public NewsId(String title, String language) {
+        super();
+        this.title = title;
+        this.language = language;
+    }
     public void setLanguage(String language) {
         this.language = language;
     }

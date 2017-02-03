@@ -40,7 +40,7 @@ public class BookTest extends AbstractTest{
         tx.commit();
         
         Query q = em.createNamedQuery("getBookById");
-        q.setParameter("id", book.getId());
+        q.setParameter("id", book.getBookId());
         Book savedBook = (Book) q.getSingleResult();
         
         assertNotNull(savedBook);

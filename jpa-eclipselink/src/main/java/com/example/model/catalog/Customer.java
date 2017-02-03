@@ -2,10 +2,14 @@ package com.example.model.catalog;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -15,7 +19,7 @@ public class Customer {
     
     @Id
     @GeneratedValue
-    private Long id;
+    private Long customerId;
     
     private String firstName;
     private String lastName;
@@ -32,11 +36,21 @@ public class Customer {
     @Embedded
     private ContactInfo contactInfo;
     
-    public Long getId() {
-        return id;
+    @OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.PERSIST)
+    @JoinColumn(name="BILLADDRESS_FK",nullable=false)
+    private Address billingAddress;
+    
+    public Long getCustomerId() {
+        return customerId;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
     public ContactInfo getContactInfo() {
         return contactInfo;

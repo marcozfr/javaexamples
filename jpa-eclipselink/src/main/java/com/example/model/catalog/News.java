@@ -12,6 +12,16 @@ public class News {
     private NewsId id;
     
     private String content;
+    
+    public News() {
+        super();
+    }
+
+    public News(NewsId id, String content) {
+        super();
+        this.id = id;
+        this.content = content;
+    }
 
     public NewsId getId() {
         return id;

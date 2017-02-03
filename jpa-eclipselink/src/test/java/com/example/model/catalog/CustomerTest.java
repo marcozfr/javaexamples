@@ -24,7 +24,18 @@ public class CustomerTest extends AbstractTest {
         contactInfo.setLinkedinAccount("marcozfr");
         contactInfo.setPhoneNumber("333-2223");
         
+        Address address = new Address();
+        address.setCity("Lima");
+        address.setCountry("Peru");
+        address.setCountryCode("PE");
+        address.setState("Lima");
+        address.setZipCode("15074");
+        address.setStreet1("Av Rep de Panama");
+        address.setStreet2("Of 102");
+        
         customer.setContactInfo(contactInfo);
+        
+        customer.setBillingAddress(address);
         
         tx.begin();
         
@@ -32,7 +43,7 @@ public class CustomerTest extends AbstractTest {
         
         tx.commit();
         
-        assertNotNull(customer.getId());
+        assertNotNull(customer.getCustomerId());
         
     }
     

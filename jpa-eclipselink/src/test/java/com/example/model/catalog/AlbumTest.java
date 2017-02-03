@@ -29,7 +29,7 @@ public class AlbumTest extends AbstractTest {
         
         tx.commit();
         
-        assertNotNull(album.getId());
+        assertNotNull(album.getAlbumId());
 
     }
 

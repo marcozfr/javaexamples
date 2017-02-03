@@ -8,18 +8,18 @@ public class Track {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private Long trackId;
     private String title;
     private Float duration;
     private byte[] wav;
     private String description;
 
-    public Long getId() {
-        return id;
+    public Long getTrackId() {
+        return trackId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTrackId(Long trackId) {
+        this.trackId = trackId;
     }
 
     public String getTitle() {

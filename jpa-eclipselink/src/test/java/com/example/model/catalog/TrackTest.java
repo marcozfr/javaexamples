@@ -19,7 +19,7 @@ public class TrackTest extends AbstractTest{
         
         tx.commit();
         
-        assertNotNull(track.getId());
+        assertNotNull(track.getTrackId());
         
     }
     

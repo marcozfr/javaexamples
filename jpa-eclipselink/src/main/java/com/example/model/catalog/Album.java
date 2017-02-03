@@ -17,7 +17,7 @@ public class Album {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long albumId;
     private String title;
     private Float price;
     private String description;
@@ -30,12 +30,13 @@ public class Album {
     @Column(name="title")
     private Map<Integer,String> tracks;
 
-    public Long getId() {
-        return id;
+
+    public Long getAlbumId() {
+        return albumId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
     }
 
     public String getTitle() {
