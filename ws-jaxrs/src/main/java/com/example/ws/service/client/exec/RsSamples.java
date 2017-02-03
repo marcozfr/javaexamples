@@ -25,7 +25,7 @@ public class RsSamples {
 		Client client = ClientBuilder.newClient();
 //		http://localhost/vec/public/stream/captcha
 //		https://vecportalqa4.ebiz.verizon.com/vec/public/stream/captcha
-		Builder b = client.target("http://localhost/vec/public/stream/captcha").request();
+		Builder b = client.target("https://vecportalqa2.ebiz.verizon.com/vec/public/stream/captcha").request();
 		Invocation inv = b.buildGet();
 		
 		ExecutorService es = Executors.newFixedThreadPool(2);
