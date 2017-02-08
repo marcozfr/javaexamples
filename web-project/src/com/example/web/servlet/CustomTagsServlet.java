@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.web.bean.Employee;
-import com.example.web.bean.Person;
 
 /**
  * Servlet implementation class CustomTagsServlet

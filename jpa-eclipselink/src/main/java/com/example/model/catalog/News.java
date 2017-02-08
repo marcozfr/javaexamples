@@ -1,8 +1,13 @@
 package com.example.model.catalog;
 
+import java.util.List;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 @NamedQuery(name="findNewsByTitleId",query="select n from News n where n.id.title = :title")
@@ -12,6 +17,10 @@ public class News {
     private NewsId id;
     
     private String content;
+    
+    @OneToMany(fetch=FetchType.LAZY)
+    @OrderBy("postedDate desc")
+    private List<Comment> comments;
     
     public News() {
         super();

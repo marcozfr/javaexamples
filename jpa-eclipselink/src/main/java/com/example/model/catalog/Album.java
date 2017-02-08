@@ -1,25 +1,21 @@
 package com.example.model.catalog;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 
 @Entity
-public class Album {
+@DiscriminatorValue("Album")
+public class Album extends Item {
 
-    @Id
-    @GeneratedValue
-    private Long albumId;
     private String title;
-    private Float price;
     private String description;
     @Lob
     private byte[] cover;
@@ -31,12 +27,14 @@ public class Album {
     private Map<Integer,String> tracks;
 
 
-    public Long getAlbumId() {
-        return albumId;
+    public Album() {
+        super();
+        // TODO Auto-generated constructor stub
     }
 
-    public void setAlbumId(Long albumId) {
-        this.albumId = albumId;
+    public Album(String item, BigDecimal price, Integer quantity) {
+        super(item, price, quantity);
+        // TODO Auto-generated constructor stub
     }
 
     public String getTitle() {
@@ -45,14 +43,6 @@ public class Album {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
     }
 
     public String getDescription() {
@@ -78,9 +68,5 @@ public class Album {
     public void setTracks(Map<Integer, String> tracks) {
         this.tracks = tracks;
     }
-    
-    
-    
-    
     
 }

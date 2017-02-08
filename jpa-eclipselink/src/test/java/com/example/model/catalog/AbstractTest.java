@@ -15,17 +15,22 @@ public abstract class AbstractTest {
     
     protected static EntityManagerFactory emf;
     protected static EntityManager em;
+    protected static EntityManager em1;
     protected static EntityTransaction tx;
     
     @BeforeClass
     public static void before(){
         emf = Persistence.createEntityManagerFactory("catalogPU");
         em = emf.createEntityManager();
+        
+        em1 = emf.createEntityManager();
     }
     
     @AfterClass
     public static void after(){
         if(em!=null) em.close();
+        
+        if(em1!=null) em1.close();
         if(emf!=null) emf.close();
     }
     

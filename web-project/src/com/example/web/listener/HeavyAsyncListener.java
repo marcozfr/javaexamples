@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.AsyncEvent;
 import javax.servlet.AsyncListener;
-import javax.servlet.ServletRequestAttributeEvent;
-import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.annotation.WebListener;
 
 /**

@@ -29,7 +29,7 @@ public class Order {
     @JoinTable(name="join_order_item",
         joinColumns=@JoinColumn(name="order_fk"),
         inverseJoinColumns=@JoinColumn(name="order_line_fk"))
-    private List<OrderItem> orderItems;
+    private List<Item> orderItems;
 
     public Long getOrderId() {
         return orderId;
@@ -47,11 +47,11 @@ public class Order {
         this.creationDate = creationDate;
     }
 
-    public List<OrderItem> getOrderItems() {
+    public List<Item> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
+    public void setOrderItems(List<Item> orderItems) {
         this.orderItems = orderItems;
     }
     

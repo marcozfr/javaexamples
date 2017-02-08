@@ -41,7 +41,6 @@ public class WeatherData implements Subject {
 		observers.remove(o);
 	}
 
-	@Override
 	public void setChanged() {
 		this.changed = true;
 	}

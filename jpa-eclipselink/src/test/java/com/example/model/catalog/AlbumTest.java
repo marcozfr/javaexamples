@@ -2,6 +2,7 @@ package com.example.model.catalog;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class AlbumTest extends AbstractTest {
     public void createAlbumTest(){
         Album album = new Album();
         album.setDescription("by the hives");
-        album.setPrice(45.5f);
+        album.setPrice(BigDecimal.valueOf(45.5));
         album.setTitle("Recon");
         
         Map<Integer,String> tracks = new HashMap<>();
@@ -29,7 +30,7 @@ public class AlbumTest extends AbstractTest {
         
         tx.commit();
         
-        assertNotNull(album.getAlbumId());
+        assertNotNull(album.getItemId());
 
     }
 

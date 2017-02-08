@@ -1,6 +1,5 @@
 package com.example.web.servlet;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
 
 @WebServlet(asyncSupported=true,urlPatterns="/nashorn")
 public class NashornServlet extends HttpServlet{

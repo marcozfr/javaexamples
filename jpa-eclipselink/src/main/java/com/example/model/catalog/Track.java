@@ -1,8 +1,11 @@
 package com.example.model.catalog;
 
+import javax.persistence.Basic;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 public class Track {
 
@@ -11,7 +14,12 @@ public class Track {
     private Long trackId;
     private String title;
     private Float duration;
+    
+    @Basic(fetch=FetchType.LAZY)
+    @Lob
     private byte[] wav;
+    
+    @Basic(optional=true)
     private String description;
 
     public Long getTrackId() {

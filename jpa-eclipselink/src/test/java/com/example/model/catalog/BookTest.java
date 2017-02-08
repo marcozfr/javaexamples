@@ -4,21 +4,10 @@ import static org.junit.Assert.assertNotNull;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
-import com.example.model.catalog.Book;
-import com.example.model.catalog.CurrencyType;
 
 public class BookTest extends AbstractTest{
     
@@ -37,10 +26,16 @@ public class BookTest extends AbstractTest{
         
         em.persist(book);
         
+        EntityTransaction tx1 = em1.getTransaction();
+        tx1.begin();
+        em1.find(Book.class, book.getItemId());
+        tx1.commit();
+
+        
         tx.commit();
         
-        Query q = em.createNamedQuery("getBookById");
-        q.setParameter("id", book.getBookId());
+        Query q = em.createNamedQuery("getItemById");
+        q.setParameter("id", book.getItemId());
         Book savedBook = (Book) q.getSingleResult();
         
         assertNotNull(savedBook);

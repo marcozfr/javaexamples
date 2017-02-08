@@ -5,32 +5,23 @@ import java.util.List;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="getBookById",query="select b from Book b where b.bookId = :id ")
-public class Book {
+@DiscriminatorValue(value="Book")
+//@AttributeOverrides(  // only if table_per_class strategy is used
+//        value=@AttributeOverride(name="id",column=@Column(name="book_id")))
+public class Book extends Item {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.TABLE)
-    private int bookId;
-    
-    @Column(length = 200, nullable = false)
+    @Column(length = 200)
     private String title;
     
-    @Column(nullable = false)
     private String isbn;
-    
-    @Column(precision=16,scale=4)
-    private BigDecimal price;
     
     @Enumerated(EnumType.STRING)
     private CurrencyType currency;
@@ -40,18 +31,22 @@ public class Book {
     @Column(name="Value") // value column on Tag table
     private List<String> tags;
     
+    public Book() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    public Book(String item, BigDecimal price, Integer quantity) {
+        super(item, price, quantity);
+        // TODO Auto-generated constructor stub
+    }
+    
     public List<String> getTags() {
         return tags;
     }
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
-    public int getBookId() {
-        return bookId;
-    }
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
+
     public String getTitle() {
         return title;
     }
@@ -63,12 +58,6 @@ public class Book {
     }
     public void setIsbn(String isbn) {
         this.isbn = isbn;
-    }
-    public BigDecimal getPrice() {
-        return price;
-    }
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
     public CurrencyType getCurrency() {
         return currency;

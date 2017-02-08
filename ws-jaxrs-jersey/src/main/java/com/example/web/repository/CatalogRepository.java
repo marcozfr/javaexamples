@@ -2,10 +2,6 @@ package com.example.web.repository;
 
 import java.io.InputStream;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
-import javax.servlet.ServletContext;
-import javax.ws.rs.core.Context;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;

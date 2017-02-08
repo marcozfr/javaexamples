@@ -2,8 +2,6 @@ package com.example.web.servlet;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Optional;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
