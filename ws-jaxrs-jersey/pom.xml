@@ -117,13 +117,13 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- xstream for xml management -->
+		<!-- xstream for xml management
 		<dependency>
 			<groupId>xstream</groupId>
 			<artifactId>xstream</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-
+ -->
 		<!-- hibernate with JPA Support -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

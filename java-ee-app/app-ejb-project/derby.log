@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+2017-02-06 23:56:45.403 GMT:
+ Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instancia a816c00e-015a-15db-b782-0000006c6768 
+en el directorio de base de datos C:\Users\floma4y\AppData\Local\Temp\gfembed2796468065347541878tmp\lib\databases\embedded_default  con el cargador de clases sun.misc.Launcher$AppClassLoader@3beb83cf
+
+java.vendor=IBM Corporation
+java.runtime.version=pwi3280sr3fp20-20161019_02 (SR3 FP20)
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 7 x86-32 20161013_322271 (JIT enabled, AOT enabled)
+J9VM - R28_Java8_SR3_20161013_1635_B322271
+JIT  - tr.r14.java.green_20161011_125790
+GC   - R28_Java8_SR3_20161013_1635_B322271
+J9CL - 20161013_322271
+Cargador de clases de base de datos iniciado - derby.database.classpath=''
