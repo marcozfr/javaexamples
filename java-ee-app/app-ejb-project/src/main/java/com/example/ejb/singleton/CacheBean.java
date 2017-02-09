@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.ejb.AccessTimeout;
-import javax.ejb.DependsOn;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.Lock;
 import javax.ejb.LockType;
 import javax.ejb.Singleton;
@@ -13,8 +14,9 @@ import javax.ejb.Startup;
 
 @Singleton
 @Startup
-@DependsOn("CustomerBean")
+//@DependsOn("CustomerBean")
 @Lock(LockType.READ)
+@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 public class CacheBean {
 	
 	private Map<String,Object> cache = new HashMap<>();

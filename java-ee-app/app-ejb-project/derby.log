@@ -1,13 +1,32 @@
 ----------------------------------------------------------------
-2017-02-06 23:56:45.403 GMT:
- Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instancia a816c00e-015a-15db-b782-0000006c6768 
-en el directorio de base de datos C:\Users\floma4y\AppData\Local\Temp\gfembed2796468065347541878tmp\lib\databases\embedded_default  con el cargador de clases sun.misc.Launcher$AppClassLoader@3beb83cf
-
-java.vendor=IBM Corporation
-java.runtime.version=pwi3280sr3fp20-20161019_02 (SR3 FP20)
-java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 7 x86-32 20161013_322271 (JIT enabled, AOT enabled)
-J9VM - R28_Java8_SR3_20161013_1635_B322271
-JIT  - tr.r14.java.green_20161011_125790
-GC   - R28_Java8_SR3_20161013_1635_B322271
-J9CL - 20161013_322271
-Cargador de clases de base de datos iniciado - derby.database.classpath=''
+2017-02-09 00:03:54.083 GMT:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instance a816c00e-015a-202e-fa0d-00000f21e9a8 
+on database directory C:\Users\MarcoAntonio\AppData\Local\Temp\gfembed1766383696965930757tmp\lib\databases\embedded_default  with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Loaded from file:/C:/Users/MarcoAntonio/.m2/repository/org/glassfish/extras/glassfish-embedded-all/3.1.1/glassfish-embedded-all-3.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_71-b15
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2017-02-09 00:03:58.609 GMT:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instance cead00d8-015a-202e-fa0d-00000f21e9a8 
+on database directory C:\Users\MarcoAntonio\AppData\Local\Temp\gfembed1766383696965930757tmp\lib\databases\ejbtimer  with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Loaded from file:/C:/Users/MarcoAntonio/.m2/repository/org/glassfish/extras/glassfish-embedded-all/3.1.1/glassfish-embedded-all-3.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_71-b15
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2017-02-09 00:04:20.747 GMT:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instance a196416f-015a-202e-fa0d-00000f21e9a8 
+on database directory C:\Users\MarcoAntonio\AppData\Local\Temp\gfembed3281852780944351474tmp\lib\databases\embedded_default  with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Loaded from file:/C:/Users/MarcoAntonio/.m2/repository/org/glassfish/extras/glassfish-embedded-all/3.1.1/glassfish-embedded-all-3.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_71-b15
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+2017-02-09 00:04:29.270 GMT:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instance 9dcf0239-015a-202e-fa0d-00000f21e9a8 
+on database directory C:\Users\MarcoAntonio\AppData\Local\Temp\gfembed3281852780944351474tmp\lib\databases\ejbtimer  with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Loaded from file:/C:/Users/MarcoAntonio/.m2/repository/org/glassfish/extras/glassfish-embedded-all/3.1.1/glassfish-embedded-all-3.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_71-b15
+Database Class Loader started - derby.database.classpath=''

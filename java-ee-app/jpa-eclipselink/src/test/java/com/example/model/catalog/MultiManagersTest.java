@@ -2,6 +2,8 @@ package com.example.model.catalog;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -35,7 +37,7 @@ public class MultiManagersTest {
 	public void saveObjects(){
 		Album album = new Album();
 		album.setDescription("Description");
-		album.setPrice(34.4f);
+		album.setPrice(BigDecimal.valueOf(34.4f));
 		album.setTitle("Title");
 		
 		em1.getTransaction().begin();
@@ -44,7 +46,7 @@ public class MultiManagersTest {
 		
 		em1.getTransaction().commit();
 
-		Album album1 = em2.find(Album.class, album.getAlbumId());
+		Album album1 = em2.find(Album.class, album.getItemId());
 
 		assertNotEquals(album1.toString(),album.toString());
 		

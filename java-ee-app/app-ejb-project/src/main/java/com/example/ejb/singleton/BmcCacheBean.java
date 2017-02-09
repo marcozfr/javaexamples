@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
-import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
@@ -14,7 +13,7 @@ import javax.ejb.Startup;
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 public class BmcCacheBean {
 
-private Map<String,Object> cache = new HashMap<>();
+    private Map<String,Object> cache = new HashMap<>();
 	
 	public synchronized void add(String key, Object object){
 		cache.put(key, object);

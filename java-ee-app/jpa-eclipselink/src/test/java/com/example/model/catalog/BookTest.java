@@ -1,24 +1,20 @@
 package com.example.model.catalog;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.junit.Test;
-<<<<<<< HEAD:jpa-eclipselink/src/test/java/com/example/model/catalog/BookTest.java
-=======
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-import com.example.model.catalog.Book;
 import com.example.model.catalog.types.CurrencyType;
->>>>>>> 89ca26dfd1858650222cae0e5711b29f3a1a1063:java-ee-app/jpa-eclipselink/src/test/java/com/example/model/catalog/BookTest.java
 
 public class BookTest extends AbstractTest{
-    
     
     @Test
     public void testBook(){
@@ -39,7 +35,6 @@ public class BookTest extends AbstractTest{
         em1.find(Book.class, book.getItemId());
         tx1.commit();
 
-        
         tx.commit();
         
         Query q = em.createNamedQuery("getItemById");
@@ -48,6 +43,16 @@ public class BookTest extends AbstractTest{
         
         assertNotNull(savedBook);
         
+    }
+    
+    @Test
+    public void testBooksList(){
+
+        TypedQuery<Book> tq = em.createNamedQuery("findAllBooks",Book.class);
+        
+        List<Book> books = tq.getResultList();
+        assertNotNull(books);
+        assertNotEquals(books.size(),0 );
     }
     
 }
