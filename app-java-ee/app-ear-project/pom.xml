@@ -10,19 +10,19 @@
 	</parent>
 	<dependencies>
 		<dependency>
-			<groupId>com.example.model</groupId>
+			<groupId>com.example.app</groupId>
 			<artifactId>app-model-project</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>com.example.ejb</groupId>
+			<groupId>com.example.app</groupId>
 			<artifactId>app-ejb-project</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
-			<groupId>com.example.web</groupId>
+			<groupId>com.example.app</groupId>
 			<artifactId>app-war-project</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
@@ -42,15 +42,15 @@
 					<version>6</version>
 					<modules>
 						<jarModule>
-							<groupId>com.example.model</groupId>
+							<groupId>com.example.app</groupId>
 							<artifactId>app-model-project</artifactId>
 						</jarModule>
 						<ejbModule>
-							<groupId>com.example.ejb</groupId>
+							<groupId>com.example.app</groupId>
 							<artifactId>app-ejb-project</artifactId>
 						</ejbModule>
 						<webModule>
-							<groupId>com.example.web</groupId>
+							<groupId>com.example.app</groupId>
 							<artifactId>app-war-project</artifactId>
 						</webModule>
 					</modules>

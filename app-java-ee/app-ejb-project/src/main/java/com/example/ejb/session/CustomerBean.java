@@ -23,19 +23,18 @@ public class CustomerBean {
 	
 	@PostConstruct
 	public void initBean(){
-	    
 	    sessionContext.getTimerService();
-	    
 	    defaultTitle = defaultTitle == null ? "" : defaultTitle + " ";
 	}
 	
 	public Customer createCustomer(Customer customer){
-
 	    customer.setFirstName(defaultTitle + customer.getFirstName());
-	    
 		entityManager.persist(customer);
-		
 		return customer;
+	}
+	
+	public Customer findCustomer(Long id){
+		return entityManager.find(Customer.class, id);
 	}
 	
 	@Override
