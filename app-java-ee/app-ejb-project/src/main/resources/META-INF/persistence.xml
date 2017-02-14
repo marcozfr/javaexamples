@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	<persistence-unit name="catalogPU" transaction-type="JTA" >
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/track-mapping.xml</mapping-file>
+		<mapping-file>META-INF/listener-mapping.xml</mapping-file>
+		<class>com.example.model.catalog.Address</class>
+		<class>com.example.model.catalog.Album</class>
+		<class>com.example.model.catalog.Artist</class>
+		<class>com.example.model.catalog.Book</class>
+		<class>com.example.model.catalog.CD</class>
+		<class>com.example.model.catalog.Comment</class>
+		<class>com.example.model.catalog.ContactInfo</class>
+		<class>com.example.model.catalog.Customer</class>
+		<class>com.example.model.catalog.Item</class>
+		<class>com.example.model.catalog.News</class>
+		<class>com.example.model.catalog.NewsId</class>
+		<class>com.example.model.catalog.NewsLetter</class>
+		<class>com.example.model.catalog.Order</class>
+		<class>com.example.model.catalog.OrderItem</class>
+		<class>com.example.model.catalog.StaffMember</class>
+		<class>com.example.model.catalog.StaffMemberId</class>
+		<class>com.example.model.catalog.Track</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="eclipselink.target-database" value="MySQL"/>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="both"/>
+			<!-- <property name="eclipselink.weaving" value="true"/>-->
+			<property name="eclipselink.logging.level" value="INFO" />
+			
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/catalog?useSSL=false"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="mysql"/>
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="catalogPUDerby" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.example.model.catalog.Book</class>
+        <properties>
+            <property name="eclipselink.target-database" value="DERBY"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/catalog;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="APP"/>
+            <property name="javax.persistence.jdbc.password" value="APP"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="catalogInMemoryPUDerby" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <mapping-file>META-INF/listener-mapping.xml</mapping-file>
+        <class>com.example.model.catalog.Book</class>
+        <class>com.example.model.catalog.Customer</class>
+        <class>com.example.model.catalog.ContactInfo</class>
+		<class>com.example.model.catalog.Address</class>
+		<class>com.example.model.catalog.Item</class>
+        <!-- <jar-file>../lib/app-model-project-0.0.1-SNAPSHOT.jar</jar-file> -->
+        <!-- jar-file works only with EAR, not working with local tests -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.target-database" value="DERBY"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:catalog;create=true"/>
+        </properties>
+    </persistence-unit>
+	
+</persistence>
