@@ -9,8 +9,6 @@ import javax.naming.NamingException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 public class EjbContainerTest {
 

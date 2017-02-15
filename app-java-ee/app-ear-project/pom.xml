@@ -56,6 +56,8 @@
 					</modules>
 					<defaultLibBundleDir>/lib</defaultLibBundleDir>
 					<generateApplicationXml>true</generateApplicationXml>
+					<earSourceDirectory>config</earSourceDirectory>
+					<applicationName>app-ee-ear</applicationName>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -1,0 +1,27 @@
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
+	<datasource jndi-name="java:jboss/catalogMysqlDS" pool-name="catalogMysqlDS">
+		<connection-url>jdbc:mysql://localhost:3306/catalog</connection-url>
+		<driver>mysql</driver>
+		<security>
+			<user-name>root</user-name>
+			<password>mysql</password>
+		</security>
+		<validation>
+			<valid-connection-checker
+				class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker" />
+			<validate-on-match>true</validate-on-match>
+			<background-validation>false</background-validation>
+			<exception-sorter
+				class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter" />
+		</validation>
+	</datasource>
+	<!-- ignored by EAP 7.00 , declare this on standalone.xml
+	<drivers>
+		<driver name="mysql" module="com.mysql">
+			<driver-class>com.mysql.jdbc.Driver</driver-class>
+			<xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+		</driver>
+	</drivers>-->
+</datasources>

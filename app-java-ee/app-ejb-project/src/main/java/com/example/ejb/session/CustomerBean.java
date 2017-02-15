@@ -12,7 +12,7 @@ import com.example.model.catalog.Customer;
 @Stateless
 public class CustomerBean {
 
-	@PersistenceContext(unitName="catalogInMemoryPUDerby")
+	@PersistenceContext(unitName="catalogPU")
 	private EntityManager entityManager;
 	
 	@Resource(name="customerTitle")
