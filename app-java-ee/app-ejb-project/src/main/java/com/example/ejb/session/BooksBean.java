@@ -16,7 +16,7 @@ import com.example.model.catalog.Book;
 @Remote(BooksRemote.class)
 public class BooksBean implements BooksLocal,BooksRemote {
 
-    @PersistenceContext(unitName="catalogInMemoryPUDerby")
+    @PersistenceContext(unitName="catalogPU")
     private EntityManager entityManager;
     
     @Override

@@ -7,8 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.eclipse.persistence.config.EntityManagerProperties;
-import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -26,8 +24,8 @@ public abstract class AbstractTest {
     public static void before(){
         
         Map<String,Object> props = new HashMap<>();
-        props.put(PersistenceUnitProperties.TRANSACTION_TYPE,"RESOURCE_LOCAL");
-        props.put(PersistenceUnitProperties.JDBC_URL,"jdbc:mysql://localhost:3306/catalogtest?useSSL=false");
+        props.put("javax.persistence.transactionType","RESOURCE_LOCAL");
+        props.put("javax.persistence.jdbc.url","jdbc:mysql://localhost:3306/catalogtest?useSSL=false");
         emf = Persistence.createEntityManagerFactory("catalogPU",props);
         em = emf.createEntityManager();
     }

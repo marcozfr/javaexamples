@@ -9,11 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.NamedQuery;
 
 @Entity
-@MappedSuperclass
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING,name="itemType")
 @NamedQuery(name="getItemById",query="select i from Item i where i.itemId = :id")
@@ -21,7 +19,7 @@ public class Item {
 
     @Id @GeneratedValue
     private Long itemId;
-    private String itemType;
+//    private String itemType;
     private String item;
     private BigDecimal price;
     private Integer quantity;
@@ -35,12 +33,12 @@ public class Item {
         this.price = price;
         this.quantity = quantity;
     }
-    public String getItemType() {
-        return itemType;
-    }
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
+//    public String getItemType() {
+//        return itemType;
+//    }
+//    public void setItemType(String itemType) {
+//        this.itemType = itemType;
+//    }
     public Long getItemId() {
         return itemId;
     }

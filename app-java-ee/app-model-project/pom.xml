@@ -12,14 +12,22 @@
 		<mysql-driver-version>5.1.40</mysql-driver-version>
 		<log4j-version>2.7</log4j-version>
 		<derby-version>10.10.2.0</derby-version>
+		<hibernate-version>5.2.7.Final</hibernate-version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
-			<version>${eclipse-link-version}</version>
-			<scope>provided</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>antlr</groupId>
+         			<artifactId>antlr</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>eclipselink</artifactId> 
+			<version>${eclipse-link-version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
