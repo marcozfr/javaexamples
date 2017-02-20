@@ -4,15 +4,17 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
+import com.example.ejb.annotations.CatalogManager;
+import com.example.ejb.enums.DatabaseType;
 import com.example.model.catalog.Customer;
 
 @Stateless
 public class CustomerBean {
 
-	@PersistenceContext(unitName="catalogPU")
+	@Inject @CatalogManager(DatabaseType.MYSQL)
 	private EntityManager entityManager;
 	
 	@Resource(name="customerTitle")
