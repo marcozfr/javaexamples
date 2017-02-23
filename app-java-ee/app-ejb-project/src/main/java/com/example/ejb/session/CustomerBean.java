@@ -1,11 +1,14 @@
 package com.example.ejb.session;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import com.example.ejb.annotations.CatalogManager;
 import com.example.ejb.enums.DatabaseType;
@@ -37,6 +40,11 @@ public class CustomerBean {
 	
 	public Customer findCustomer(Long id){
 		return entityManager.find(Customer.class, id);
+	}
+	
+	public List<Customer> findCustomers(){
+		TypedQuery<Customer> query = entityManager.createQuery("select c from Customer c", Customer.class);
+		return query.getResultList();
 	}
 	
 	@Override
