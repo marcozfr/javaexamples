@@ -4,9 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Date;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import com.example.model.catalog.AbstractTest;
 import com.example.model.catalog.Address;
 import com.example.model.catalog.ContactInfo;

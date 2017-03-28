@@ -28,7 +28,12 @@
 		    <version>1.0</version>
 		    <scope>provided</scope>
 		</dependency>
-			
+		<dependency>
+		    <groupId>javax.jms</groupId>
+		    <artifactId>javax.jms-api</artifactId>
+		    <version>2.0</version>
+		    <scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.example.app</groupId>
 			<artifactId>app-model-project</artifactId>
@@ -39,16 +44,19 @@
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.glassfish.extras</groupId> <artifactId>glassfish-embedded-all</artifactId> 
-			<version>3.2-b06</version> <scope>test</scope> </dependency> -->
+		<!-- 
+		<dependency> 
+			<groupId>org.glassfish.extras</groupId> 
+			<artifactId>glassfish-embedded-all</artifactId> 
+			<version>3.2-b06</version> 
+			<scope>test</scope> 
+		</dependency> 
+		-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-driver-version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.derby</groupId> <artifactId>derbyclient</artifactId> 
-			<version>${derby-version}</version> </dependency> <dependency> <groupId>org.apache.derby</groupId> 
-			<artifactId>derby</artifactId> <version>${derby-version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>

@@ -8,7 +8,6 @@ import javax.naming.NamingException;
 
 import org.junit.Test;
 
-import com.example.ejb.session.BooksBean;
 import com.example.ejb.session.local.BooksLocal;
 import com.example.model.catalog.Book;
 import com.example.model.catalog.types.CurrencyType;
