@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
-import javax.ejb.EJBContext;
 import javax.naming.NamingException;
 
 import org.junit.Test;
