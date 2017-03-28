@@ -9,8 +9,8 @@ import com.example.model.catalog.Book;
 @Local
 public interface BooksLocal {
     
-    List<Book> findAllBooks();
-
     Book saveBook(Book book);
+    
+    List<Book> findAllBooks();
     
 }

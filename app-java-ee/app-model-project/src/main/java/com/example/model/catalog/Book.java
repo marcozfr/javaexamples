@@ -12,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.example.model.catalog.types.CurrencyType;
 
@@ -19,7 +20,7 @@ import com.example.model.catalog.types.CurrencyType;
 @DiscriminatorValue(value="Book")
 //@AttributeOverrides(  // only if table_per_class strategy is used
 //        value=@AttributeOverride(name="id",column=@Column(name="book_id")))
-@NamedQuery(name="findAllBooks",query="select b from Book b")
+@NamedQuery(name="findAllBooks",query="select b from Book b join fetch b.tags")
 public class Book extends Item {
 
     @Column(length = 200)
@@ -44,7 +45,15 @@ public class Book extends Item {
         // TODO Auto-generated constructor stub
     }
     
-    public List<String> getTags() {
+    public Book(String item, BigDecimal price, Integer quantity, String title, String isbn, CurrencyType currency,
+			List<String> tags) {
+		super(item, price, quantity);
+		this.title = title;
+		this.isbn = isbn;
+		this.currency = currency;
+		this.tags = tags;
+	}
+	public List<String> getTags() {
         return tags;
     }
     public void setTags(List<String> tags) {
