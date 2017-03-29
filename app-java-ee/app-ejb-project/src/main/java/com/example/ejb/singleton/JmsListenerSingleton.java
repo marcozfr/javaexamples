@@ -10,8 +10,8 @@ import javax.inject.Inject;
 
 import com.example.ejb.jms.DefaultJmsMessageConsumer;
 
-@Singleton
-@Startup
+//@Singleton
+//@Startup
 public class JmsListenerSingleton {
 	
 	@Inject
