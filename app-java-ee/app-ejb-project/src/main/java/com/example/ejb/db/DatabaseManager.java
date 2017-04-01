@@ -10,7 +10,7 @@ import com.example.ejb.enums.DatabaseType;
 
 public class DatabaseManager {
 
-    @Produces 
+    @Produces
     @CatalogManager(DatabaseType.MYSQL)
     @PersistenceContext(unitName="catalogPU",
         properties={@PersistenceProperty(name="javax.persistence.transactionType",value="JTA")})

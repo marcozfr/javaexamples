@@ -4,11 +4,16 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.ConcurrencyManagement;
+import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.UserTransaction;
 
 import com.example.ejb.annotations.CatalogManager;
 import com.example.ejb.enums.DatabaseType;
@@ -25,6 +30,9 @@ public class CustomerBean {
 	
 	@Resource
 	private SessionContext sessionContext;
+	
+	@Resource
+	private UserTransaction userTransaction;
 	
 	@PostConstruct
 	public void initBean(){

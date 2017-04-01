@@ -8,6 +8,7 @@
 	<modules>
 		<module>app-model-project</module>
 		<module>app-ejb-project</module>
+		<module>app-ws-client</module>
 		<module>app-war-project</module>
 		<module>app-ear-project</module>
 	</modules>

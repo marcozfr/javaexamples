@@ -17,6 +17,12 @@
 		</dependency>
 		<dependency>
 			<groupId>com.example.app</groupId>
+			<artifactId>app-ws-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.example.app</groupId>
 			<artifactId>app-ejb-project</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>

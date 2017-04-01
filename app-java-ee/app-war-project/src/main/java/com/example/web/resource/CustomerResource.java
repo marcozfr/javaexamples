@@ -45,8 +45,7 @@ public class CustomerResource {
     @Produces("application/json")
     public Response getCustomer(@PathParam("id") Long id) throws JsonProcessingException{
     	Customer customer = customerBean.findCustomer(id);
-    	String customerString = new ObjectMapper().writeValueAsString(customer);
-        return Response.ok(customerString).build();
+        return Response.ok(customer).build();
     }
     
     @POST
@@ -73,8 +72,7 @@ public class CustomerResource {
 			customerBean.createCustomer(customer);
 		}
     	
-    	String customerString = new ObjectMapper().writeValueAsString(customer);
-        return Response.ok(customerString).build();
+        return Response.ok(customer).build();
     }
     
     @PreDestroy

@@ -12,50 +12,51 @@
 		<mysql-driver-version>5.1.40</mysql-driver-version>
 		<log4j-version>2.7</log4j-version>
 		<derby-version>10.10.2.0</derby-version>
+		<cxf.version>3.1.0</cxf.version>
 	</properties>
 	<dependencies>
 		
+		<dependency>
+			<groupId>com.example.app</groupId>
+			<artifactId>app-ws-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.annotation</groupId>
+		    <artifactId>jsr250-api</artifactId>
+		    <version>1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>javax.jms</groupId>
+		    <artifactId>javax.jms-api</artifactId>
+		    <version>2.0</version>
+		    <scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.example.app</groupId>
 			<artifactId>app-model-project</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-		    <groupId>javax.ejb</groupId>
-		    <artifactId>javax.ejb-api</artifactId>
-		    <version>3.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>javax.jms</groupId>
-		    <artifactId>javax.jms-api</artifactId>
-		    <version>2.0</version>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
 		</dependency>
 		<!-- 
-		<dependency>
-			<groupId>org.glassfish.extras</groupId>
-			<artifactId>glassfish-embedded-all</artifactId>
-			<version>3.2-b06</version>
-			<scope>test</scope>
-		</dependency>
-		 -->
+		<dependency> 
+			<groupId>org.glassfish.extras</groupId> 
+			<artifactId>glassfish-embedded-all</artifactId> 
+			<version>3.2-b06</version> 
+			<scope>test</scope> 
+		</dependency> 
+		-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-driver-version}</version>
 		</dependency>
-		<!-- 
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derbyclient</artifactId>
-			<version>${derby-version}</version>
-		</dependency>
-		 
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>${derby-version}</version>
-		</dependency>
-		-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -67,11 +68,11 @@
 			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-            <version>1.2</version>
-        </dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+			<version>1.2</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -99,6 +100,38 @@
 							</manifest>
 						</archive>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-java2ws-plugin</artifactId>
+					<version>${cxf.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.cxf</groupId>
+							<artifactId>cxf-rt-frontend-jaxws</artifactId>
+							<version>${cxf.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.cxf</groupId>
+							<artifactId>cxf-rt-frontend-simple</artifactId>
+							<version>${cxf.version}</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>process-classes</id>
+							<phase>process-classes</phase>
+							<configuration>
+								<className>com.example.ejb.session.remote.BooksRemote</className>
+								<outputFile>${basedir}/../src/main/resources/wsdl/BookService.wsdl</outputFile>
+								<genWsdl>true</genWsdl>
+								<verbose>true</verbose>
+							</configuration>
+							<goals>
+								<goal>java2ws</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
