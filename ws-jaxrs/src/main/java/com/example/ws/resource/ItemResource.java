@@ -1,23 +1,6 @@
 package com.example.ws.resource;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.core.Request;
-import javax.ws.rs.core.Variant;
-
-import com.example.ws.model.Item;
-//import com.thoughtworks.xstream.XStream;
-//import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
-//import com.thoughtworks.xstream.io.xml.DomDriver;
 
 @Path("/item")
 public class ItemResource {

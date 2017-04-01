@@ -1,25 +1,8 @@
 package com.example.ws.resource;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import javax.servlet.ServletResponse;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.xml.XMLConstants;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-
-import org.xml.sax.SAXException;
-
-import com.example.ws.model.orders.PurchaseOrderType;
 
 @Path("/order")
 public class OrdersResource {
