@@ -12,7 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import com.example.model.catalog.types.CurrencyType;
 
@@ -21,6 +21,7 @@ import com.example.model.catalog.types.CurrencyType;
 //@AttributeOverrides(  // only if table_per_class strategy is used
 //        value=@AttributeOverride(name="id",column=@Column(name="book_id")))
 @NamedQuery(name="findAllBooks",query="select b from Book b join fetch b.tags")
+@XmlType(name="book",namespace="http://com.example.model")
 public class Book extends Item {
 
     @Column(length = 200)

@@ -15,24 +15,17 @@
 		<cxf.version>3.1.0</cxf.version>
 	</properties>
 	<dependencies>
-		
 		<dependency>
-			<groupId>com.example.app</groupId>
-			<artifactId>app-ws-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>javax.annotation</groupId>
-		    <artifactId>jsr250-api</artifactId>
-		    <version>1.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>javax.jms</groupId>
-		    <artifactId>javax.jms-api</artifactId>
-		    <version>2.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.example.app</groupId>
@@ -44,14 +37,8 @@
 			<artifactId>javax.ejb-api</artifactId>
 			<version>3.2</version>
 		</dependency>
-		<!-- 
-		<dependency> 
-			<groupId>org.glassfish.extras</groupId> 
-			<artifactId>glassfish-embedded-all</artifactId> 
-			<version>3.2-b06</version> 
-			<scope>test</scope> 
-		</dependency> 
-		-->
+		<!-- <dependency> <groupId>org.glassfish.extras</groupId> <artifactId>glassfish-embedded-all</artifactId> 
+			<version>3.2-b06</version> <scope>test</scope> </dependency> -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -83,57 +70,93 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<artifactId>maven-ejb-plugin</artifactId>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
 					<configuration>
-						<archive>
-							<manifest>
-								<mainClass>com.example.ejb.session.main.Main</mainClass>
-							</manifest>
-						</archive>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.cxf
+										</groupId>
+										<artifactId>
+											cxf-java2ws-plugin
+										</artifactId>
+										<versionRange>
+											[3.1.0,)
+										</versionRange>
+										<goals>
+											<goal>java2ws</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.cxf</groupId>
-					<artifactId>cxf-java2ws-plugin</artifactId>
-					<version>${cxf.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.apache.cxf</groupId>
-							<artifactId>cxf-rt-frontend-jaxws</artifactId>
-							<version>${cxf.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.apache.cxf</groupId>
-							<artifactId>cxf-rt-frontend-simple</artifactId>
-							<version>${cxf.version}</version>
-						</dependency>
-					</dependencies>
-					<executions>
-						<execution>
-							<id>process-classes</id>
-							<phase>process-classes</phase>
-							<configuration>
-								<className>com.example.ejb.session.remote.BooksRemote</className>
-								<outputFile>${basedir}/../src/main/resources/wsdl/BookService.wsdl</outputFile>
-								<genWsdl>true</genWsdl>
-								<verbose>true</verbose>
-							</configuration>
-							<goals>
-								<goal>java2ws</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.example.ejb.session.main.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-java2ws-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-simple</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>process-classes</id>
+						<phase>process-classes</phase>
+						<configuration>
+							<className>com.example.ejb.session.BooksBean</className>
+							<outputFile>${basedir}/src/main/resources/wsdl/BookService.wsdl</outputFile>
+							<genWsdl>true</genWsdl>
+							<verbose>true</verbose>
+							<address>http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BookService?wsdl</address>
+						</configuration>
+						<goals>
+							<goal>java2ws</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

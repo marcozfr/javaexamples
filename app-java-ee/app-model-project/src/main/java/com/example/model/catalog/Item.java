@@ -11,12 +11,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING,name="itemType")
 @NamedQuery(name="getItemById",query="select i from Item i where i.itemId = :id")
-@XmlRootElement
 public class Item {
 
     @Id @GeneratedValue

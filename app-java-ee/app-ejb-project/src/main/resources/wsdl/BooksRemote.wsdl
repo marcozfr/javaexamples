@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BooksRemote" targetNamespace="http://remote.session.ejb.example.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://com.example.model" xmlns:ns1="http://remote.session.ejb.example.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://remote.session.ejb.example.com/" version="1.0">
+
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="xs:string"/>
+      <xs:element minOccurs="0" name="itemId" type="xs:long"/>
+      <xs:element minOccurs="0" name="price" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="currencyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="PEN"/>
+      <xs:enumeration value="GBP"/>
+      <xs:enumeration value="COP"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+<xs:schema xmlns:ns1="http://remote.session.ejb.example.com/" xmlns:tns="http://com.example.model" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.example.model" version="1.0">
+
+  <xs:import namespace="http://remote.session.ejb.example.com/"/>
+
+  <xs:complexType name="book">
+    <xs:complexContent>
+      <xs:extension base="ns1:item">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="currency" type="ns1:currencyType"/>
+          <xs:element minOccurs="0" name="isbn" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType final="#all" name="bookArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findAllResponse">
+    <wsdl:part name="booksPart" type="ns2:bookArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAll">
+  </wsdl:message>
+  <wsdl:message name="findById">
+    <wsdl:part name="arg0" type="xsd:long">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findByIdResponse">
+    <wsdl:part name="bookPart" type="ns2:book">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BooksRemote">
+    <wsdl:operation name="findAll">
+      <wsdl:input name="findAll" message="ns1:findAll">
+    </wsdl:input>
+      <wsdl:output name="findAllResponse" message="ns1:findAllResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findById">
+      <wsdl:input name="findById" message="ns1:findById">
+    </wsdl:input>
+      <wsdl:output name="findByIdResponse" message="ns1:findByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

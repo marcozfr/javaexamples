@@ -14,7 +14,8 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.xml.ws.WebServiceRef;
 
-import com.example.ejb.session.BooksBeanService;
+import com.example.app.ws.client.BookArray;
+import com.example.app.ws.client.BooksBeanService;
 import com.example.ejb.session.local.BooksLocal;
 import com.example.model.catalog.Book;
 import com.example.model.catalog.types.CurrencyType;
@@ -46,8 +47,8 @@ public class BookResource {
 	@GET
 	@Produces("application/json")
 	public Response allBooks(){
-		List<com.example.ejb.session.remote.Book> books = bookWsService.getBookServicePort().findAllBooks();;
-		GenericEntity<List<com.example.ejb.session.remote.Book>> booksEntity = new GenericEntity<List<com.example.ejb.session.remote.Book>>(books){};
+		BookArray books = bookWsService.getBookServicePort().findAll();
+		GenericEntity<List<com.example.app.ws.client.Book>> booksEntity = new GenericEntity<List<com.example.app.ws.client.Book>>(books.getItem()){};
 		return Response.ok(booksEntity).build();
 	}
 	

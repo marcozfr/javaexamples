@@ -3,8 +3,6 @@ package com.example.ejb.session;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Remote;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -14,6 +12,10 @@ import javax.interceptor.Interceptors;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.jws.soap.SOAPBinding.ParameterStyle;
+import javax.jws.soap.SOAPBinding.Style;
+import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -29,7 +31,6 @@ import com.example.model.catalog.Book;
 @Remote(BooksRemote.class)
 @WebService(endpointInterface="com.example.ejb.session.remote.BooksRemote",name="BookService",portName="BookServicePort")
 @Interceptors(LoggingInterceptor.class)
-@RolesAllowed({"ADMIN","USER"})
 public class BooksBean implements BooksLocal,BooksRemote {
 
 	@Resource
@@ -42,16 +43,14 @@ public class BooksBean implements BooksLocal,BooksRemote {
     private EntityManager entityManager;
     
     @Override
+//    @PermitAll
     @WebMethod(exclude=true)
-    @PermitAll
     public Book findBookById(Long bookId) {
         return entityManager.find(Book.class, bookId);
     }
     
     @Override
-    @WebMethod(operationName="findAll")
-    @WebResult(name="books")
-    @PermitAll
+//    @PermitAll
     public List<Book> findAllBooks() {
     	
     	if(wsContext!=null){
@@ -65,7 +64,7 @@ public class BooksBean implements BooksLocal,BooksRemote {
 
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    @RolesAllowed("ADMIN")
+//    @RolesAllowed("ADMIN")
     public Book saveBook(Book book) {
         entityManager.persist(book);
         return book;

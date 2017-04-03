@@ -14,8 +14,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.example.web.datalayer.ProductSessionBean;
 import com.example.web.model.Product;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 
 @Path("/products")
 public class ProductsResource {
