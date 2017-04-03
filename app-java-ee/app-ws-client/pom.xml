@@ -32,13 +32,32 @@
 				</configuration>
 				<executions>
 					<execution>
+						<id>local-book-service-wsdl</id>
 						<goals>
 							<goal>wsimport</goal>
 						</goals>
 						<configuration>
 							<wsdlUrls>
-								<wsdlUrl>http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BookService?wsdl</wsdlUrl>
+								<wsdlUrl>../app-ejb-project/src/main/resources/wsdl/BookService.wsdl</wsdlUrl>
 							</wsdlUrls>
+							<sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+							<packageName>com.example.app.ws.client</packageName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>amazon-ws-wsdl</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlUrls>
+								<wsdlUrl>http://webservices.amazon.com/AWSECommerceService/AWSECommerceService.wsdl</wsdlUrl>
+							</wsdlUrls>
+							<sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+							<packageName>com.example.app.ws.client.aws</packageName>
+							<bindingDirectory>${basedir}/src/main/resources/jaxws</bindingDirectory>
+							<bindingFiles>customBinding.xml</bindingFiles>
+							<verbose>true</verbose>
 						</configuration>
 					</execution>
 				</executions>
