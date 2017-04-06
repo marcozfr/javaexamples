@@ -9,19 +9,14 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.interceptor.Interceptors;
-import javax.jws.WebMethod;
-import javax.jws.WebResult;
 import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.jws.soap.SOAPBinding.ParameterStyle;
-import javax.jws.soap.SOAPBinding.Style;
-import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 
+import com.example.ejb.exception.BusinessException;
 import com.example.ejb.session.extension.LoggingInterceptor;
 import com.example.ejb.session.local.BooksLocal;
 import com.example.ejb.session.remote.BooksRemote;
@@ -44,7 +39,7 @@ public class BooksBean implements BooksLocal,BooksRemote {
     
     @Override
 //    @PermitAll
-    @WebMethod(exclude=true)
+//    @WebMethod(exclude=true)
     public Book findBookById(Long bookId) {
         return entityManager.find(Book.class, bookId);
     }
@@ -65,11 +60,15 @@ public class BooksBean implements BooksLocal,BooksRemote {
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
 //    @RolesAllowed("ADMIN")
-    public Book saveBook(Book book) {
+    public Book saveBook(Book book) throws BusinessException {
+    	
+    	if(book.getTags() == null || book.getTags().isEmpty()){
+    		throw new BusinessException("0012", "Item Tags are required");
+    	}
+    	
         entityManager.persist(book);
         return book;
     }
-    
     
 
 }

@@ -1,12 +1,15 @@
 
 package com.example.app.ws.client;
 
+import java.util.concurrent.Future;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
 
 
 /**
@@ -16,7 +19,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * 
  */
 @WebService(name = "BooksRemote", targetNamespace = "http://remote.session.ejb.example.com/")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -25,23 +28,107 @@ public interface BooksRemote {
 
     /**
      * 
+     * @param save
+     * @return
+     *     returns javax.xml.ws.Response<com.example.app.ws.client.Book>
+     */
+    @WebMethod(operationName = "save")
+    public Response<Book> saveAsync(
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
+        Book save);
+
+    /**
+     * 
+     * @param save
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "save")
+    public Future<?> saveAsync(
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
+        Book save,
+        @WebParam(name = "saveResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<Book> asyncHandler);
+
+    /**
+     * 
+     * @param save
+     * @return
+     *     returns com.example.app.ws.client.Book
+     * @throws BusinessException
+     */
+    @WebMethod
+    @WebResult(name = "saveResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveResponse")
+    public Book save(
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
+        Book save)
+        throws BusinessException
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns javax.xml.ws.Response<com.example.app.ws.client.BookArray>
+     */
+    @WebMethod(operationName = "findAll")
+    public Response<BookArray> findAllAsync();
+
+    /**
+     * 
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "findAll")
+    public Future<?> findAllAsync(
+        @WebParam(name = "findAllResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<BookArray> asyncHandler);
+
+    /**
+     * 
      * @return
      *     returns com.example.app.ws.client.BookArray
      */
     @WebMethod
-    @WebResult(name = "booksPart", partName = "booksPart")
+    @WebResult(name = "books", targetNamespace = "http://remote.session.ejb.example.com/", partName = "books")
     public BookArray findAll();
 
     /**
      * 
-     * @param arg0
+     * @param findById
+     * @return
+     *     returns javax.xml.ws.Response<com.example.app.ws.client.Book>
+     */
+    @WebMethod(operationName = "findById")
+    public Response<Book> findByIdAsync(
+        @WebParam(name = "findById", targetNamespace = "http://remote.session.ejb.example.com/", partName = "findById")
+        long findById);
+
+    /**
+     * 
+     * @param findById
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "findById")
+    public Future<?> findByIdAsync(
+        @WebParam(name = "findById", targetNamespace = "http://remote.session.ejb.example.com/", partName = "findById")
+        long findById,
+        @WebParam(name = "findByIdResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<Book> asyncHandler);
+
+    /**
+     * 
+     * @param findById
      * @return
      *     returns com.example.app.ws.client.Book
      */
     @WebMethod
-    @WebResult(name = "bookPart", partName = "bookPart")
+    @WebResult(name = "book", targetNamespace = "http://remote.session.ejb.example.com/", partName = "book")
     public Book findById(
-        @WebParam(name = "arg0", partName = "arg0")
-        long arg0);
+        @WebParam(name = "findById", targetNamespace = "http://remote.session.ejb.example.com/", partName = "findById")
+        long findById);
 
 }

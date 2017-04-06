@@ -1,0 +1,6 @@
+<jaxws:bindings 
+	wsdlLocation="C:/opt/javaexamples/app-java-ee/app-ejb-project/src/main/resources/wsdl/BookService.wsdl"
+	xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+	<jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+	<jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+</jaxws:bindings>

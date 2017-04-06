@@ -14,18 +14,19 @@ public class LoggingInterceptor {
 	public static Logger logger = LogManager.getLogger(LoggingInterceptor.class);
 
 	@AroundInvoke
-	public Object interceptToLog(InvocationContext ic){
-		Instant now = null; Instant then = null;
+	public Object interceptToLog(InvocationContext ic) throws Exception{
+		Instant now = Instant.now();
+		Instant then = null;
 		try {
-			now = Instant.now();
 			logger.info("Entering Class: {} Method: {}",ic.getTarget().toString(),ic.getMethod().getName());
 			Object obj = ic.proceed();
-			then = Instant.now();
 			return obj;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			logger.error("Error on Class: {} Method: {}",ic.getTarget().toString(),ic.getMethod().getName());
+			logger.error("Error Message: {}",e.getMessage());
+			throw e;
 		} finally {
+			then = Instant.now();
 			logger.info("Finishing Class: {} Method: {}",ic.getTarget().toString(),ic.getMethod().getName());
 			logger.info("Time spent (ms): " + Duration.between(now, then).toMillis());
 		}

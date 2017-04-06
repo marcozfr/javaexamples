@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="BooksRemote" targetNamespace="http://remote.session.ejb.example.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://com.example.model" xmlns:ns1="http://remote.session.ejb.example.com/">
+<wsdl:definitions name="BooksRemote" targetNamespace="http://remote.session.ejb.example.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://remote.session.ejb.example.com/">
   <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://remote.session.ejb.example.com/" version="1.0">
-
+<xs:schema xmlns="http://remote.session.ejb.example.com/" xmlns:ns0="http://com.example.model" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://remote.session.ejb.example.com/">
+  <xs:import namespace="http://com.example.model"/>
   <xs:complexType name="item">
     <xs:sequence>
       <xs:element minOccurs="0" name="item" type="xs:string"/>
@@ -11,7 +11,6 @@
       <xs:element minOccurs="0" name="quantity" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:simpleType name="currencyType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="USD"/>
@@ -20,7 +19,12 @@
       <xs:enumeration value="COP"/>
     </xs:restriction>
   </xs:simpleType>
-
+  <xs:element name="String" nillable="true" type="xs:string"/>
+  <xs:element name="save" nillable="true" type="ns0:book"/>
+  <xs:element name="saveResponse" nillable="true" type="ns0:book"/>
+  <xs:element name="books" nillable="true" type="ns0:bookArray"/>
+  <xs:element name="findById" nillable="true" type="xs:long"/>
+  <xs:element name="book" nillable="true" type="ns0:book"/>
 </xs:schema>
 <xs:schema xmlns:ns1="http://remote.session.ejb.example.com/" xmlns:tns="http://com.example.model" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.example.model" version="1.0">
 
@@ -47,21 +51,41 @@
 
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="save">
+    <wsdl:part name="save" element="ns1:save">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findAllResponse">
-    <wsdl:part name="booksPart" type="ns2:bookArray">
+    <wsdl:part name="books" element="ns1:books">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findAll">
   </wsdl:message>
+  <wsdl:message name="saveResponse">
+    <wsdl:part name="saveResponse" element="ns1:saveResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="BusinessException">
+    <wsdl:part name="BusinessException" element="ns1:String">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findById">
-    <wsdl:part name="arg0" type="xsd:long">
+    <wsdl:part name="findById" element="ns1:findById">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findByIdResponse">
-    <wsdl:part name="bookPart" type="ns2:book">
+    <wsdl:part name="book" element="ns1:book">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="BooksRemote">
+    <wsdl:operation name="save">
+      <wsdl:input name="save" message="ns1:save">
+    </wsdl:input>
+      <wsdl:output name="saveResponse" message="ns1:saveResponse">
+    </wsdl:output>
+      <wsdl:fault name="BusinessException" message="ns1:BusinessException">
+    </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="findAll">
       <wsdl:input name="findAll" message="ns1:findAll">
     </wsdl:input>

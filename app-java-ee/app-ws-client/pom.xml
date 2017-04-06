@@ -42,6 +42,10 @@
 							</wsdlUrls>
 							<sourceDestDir>${basedir}/src/main/java</sourceDestDir>
 							<packageName>com.example.app.ws.client</packageName>
+							<bindingDirectory>${basedir}/src/main/resources/jaxws</bindingDirectory>
+							<bindingFiles>
+								<bindingFile>booksCustomBinding.xml</bindingFile>
+							</bindingFiles>
 						</configuration>
 					</execution>
 					<execution>
@@ -56,7 +60,9 @@
 							<sourceDestDir>${basedir}/src/main/java</sourceDestDir>
 							<packageName>com.example.app.ws.client.aws</packageName>
 							<bindingDirectory>${basedir}/src/main/resources/jaxws</bindingDirectory>
-							<bindingFiles>customBinding.xml</bindingFiles>
+							<bindingFiles>
+								<bindingFile>awsCustomBinding.xml</bindingFile>
+							</bindingFiles>
 							<verbose>true</verbose>
 						</configuration>
 					</execution>

@@ -3,23 +3,35 @@
   <wsdl:import namespace="http://remote.session.ejb.example.com/" location="BooksRemote.wsdl">
     </wsdl:import>
   <wsdl:binding name="BooksBeanServiceSoapBinding" type="ns1:BooksRemote">
-    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="save">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="save">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="findAll">
-      <soap:operation soapAction="" style="rpc"/>
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findAll">
-        <soap:body use="literal" namespace="http://remote.session.ejb.example.com/"/>
+        <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findAllResponse">
-        <soap:body use="literal" namespace="http://remote.session.ejb.example.com/"/>
+        <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="findById">
-      <soap:operation soapAction="" style="rpc"/>
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findById">
-        <soap:body use="literal" namespace="http://remote.session.ejb.example.com/"/>
+        <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findByIdResponse">
-        <soap:body use="literal" namespace="http://remote.session.ejb.example.com/"/>
+        <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
