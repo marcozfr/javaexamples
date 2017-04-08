@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for bookArray complex type.
+ * <p>Java class for findAllResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="bookArray">
+ * &lt;complexType name="findAllResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="item" type="{http://com.example.model}book" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="books" type="{http://com.example.model}book" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,27 +28,26 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "bookArray", namespace = "http://com.example.model", propOrder = {
-    "item"
+@XmlType(name = "findAllResponse", propOrder = {
+    "books"
 })
-public class BookArray {
+public class FindAllResponse {
 
-    @XmlElement(nillable = true)
-    protected List<Book> item;
+    protected List<Book> books;
 
     /**
-     * Gets the value of the item property.
+     * Gets the value of the books property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the item property.
+     * This is why there is not a <CODE>set</CODE> method for the books property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getItem().add(newItem);
+     *    getBooks().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +57,11 @@ public class BookArray {
      * 
      * 
      */
-    public List<Book> getItem() {
-        if (item == null) {
-            item = new ArrayList<Book>();
+    public List<Book> getBooks() {
+        if (books == null) {
+            books = new ArrayList<Book>();
         }
-        return this.item;
+        return this.books;
     }
 
 }

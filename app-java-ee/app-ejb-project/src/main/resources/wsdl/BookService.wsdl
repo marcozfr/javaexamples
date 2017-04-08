@@ -25,12 +25,30 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getCover">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCover">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCoverResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findById">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findById">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCover">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saveCover">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveCoverResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

@@ -96,6 +96,43 @@ public interface BooksRemote {
 
     /**
      * 
+     * @param getCover
+     * @return
+     *     returns javax.xml.ws.Response<byte[]>
+     */
+    @WebMethod(operationName = "getCover")
+    public Response<byte[]> getCoverAsync(
+        @WebParam(name = "getCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "getCover")
+        long getCover);
+
+    /**
+     * 
+     * @param getCover
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "getCover")
+    public Future<?> getCoverAsync(
+        @WebParam(name = "getCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "getCover")
+        long getCover,
+        @WebParam(name = "getCoverResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<byte[]> asyncHandler);
+
+    /**
+     * 
+     * @param getCover
+     * @return
+     *     returns byte[]
+     */
+    @WebMethod
+    @WebResult(name = "getCoverResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "getCoverResponse")
+    public byte[] getCover(
+        @WebParam(name = "getCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "getCover")
+        long getCover);
+
+    /**
+     * 
      * @param findById
      * @return
      *     returns javax.xml.ws.Response<com.example.app.ws.client.Book>
@@ -130,5 +167,42 @@ public interface BooksRemote {
     public Book findById(
         @WebParam(name = "findById", targetNamespace = "http://remote.session.ejb.example.com/", partName = "findById")
         long findById);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns javax.xml.ws.Response<com.example.app.ws.client.SaveCoverResponse>
+     */
+    @WebMethod(operationName = "saveCover")
+    public Response<SaveCoverResponse> saveCoverAsync(
+        @WebParam(name = "saveCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "parameters")
+        SaveCover parameters);
+
+    /**
+     * 
+     * @param asyncHandler
+     * @param parameters
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "saveCover")
+    public Future<?> saveCoverAsync(
+        @WebParam(name = "saveCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "parameters")
+        SaveCover parameters,
+        @WebParam(name = "saveCoverResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<SaveCoverResponse> asyncHandler);
+
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns com.example.app.ws.client.SaveCoverResponse
+     */
+    @WebMethod
+    @WebResult(name = "saveCoverResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "parameters")
+    public SaveCoverResponse saveCover(
+        @WebParam(name = "saveCover", targetNamespace = "http://remote.session.ejb.example.com/", partName = "parameters")
+        SaveCover parameters);
 
 }

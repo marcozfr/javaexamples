@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://remote.session.ejb.example.com/}item">
  *       &lt;sequence>
+ *         &lt;element name="cover" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *         &lt;element name="currency" type="{http://remote.session.ejb.example.com/}currencyType" minOccurs="0"/>
  *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="tags" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
@@ -32,7 +33,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "book", propOrder = {
+@XmlType(name = "book", namespace = "http://com.example.model", propOrder = {
+    "cover",
     "currency",
     "isbn",
     "tags",
@@ -42,11 +44,34 @@ public class Book
     extends Item
 {
 
+    protected byte[] cover;
     protected CurrencyType currency;
     protected String isbn;
     @XmlElement(nillable = true)
     protected List<String> tags;
     protected String title;
+
+    /**
+     * Gets the value of the cover property.
+     * 
+     * @return
+     *     possible object is
+     *     byte[]
+     */
+    public byte[] getCover() {
+        return cover;
+    }
+
+    /**
+     * Sets the value of the cover property.
+     * 
+     * @param value
+     *     allowed object is
+     *     byte[]
+     */
+    public void setCover(byte[] value) {
+        this.cover = value;
+    }
 
     /**
      * Gets the value of the currency property.

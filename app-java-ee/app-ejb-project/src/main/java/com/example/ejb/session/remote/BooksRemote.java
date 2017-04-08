@@ -2,7 +2,6 @@ package com.example.ejb.session.remote;
 
 import java.util.List;
 
-import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
@@ -16,7 +15,7 @@ import com.example.model.catalog.Book;
 
 @WebService
 @SOAPBinding(style=Style.DOCUMENT,use=Use.LITERAL,parameterStyle=ParameterStyle.BARE)
-//@HandlerChain(name)
+//@HandlerChain(file="handlers.xml")
 public interface BooksRemote {
     
     @WebMethod(operationName="findById")
@@ -29,5 +28,12 @@ public interface BooksRemote {
     
     @WebMethod(operationName="save")
     Book saveBook(Book book) throws BusinessException;
+    
+    @WebMethod(operationName="getCover")
+    byte[] getBookCover(Long bookId);
+    
+    @WebMethod(operationName="saveCover")
+    @SOAPBinding(parameterStyle=ParameterStyle.WRAPPED)
+    boolean saveBookCover(Long bookId, byte[] cover);
 
 }
