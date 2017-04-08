@@ -19,7 +19,13 @@
       <xs:enumeration value="COP"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="String" nillable="true" type="xs:string"/>
+  <xs:element name="BusinessException" type="BusinessException"/>
+  <xs:complexType name="BusinessException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="details" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:element name="save" nillable="true" type="ns0:book"/>
   <xs:element name="saveResponse" nillable="true" type="ns0:book"/>
   <xs:element name="books" nillable="true" type="ns0:bookArray"/>
@@ -66,7 +72,7 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="BusinessException">
-    <wsdl:part name="BusinessException" element="ns1:String">
+    <wsdl:part name="BusinessException" element="ns1:BusinessException">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findById">

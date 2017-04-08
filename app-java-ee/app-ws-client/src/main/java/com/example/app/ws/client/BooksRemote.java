@@ -56,14 +56,14 @@ public interface BooksRemote {
      * @param save
      * @return
      *     returns com.example.app.ws.client.Book
-     * @throws BusinessException
+     * @throws BusinessException_Exception
      */
     @WebMethod
     @WebResult(name = "saveResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveResponse")
     public Book save(
         @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
         Book save)
-        throws BusinessException
+        throws BusinessException_Exception
     ;
 
     /**

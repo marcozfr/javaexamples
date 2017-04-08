@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
-@XmlType(name = "currencyType", namespace = "http://remote.session.ejb.example.com/")
+@XmlType(name = "currencyType")
 @XmlEnum
 public enum CurrencyType {
 

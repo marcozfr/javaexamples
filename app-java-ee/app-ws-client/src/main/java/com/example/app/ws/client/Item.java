@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "item", namespace = "http://remote.session.ejb.example.com/", propOrder = {
+@XmlType(name = "item", propOrder = {
     "item",
     "itemId",
     "price",

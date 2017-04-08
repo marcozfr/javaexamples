@@ -25,9 +25,9 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Save_QNAME = new QName("http://remote.session.ejb.example.com/", "save");
-    private final static QName _String_QNAME = new QName("http://remote.session.ejb.example.com/", "String");
     private final static QName _SaveResponse_QNAME = new QName("http://remote.session.ejb.example.com/", "saveResponse");
     private final static QName _Books_QNAME = new QName("http://remote.session.ejb.example.com/", "books");
+    private final static QName _BusinessException_QNAME = new QName("http://remote.session.ejb.example.com/", "BusinessException");
     private final static QName _FindById_QNAME = new QName("http://remote.session.ejb.example.com/", "findById");
     private final static QName _Book_QNAME = new QName("http://remote.session.ejb.example.com/", "book");
 
@@ -36,6 +36,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link BusinessException }
+     * 
+     */
+    public BusinessException createBusinessException() {
+        return new BusinessException();
     }
 
     /**
@@ -72,15 +80,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://remote.session.ejb.example.com/", name = "String")
-    public JAXBElement<String> createString(String value) {
-        return new JAXBElement<String>(_String_QNAME, String.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Book }{@code >}}
      * 
      */
@@ -96,6 +95,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://remote.session.ejb.example.com/", name = "books")
     public JAXBElement<BookArray> createBooks(BookArray value) {
         return new JAXBElement<BookArray>(_Books_QNAME, BookArray.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BusinessException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://remote.session.ejb.example.com/", name = "BusinessException")
+    public JAXBElement<BusinessException> createBusinessException(BusinessException value) {
+        return new JAXBElement<BusinessException>(_BusinessException_QNAME, BusinessException.class, null, value);
     }
 
     /**

@@ -5,27 +5,23 @@ import javax.ejb.ApplicationException;
 @ApplicationException(rollback = true)
 public class BusinessException extends Exception {
 
-	private String info;
-
-	public BusinessException() {
-		super();
-	}
+	private String details;
 	
-	public BusinessException(String code){
-		super(code);
-	}
+	public BusinessException(String message, String details) {
+        super(message);
+        this.details = details;
+    }
+	
+    public BusinessException(String message) {
+        super(message);
+    }
 
-	public BusinessException(String code, String message) {
-		super(code);
-		this.info = message;
-	}
+    public String getDetails() {
+        return details;
+    }
 
-	public String getInfo() {
-		return info;
-	}
-
-	public String getFaultInfo() {
-		return info;
-	}
-
+    public void setDetails(String details) {
+        this.details = details;
+    }
+    
 }
