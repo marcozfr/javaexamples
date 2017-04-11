@@ -14,7 +14,6 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-	
 	<mime-mapping>
 		<extension>xhtml</extension>
 		<mime-type>application/xml</mime-type>

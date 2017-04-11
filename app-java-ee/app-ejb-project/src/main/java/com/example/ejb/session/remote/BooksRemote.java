@@ -15,7 +15,7 @@ import com.example.model.catalog.Book;
 
 @WebService
 @SOAPBinding(style=Style.DOCUMENT,use=Use.LITERAL,parameterStyle=ParameterStyle.BARE)
-//@HandlerChain(name)
+//@HandlerChain(file="handlers.xml")
 public interface BooksRemote {
     
     @WebMethod(operationName="findById")
@@ -28,5 +28,12 @@ public interface BooksRemote {
     
     @WebMethod(operationName="save")
     Book saveBook(Book book) throws BusinessException;
+    
+    @WebMethod(operationName="getCover")
+    byte[] getBookCover(Long bookId);
+    
+    @WebMethod(operationName="saveCover")
+    @SOAPBinding(parameterStyle=ParameterStyle.WRAPPED)
+    boolean saveBookCover(Long bookId, byte[] cover);
 
 }

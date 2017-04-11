@@ -26,7 +26,6 @@ import com.example.ejb.session.H2CustomerBean;
 import com.example.model.catalog.ContactInfo;
 import com.example.model.catalog.Customer;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Path("/customer")
 @RequestScoped

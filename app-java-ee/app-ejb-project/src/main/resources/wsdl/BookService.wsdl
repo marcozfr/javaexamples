@@ -25,6 +25,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getCover">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCover">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCoverResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findById">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findById">
@@ -34,10 +43,19 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="saveCover">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saveCover">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveCoverResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="BooksBeanService">
-    <wsdl:port name="BookServicePort" binding="tns:BooksBeanServiceSoapBinding">
-      <soap:address location="http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BookService?wsdl"/>
+    <wsdl:port name="BooksBeanPort" binding="tns:BooksBeanServiceSoapBinding">
+      <soap:address location="http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BooksBean?wsdl"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -18,16 +18,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate-version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>antlr</groupId>
-         			<artifactId>antlr</artifactId>
+					<artifactId>antlr</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>eclipselink</artifactId> 
-			<version>${eclipse-link-version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -51,6 +48,31 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
+			<plugin>
+	            <groupId>org.hibernate.orm.tooling</groupId>
+	            <artifactId>hibernate-enhance-maven-plugin</artifactId>
+	            <version>${hibernate-version}</version>
+	            <executions>
+	                <execution>
+	                    <configuration>
+	                        <failOnError>true</failOnError>
+	                        <enableLazyInitialization>true</enableLazyInitialization>
+	                        <enableDirtyTracking>false</enableDirtyTracking>
+	                        <enableAssociationManagement>false</enableAssociationManagement>
+	                    </configuration>
+	                    <goals>
+	                        <goal>enhance</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	            <dependencies>
+	            	<dependency>
+	            		<groupId>javax.transaction</groupId>
+	            		<artifactId>javax.transaction-api</artifactId>
+	            		<version>1.2</version>
+	            	</dependency>
+	            </dependencies>
+	        </plugin>
 		</plugins>
 	</build>
 </project>

@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="BooksRemote" targetNamespace="http://remote.session.ejb.example.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://remote.session.ejb.example.com/">
   <wsdl:types>
-<xs:schema xmlns="http://remote.session.ejb.example.com/" xmlns:ns0="http://com.example.model" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://remote.session.ejb.example.com/">
-  <xs:import namespace="http://com.example.model"/>
+<xs:schema xmlns:tns="http://remote.session.ejb.example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://remote.session.ejb.example.com/">
+  <xs:element name="saveCover" type="tns:saveCover"/>
+  <xs:element name="saveCoverResponse" type="tns:saveCoverResponse"/>
+  <xs:complexType name="book">
+    <xs:complexContent>
+      <xs:extension base="tns:item">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+          <xs:element minOccurs="0" name="isbn" type="xs:string"/>
+          <xs:element minOccurs="0" name="currency" type="tns:currencyType"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="item">
     <xs:sequence>
       <xs:element minOccurs="0" name="item" type="xs:string"/>
       <xs:element minOccurs="0" name="itemId" type="xs:long"/>
       <xs:element minOccurs="0" name="price" type="xs:decimal"/>
       <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saveCover">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:long"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:base64Binary"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="saveCoverResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="currencyType">
@@ -19,42 +43,25 @@
       <xs:enumeration value="COP"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="BusinessException" type="BusinessException"/>
+  <xs:complexType final="#all" name="bookArray">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:book"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessException" type="tns:BusinessException"/>
   <xs:complexType name="BusinessException">
     <xs:sequence>
       <xs:element minOccurs="0" name="details" type="xs:string"/>
       <xs:element minOccurs="0" name="message" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="save" nillable="true" type="ns0:book"/>
-  <xs:element name="saveResponse" nillable="true" type="ns0:book"/>
-  <xs:element name="books" nillable="true" type="ns0:bookArray"/>
+  <xs:element name="save" nillable="true" type="tns:book"/>
+  <xs:element name="saveResponse" nillable="true" type="tns:book"/>
+  <xs:element name="books" nillable="true" type="tns:bookArray"/>
+  <xs:element name="getCover" nillable="true" type="xs:long"/>
+  <xs:element name="getCoverResponse" nillable="true" type="xs:base64Binary"/>
   <xs:element name="findById" nillable="true" type="xs:long"/>
-  <xs:element name="book" nillable="true" type="ns0:book"/>
-</xs:schema>
-<xs:schema xmlns:ns1="http://remote.session.ejb.example.com/" xmlns:tns="http://com.example.model" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://com.example.model" version="1.0">
-
-  <xs:import namespace="http://remote.session.ejb.example.com/"/>
-
-  <xs:complexType name="book">
-    <xs:complexContent>
-      <xs:extension base="ns1:item">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="currency" type="ns1:currencyType"/>
-          <xs:element minOccurs="0" name="isbn" type="xs:string"/>
-          <xs:element maxOccurs="unbounded" minOccurs="0" name="tags" nillable="true" type="xs:string"/>
-          <xs:element minOccurs="0" name="title" type="xs:string"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType final="#all" name="bookArray">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:book"/>
-    </xs:sequence>
-  </xs:complexType>
-
+  <xs:element name="book" nillable="true" type="tns:book"/>
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="save">
@@ -67,6 +74,10 @@
   </wsdl:message>
   <wsdl:message name="findAll">
   </wsdl:message>
+  <wsdl:message name="saveCoverResponse">
+    <wsdl:part name="parameters" element="ns1:saveCoverResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="saveResponse">
     <wsdl:part name="saveResponse" element="ns1:saveResponse">
     </wsdl:part>
@@ -75,12 +86,24 @@
     <wsdl:part name="BusinessException" element="ns1:BusinessException">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getCoverResponse">
+    <wsdl:part name="getCoverResponse" element="ns1:getCoverResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCover">
+    <wsdl:part name="getCover" element="ns1:getCover">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findById">
     <wsdl:part name="findById" element="ns1:findById">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findByIdResponse">
     <wsdl:part name="book" element="ns1:book">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveCover">
+    <wsdl:part name="parameters" element="ns1:saveCover">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="BooksRemote">
@@ -98,10 +121,22 @@
       <wsdl:output name="findAllResponse" message="ns1:findAllResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getCover">
+      <wsdl:input name="getCover" message="ns1:getCover">
+    </wsdl:input>
+      <wsdl:output name="getCoverResponse" message="ns1:getCoverResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findById">
       <wsdl:input name="findById" message="ns1:findById">
     </wsdl:input>
       <wsdl:output name="findByIdResponse" message="ns1:findByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCover">
+      <wsdl:input name="saveCover" message="ns1:saveCover">
+    </wsdl:input>
+      <wsdl:output name="saveCoverResponse" message="ns1:saveCoverResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>

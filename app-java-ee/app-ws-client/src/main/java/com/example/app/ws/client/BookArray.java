@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="item" type="{http://com.example.model}book" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="item" type="{http://remote.session.ejb.example.com/}book" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "bookArray", namespace = "http://com.example.model", propOrder = {
+@XmlType(name = "bookArray", propOrder = {
     "item"
 })
 public class BookArray {

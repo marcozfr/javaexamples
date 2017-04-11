@@ -67,9 +67,9 @@ public class BooksBeanService
      * @return
      *     returns BooksRemote
      */
-    @WebEndpoint(name = "BookServicePort")
-    public BooksRemote getBookServicePort() {
-        return super.getPort(new QName("http://session.ejb.example.com/", "BookServicePort"), BooksRemote.class);
+    @WebEndpoint(name = "BooksBeanPort")
+    public BooksRemote getBooksBeanPort() {
+        return super.getPort(new QName("http://session.ejb.example.com/", "BooksBeanPort"), BooksRemote.class);
     }
 
     /**
@@ -79,9 +79,9 @@ public class BooksBeanService
      * @return
      *     returns BooksRemote
      */
-    @WebEndpoint(name = "BookServicePort")
-    public BooksRemote getBookServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://session.ejb.example.com/", "BookServicePort"), BooksRemote.class, features);
+    @WebEndpoint(name = "BooksBeanPort")
+    public BooksRemote getBooksBeanPort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://session.ejb.example.com/", "BooksBeanPort"), BooksRemote.class, features);
     }
 
     private static URL __getWsdlLocation() {

@@ -19,10 +19,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://remote.session.ejb.example.com/}item">
  *       &lt;sequence>
- *         &lt;element name="currency" type="{http://remote.session.ejb.example.com/}currencyType" minOccurs="0"/>
- *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="tags" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="currency" type="{http://remote.session.ejb.example.com/}currencyType" minOccurs="0"/>
+ *         &lt;element name="tags" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -32,44 +32,44 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "book", namespace = "http://com.example.model", propOrder = {
-    "currency",
+@XmlType(name = "book", propOrder = {
+    "title",
     "isbn",
-    "tags",
-    "title"
+    "currency",
+    "tags"
 })
 public class Book
     extends Item
 {
 
-    protected CurrencyType currency;
+    protected String title;
     protected String isbn;
+    protected CurrencyType currency;
     @XmlElement(nillable = true)
     protected List<String> tags;
-    protected String title;
 
     /**
-     * Gets the value of the currency property.
+     * Gets the value of the title property.
      * 
      * @return
      *     possible object is
-     *     {@link CurrencyType }
+     *     {@link String }
      *     
      */
-    public CurrencyType getCurrency() {
-        return currency;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * Sets the value of the currency property.
+     * Sets the value of the title property.
      * 
      * @param value
      *     allowed object is
-     *     {@link CurrencyType }
+     *     {@link String }
      *     
      */
-    public void setCurrency(CurrencyType value) {
-        this.currency = value;
+    public void setTitle(String value) {
+        this.title = value;
     }
 
     /**
@@ -94,6 +94,30 @@ public class Book
      */
     public void setIsbn(String value) {
         this.isbn = value;
+    }
+
+    /**
+     * Gets the value of the currency property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CurrencyType }
+     *     
+     */
+    public CurrencyType getCurrency() {
+        return currency;
+    }
+
+    /**
+     * Sets the value of the currency property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CurrencyType }
+     *     
+     */
+    public void setCurrency(CurrencyType value) {
+        this.currency = value;
     }
 
     /**
@@ -123,30 +147,6 @@ public class Book
             tags = new ArrayList<String>();
         }
         return this.tags;
-    }
-
-    /**
-     * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTitle(String value) {
-        this.title = value;
     }
 
 }

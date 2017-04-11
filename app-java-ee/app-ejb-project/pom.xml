@@ -111,6 +111,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
 			</plugin>
 			<plugin>
@@ -124,6 +125,28 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<!--  
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.4.1</version>
+				<executions>
+					<execution>
+						<configuration>
+							<sei>com.example.ejb.session.BooksBean</sei>
+							<genWsdl>true</genWsdl>
+							<resourceDestDir>${basedir}/src/main/resources/wsdl</resourceDestDir>
+							<keep>true</keep>
+						</configuration>
+						<id>process-classes</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>wsgen</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-java2ws-plugin</artifactId>
@@ -149,7 +172,7 @@
 							<outputFile>${basedir}/src/main/resources/wsdl/BookService.wsdl</outputFile>
 							<genWsdl>true</genWsdl>
 							<verbose>true</verbose>
-							<address>http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BookService?wsdl</address>
+							<address>http://localhost:8080/app-ejb-project-0.0.1-SNAPSHOT/BooksBean?wsdl</address>
 						</configuration>
 						<goals>
 							<goal>java2ws</goal>

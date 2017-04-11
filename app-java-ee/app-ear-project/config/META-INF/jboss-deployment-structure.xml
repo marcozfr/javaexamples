@@ -1,0 +1,11 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+<!-- 
+	<deployment>
+		<exclusions>
+			<module name="org.dom4j"/>
+			<module name="org.hibernate"/>
+			<module name="javax.persistence.api"/>
+		</exclusions>
+	</deployment>
+	 -->
+</jboss-deployment-structure>
