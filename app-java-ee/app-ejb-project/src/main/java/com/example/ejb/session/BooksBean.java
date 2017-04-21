@@ -2,6 +2,7 @@ package com.example.ejb.session;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Remote;
 import javax.ejb.SessionContext;

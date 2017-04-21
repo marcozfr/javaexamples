@@ -10,22 +10,22 @@
 	</parent>
 	<dependencies>
 		<dependency>
-		    <groupId>javax.websocket</groupId>
-		    <artifactId>javax.websocket-api</artifactId>
-		    <version>1.1</version>
-		    <scope>provided</scope>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>javax.jms</groupId>
-		    <artifactId>javax.jms-api</artifactId>
-		    <version>2.0</version>
-		    <scope>provided</scope>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>javax.faces</groupId>
-		    <artifactId>jsf-api</artifactId>
-		    <version>2.1</version>
-		    <scope>provided</scope>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.enterprise</groupId>
@@ -63,11 +63,16 @@
 			<version>2.6.3</version>
 		</dependency>
 		<dependency>
-	      <groupId>org.jboss.resteasy</groupId>
-	      <artifactId>resteasy-multipart-provider</artifactId>
-	      <version>3.0.1.Final</version>
-	      <scope>provided</scope>
-	   </dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-multipart-provider</artifactId>
+			<version>3.0.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>app-war-project</finalName>

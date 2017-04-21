@@ -22,4 +22,20 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
+	
+	<!-- 
+	<servlet>
+		<servlet-name>JAXWS Endpoint</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<enabled>false</enabled>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JAXWS Endpoint</servlet-name>
+		<url-pattern>/jaxws/*</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+	 -->
+	
 </web-app>

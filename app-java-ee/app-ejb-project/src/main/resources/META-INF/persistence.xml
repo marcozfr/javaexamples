@@ -25,6 +25,7 @@
 		<class>com.example.model.catalog.StaffMember</class>
 		<class>com.example.model.catalog.StaffMemberId</class>
 		<class>com.example.model.catalog.Track</class>
+		<class>com.example.model.demo.Attachment</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.show_sql" value="true" />

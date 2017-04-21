@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -21,9 +22,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.BindingProvider;
 import javax.xml.ws.WebServiceRef;
+import javax.xml.ws.handler.MessageContext;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
@@ -40,6 +44,8 @@ import com.example.ejb.session.local.BooksLocal;
 @Path("/book")
 public class BookResource {
 	
+	public static Logger logger = LogManager.getLogger(BookResource.class);
+	
 	@Inject
 	BooksLocal booksLocal;
 	
@@ -49,6 +55,15 @@ public class BookResource {
 	@PostConstruct
 	public void init(){
 		bookWsService.setHandlerResolver(new ClientHandlerResolver(true,"catalogUser"));
+		
+		Map<String,Object> requestContext = ((BindingProvider) bookWsService.getBooksBeanPort()).getRequestContext();
+		
+		logger.info("RequestContext : {}",requestContext);
+		Map<String,Object> headers = new HashMap<>();
+		headers.put("securityKey", "hello");
+		headers.put("securityToken", "X82FfA9#495Fh");
+		requestContext.put(MessageContext.HTTP_REQUEST_HEADERS,headers);
+		
 	}
 	
 	@POST
