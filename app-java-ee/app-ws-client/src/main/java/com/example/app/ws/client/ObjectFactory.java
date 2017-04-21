@@ -91,6 +91,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Store }
+     * 
+     */
+    public Store createStore() {
+        return new Store();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Book }{@code >}}
      * 
      */

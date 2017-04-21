@@ -1,8 +1,10 @@
 package com.example.model.catalog;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -16,6 +18,10 @@ public class StaffMember {
     private String initials;
     private String name;
     private String lastName;
+    private boolean isManager;
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Store store;
     
     public void createInitials(){
         String i1 = name!= null ? name.substring(0,1) : null;
@@ -23,6 +29,14 @@ public class StaffMember {
         initials = (i1 != null && i2 != null) ? i1.concat(i2) : null;
     }
     
+    public boolean isManager() {
+        return isManager;
+    }
+
+    public void setManager(boolean isManager) {
+        this.isManager = isManager;
+    }
+
     public String getCode() {
         return code;
     }
@@ -31,6 +45,14 @@ public class StaffMember {
     }
     public String getInitials() {
         return initials;
+    }
+    
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public void setInitials(String initials) {

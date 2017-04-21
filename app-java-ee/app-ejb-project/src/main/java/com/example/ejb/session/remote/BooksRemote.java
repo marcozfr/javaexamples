@@ -3,6 +3,7 @@ package com.example.ejb.session.remote;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -13,7 +14,7 @@ import javax.jws.soap.SOAPBinding.Use;
 import com.example.ejb.exception.BusinessException;
 import com.example.model.catalog.Book;
 
-@WebService
+@WebService()
 @SOAPBinding(style=Style.DOCUMENT,use=Use.LITERAL,parameterStyle=ParameterStyle.BARE)
 //@HandlerChain(file="handlers.xml")
 public interface BooksRemote {
@@ -27,7 +28,8 @@ public interface BooksRemote {
     List<Book> findAllBooks();
     
     @WebMethod(operationName="save")
-    Book saveBook(Book book) throws BusinessException;
+    @WebResult(partName="saveBookResponse")
+    Book saveBook(@WebParam(partName="saveBookRequest") Book book) throws BusinessException;
     
     @WebMethod(operationName="getCover")
     byte[] getBookCover(Long bookId);

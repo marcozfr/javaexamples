@@ -25,6 +25,9 @@
 		<class>com.example.model.catalog.StaffMember</class>
 		<class>com.example.model.catalog.StaffMemberId</class>
 		<class>com.example.model.catalog.Track</class>
+		<class>com.example.model.catalog.Store</class>
+		<class>com.example.model.catalog.ItemStore</class>
+		<class>com.example.model.catalog.ItemStoreId</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
@@ -36,7 +39,8 @@
 		</properties>
 	</persistence-unit>
 	
-	<persistence-unit name="catalogH2PU" transaction-type="RESOURCE_LOCAL">
+	<!-- 
+	<persistence-unit name="catalogH2PU" transaction-type="RESOURCE_LOCAL" >
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<mapping-file>META-INF/track-mapping.xml</mapping-file>
 		<mapping-file>META-INF/listener-mapping.xml</mapping-file>
@@ -57,6 +61,9 @@
 		<class>com.example.model.catalog.StaffMember</class>
 		<class>com.example.model.catalog.StaffMemberId</class>
 		<class>com.example.model.catalog.Track</class>
+		<class>com.example.model.catalog.Store</class>
+		<class>com.example.model.catalog.ItemStore</class>
+		<class>com.example.model.catalog.ItemStoreId</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
@@ -65,5 +72,5 @@
             <property name="hibernate.connection.datasource" value="java:jboss/datasources/ExampleDS"/>
 		</properties>
 	</persistence-unit>
-	
+	 -->
 </persistence>

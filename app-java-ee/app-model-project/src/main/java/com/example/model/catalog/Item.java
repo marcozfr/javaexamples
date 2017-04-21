@@ -1,17 +1,17 @@
 package com.example.model.catalog;
 
-import java.math.BigDecimal;
+import java.util.Set;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.NamedQuery;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -22,20 +22,36 @@ public class Item {
     @Id @GeneratedValue
     private Long itemId;
 //    private String itemType;
-    private String item;
-    private BigDecimal price;
-    private Integer quantity;
-
+    private String description;
+    
+    @OneToMany(fetch=FetchType.LAZY,mappedBy="pk.item")
+    private Set<ItemStore> itemStore;
+    
     public Item() {
         super();
     }
-    public Item(String item, BigDecimal price, Integer quantity) {
+    
+    public Item(String description) {
         super();
-        this.item = item;
-        this.price = price;
-        this.quantity = quantity;
+        this.description = description;
     }
-//    public String getItemType() {
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public Set<ItemStore> getItemStore() {
+        return itemStore;
+    }
+
+    public void setItemStore(Set<ItemStore> itemStore) {
+        this.itemStore = itemStore;
+    }
+
+//        public String getItemType() {
 //        return itemType;
 //    }
 //    public void setItemType(String itemType) {
@@ -47,23 +63,4 @@ public class Item {
     public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
-    public String getItem() {
-        return item;
-    }
-    public void setItem(String item) {
-        this.item = item;
-    }
-    public BigDecimal getPrice() {
-        return price;
-    }
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-    public Integer getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-    
 }

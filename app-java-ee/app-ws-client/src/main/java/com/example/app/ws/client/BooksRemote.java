@@ -28,41 +28,41 @@ public interface BooksRemote {
 
     /**
      * 
-     * @param save
+     * @param saveBookRequest
      * @return
      *     returns javax.xml.ws.Response<com.example.app.ws.client.Book>
      */
     @WebMethod(operationName = "save")
     public Response<Book> saveAsync(
-        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
-        Book save);
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveBookRequest")
+        Book saveBookRequest);
 
     /**
      * 
-     * @param save
      * @param asyncHandler
+     * @param saveBookRequest
      * @return
      *     returns java.util.concurrent.Future<? extends java.lang.Object>
      */
     @WebMethod(operationName = "save")
     public Future<?> saveAsync(
-        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
-        Book save,
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveBookRequest")
+        Book saveBookRequest,
         @WebParam(name = "saveResponse", targetNamespace = "", partName = "asyncHandler")
         AsyncHandler<Book> asyncHandler);
 
     /**
      * 
-     * @param save
+     * @param saveBookRequest
      * @return
      *     returns com.example.app.ws.client.Book
      * @throws BusinessException_Exception
      */
     @WebMethod
-    @WebResult(name = "saveResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveResponse")
+    @WebResult(name = "saveResponse", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveBookResponse")
     public Book save(
-        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "save")
-        Book save)
+        @WebParam(name = "save", targetNamespace = "http://remote.session.ejb.example.com/", partName = "saveBookRequest")
+        Book saveBookRequest)
         throws BusinessException_Exception
     ;
 

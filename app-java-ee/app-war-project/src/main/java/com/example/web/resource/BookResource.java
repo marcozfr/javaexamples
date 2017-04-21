@@ -55,16 +55,12 @@ public class BookResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response createBook(MultivaluedMap<String, String> form) throws BusinessException_Exception {	
-		Integer quantity = new Integer(form.getFirst("quantity"));
-		BigDecimal price = new BigDecimal(form.getFirst("price"));
 		String title = form.getFirst("title");
 		String isbn = form.getFirst("isbn");
 		CurrencyType currency = CurrencyType.valueOf(form.getFirst("currency"));
 		List<String> tags = form.get("tags");
 		
 		Book book = new Book();
-		book.setPrice(price);
-		book.setQuantity(quantity);
 		book.setTitle(title);
 		book.setIsbn(isbn);
 		book.setCurrency(currency);

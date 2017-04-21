@@ -21,7 +21,6 @@ public class BookTest extends AbstractTest{
         
         Book book = new Book();
         book.setIsbn("ISBN000113");
-        book.setPrice(BigDecimal.valueOf(345.5));
         book.setTitle("La ciudad y los perros ");
         book.setCurrency(CurrencyType.GBP);
         book.setTags(Arrays.asList("DRAMA","FICTIONAL","SPANISH"));

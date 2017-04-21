@@ -18,10 +18,18 @@
   </xs:complexType>
   <xs:complexType name="item">
     <xs:sequence>
-      <xs:element minOccurs="0" name="item" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
       <xs:element minOccurs="0" name="itemId" type="xs:long"/>
-      <xs:element minOccurs="0" name="price" type="xs:decimal"/>
-      <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="stores" nillable="true" type="tns:store"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="store">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="altitute" type="xs:long"/>
+      <xs:element minOccurs="0" name="businessName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true" type="tns:item"/>
+      <xs:element minOccurs="0" name="latitude" type="xs:long"/>
+      <xs:element minOccurs="0" name="storeId" type="xs:long"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="saveCover">
@@ -65,7 +73,7 @@
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="save">
-    <wsdl:part name="save" element="ns1:save">
+    <wsdl:part name="saveBookRequest" element="ns1:save">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findAllResponse">
@@ -79,7 +87,7 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="saveResponse">
-    <wsdl:part name="saveResponse" element="ns1:saveResponse">
+    <wsdl:part name="saveBookResponse" element="ns1:saveResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="BusinessException">

@@ -2,8 +2,6 @@ package com.example.ejb.test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.math.BigDecimal;
-
 import javax.naming.NamingException;
 
 import org.junit.Test;
@@ -19,7 +17,7 @@ public class BooksBeanTest extends EjbContainerTest {
 	public void createBookBeanTest() throws NamingException, BusinessException{
 	    BooksLocal booksBean = (BooksLocal) context
 		        .lookup("java:global/classes/BooksBean!com.example.ejb.session.local.BooksLocal");
-	    Book book = new Book("book 1", BigDecimal.valueOf(344.43),45);
+	    Book book = new Book("book 1");
 	    book.setCurrency(CurrencyType.PEN);
 	    book.setIsbn("ISBN30032");
 	    book.setTitle("book title 1");
