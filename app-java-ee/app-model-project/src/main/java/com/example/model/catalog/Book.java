@@ -56,21 +56,20 @@ public class Book extends Item {
         super();
         // TODO Auto-generated constructor stub
     }
-    public Book(String item, BigDecimal price, Integer quantity) {
-        super(item, price, quantity);
+    
+	public Book(String description) {
+        super(description);
         // TODO Auto-generated constructor stub
     }
-    
-    public Book(String item, BigDecimal price, Integer quantity, String title, String isbn, CurrencyType currency,
-			List<String> tags) {
-		super(item, price, quantity);
-		this.title = title;
-		this.isbn = isbn;
-		this.currency = currency;
-		this.tags = tags;
-	}
-    
-	public byte[] getCover() {
+
+    public Book(String description, String title, String isbn, CurrencyType currency) {
+        super(description);
+        this.title = title;
+        this.isbn = isbn;
+        this.currency = currency;
+    }
+
+    public byte[] getCover() {
 		return cover;
 	}
 	public void setCover(byte[] cover) {

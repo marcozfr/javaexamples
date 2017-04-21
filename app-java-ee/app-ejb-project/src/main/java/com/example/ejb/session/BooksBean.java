@@ -15,9 +15,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.xml.ws.BindingType;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.soap.MTOM;
 
 import com.example.ejb.exception.BusinessException;
 import com.example.ejb.session.extension.LoggingInterceptor;
@@ -28,9 +28,8 @@ import com.example.model.catalog.Book;
 @Stateless
 @Remote(BooksRemote.class)
 @WebService(endpointInterface="com.example.ejb.session.remote.BooksRemote")
-@Interceptors(LoggingInterceptor.class)
-@BindingType(value=javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_MTOM_BINDING)
-//@MTOM
+//@BindingType(value=javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_MTOM_BINDING)
+@MTOM
 public class BooksBean implements BooksLocal,BooksRemote {
 
 	@Resource

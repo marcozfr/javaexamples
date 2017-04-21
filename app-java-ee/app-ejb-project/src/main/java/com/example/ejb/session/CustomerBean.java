@@ -5,17 +5,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.jws.WebMethod;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.transaction.UserTransaction;
 
 import com.example.ejb.annotations.CatalogManager;
 import com.example.ejb.enums.DatabaseType;
 import com.example.model.catalog.Customer;
 
-@Stateless
 public class CustomerBean {
 
 	@Inject @CatalogManager(DatabaseType.MYSQL)
@@ -27,25 +25,25 @@ public class CustomerBean {
 	@Resource
 	private SessionContext sessionContext;
 	
-	@Resource
-	private UserTransaction userTransaction;
-	
 	@PostConstruct
 	public void initBean(){
-	    sessionContext.getTimerService();
+	    
 	    defaultTitle = defaultTitle == null ? "" : defaultTitle + " ";
 	}
 	
+	@WebMethod(exclude=true)
 	public Customer createCustomer(Customer customer){
 	    customer.setFirstName(defaultTitle + customer.getFirstName());
 		entityManager.persist(customer);
 		return customer;
 	}
 	
+	@WebMethod
 	public Customer findCustomer(Long id){
 		return entityManager.find(Customer.class, id);
 	}
 	
+	@WebMethod
 	public List<Customer> findCustomers(){
 		TypedQuery<Customer> query = entityManager.createQuery("select c from Customer c", Customer.class);
 		return query.getResultList();
@@ -53,7 +51,6 @@ public class CustomerBean {
 	
 	@Override
 	public Object clone() throws CloneNotSupportedException {
-	    // TODO Auto-generated method stub
 	    return super.clone();
 	}
 	

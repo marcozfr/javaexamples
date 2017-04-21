@@ -1,6 +1,5 @@
 package com.example.model.catalog;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -16,7 +15,7 @@ import javax.persistence.MapKeyColumn;
 public class Album extends Item {
 
     private String title;
-    private String description;
+    
     @Lob
     private byte[] cover;
     
@@ -32,9 +31,9 @@ public class Album extends Item {
         // TODO Auto-generated constructor stub
     }
 
-    public Album(String item, BigDecimal price, Integer quantity) {
-        super(item, price, quantity);
-        // TODO Auto-generated constructor stub
+    public Album(String description, String title) {
+        super(description);
+        this.title = title;
     }
 
     public String getTitle() {
@@ -43,14 +42,6 @@ public class Album extends Item {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public byte[] getCover() {

@@ -36,7 +36,6 @@ public class MultiManagersTest {
 	public void saveObjects(){
 		Album album = new Album();
 		album.setDescription("Description");
-		album.setPrice(BigDecimal.valueOf(34.4f));
 		album.setTitle("Title");
 		
 		em1.getTransaction().begin();

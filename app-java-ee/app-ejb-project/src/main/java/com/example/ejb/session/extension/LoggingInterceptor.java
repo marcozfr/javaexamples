@@ -1,5 +1,6 @@
 package com.example.ejb.session.extension;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -9,9 +10,9 @@ import javax.interceptor.InvocationContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LoggingInterceptor {
+public class LoggingInterceptor implements Serializable {
 	
-	public static Logger logger = LogManager.getLogger(LoggingInterceptor.class);
+    public static Logger logger = LogManager.getLogger(LoggingInterceptor.class);
 
 	@AroundInvoke
 	public Object interceptToLog(InvocationContext ic) throws Exception{
