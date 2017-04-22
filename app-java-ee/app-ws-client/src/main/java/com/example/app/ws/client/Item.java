@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="stores" type="{http://remote.session.ejb.example.com/}store" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="itemStore" type="{http://remote.session.ejb.example.com/}itemStore" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "item", propOrder = {
     "description",
     "itemId",
-    "stores"
+    "itemStore"
 })
 @XmlSeeAlso({
     Book.class
@@ -45,7 +45,7 @@ public class Item {
     protected String description;
     protected Long itemId;
     @XmlElement(nillable = true)
-    protected List<Store> stores;
+    protected List<ItemStore> itemStore;
 
     /**
      * Gets the value of the description property.
@@ -96,32 +96,32 @@ public class Item {
     }
 
     /**
-     * Gets the value of the stores property.
+     * Gets the value of the itemStore property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the stores property.
+     * This is why there is not a <CODE>set</CODE> method for the itemStore property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getStores().add(newItem);
+     *    getItemStore().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Store }
+     * {@link ItemStore }
      * 
      * 
      */
-    public List<Store> getStores() {
-        if (stores == null) {
-            stores = new ArrayList<Store>();
+    public List<ItemStore> getItemStore() {
+        if (itemStore == null) {
+            itemStore = new ArrayList<ItemStore>();
         }
-        return this.stores;
+        return this.itemStore;
     }
 
 }

@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="altitute" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="businessName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="items" type="{http://remote.session.ejb.example.com/}item" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="itemStore" type="{http://remote.session.ejb.example.com/}itemStore" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="latitude" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="storeId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "store", propOrder = {
     "altitute",
     "businessName",
-    "items",
+    "itemStore",
     "latitude",
     "storeId"
 })
@@ -45,7 +45,7 @@ public class Store {
     protected Long altitute;
     protected String businessName;
     @XmlElement(nillable = true)
-    protected List<Item> items;
+    protected List<ItemStore> itemStore;
     protected Long latitude;
     protected Long storeId;
 
@@ -98,32 +98,32 @@ public class Store {
     }
 
     /**
-     * Gets the value of the items property.
+     * Gets the value of the itemStore property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the items property.
+     * This is why there is not a <CODE>set</CODE> method for the itemStore property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getItems().add(newItem);
+     *    getItemStore().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Item }
+     * {@link ItemStore }
      * 
      * 
      */
-    public List<Item> getItems() {
-        if (items == null) {
-            items = new ArrayList<Item>();
+    public List<ItemStore> getItemStore() {
+        if (itemStore == null) {
+            itemStore = new ArrayList<ItemStore>();
         }
-        return this.items;
+        return this.itemStore;
     }
 
     /**

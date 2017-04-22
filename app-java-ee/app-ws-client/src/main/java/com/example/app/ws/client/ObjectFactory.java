@@ -91,6 +91,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ItemStoreId }
+     * 
+     */
+    public ItemStoreId createItemStoreId() {
+        return new ItemStoreId();
+    }
+
+    /**
+     * Create an instance of {@link ItemStore }
+     * 
+     */
+    public ItemStore createItemStore() {
+        return new ItemStore();
+    }
+
+    /**
      * Create an instance of {@link Store }
      * 
      */

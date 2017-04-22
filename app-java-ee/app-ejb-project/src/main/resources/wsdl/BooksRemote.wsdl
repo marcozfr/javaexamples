@@ -20,14 +20,29 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="description" type="xs:string"/>
       <xs:element minOccurs="0" name="itemId" type="xs:long"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="stores" nillable="true" type="tns:store"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="itemStore" nillable="true" type="tns:itemStore"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemStore">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="tns:item"/>
+      <xs:element minOccurs="0" name="pk" type="tns:itemStoreId"/>
+      <xs:element minOccurs="0" name="price" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+      <xs:element minOccurs="0" name="store" type="tns:store"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemStoreId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="item" type="tns:item"/>
+      <xs:element minOccurs="0" name="store" type="tns:store"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="store">
     <xs:sequence>
       <xs:element minOccurs="0" name="altitute" type="xs:long"/>
       <xs:element minOccurs="0" name="businessName" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true" type="tns:item"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="itemStore" nillable="true" type="tns:itemStore"/>
       <xs:element minOccurs="0" name="latitude" type="xs:long"/>
       <xs:element minOccurs="0" name="storeId" type="xs:long"/>
     </xs:sequence>

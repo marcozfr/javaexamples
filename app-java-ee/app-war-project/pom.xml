@@ -8,6 +8,9 @@
 		<artifactId>app-ee-ear</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<properties>
+		<cxf.version>3.1.0</cxf.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>javax.websocket</groupId>
@@ -94,6 +97,70 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
+			
+			<!-- 
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.4.1</version>
+				<executions>
+					<execution>
+						<id>long-process-wsdl</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlUrls>
+								<wsdlUrl>../app-war-project/src/main/resources/wsdl/LongProcessService.wsdl</wsdlUrl>
+							</wsdlUrls>
+							<sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+							<packageName>com.example.web.ws.service.process</packageName>
+							<bindingDirectory>${basedir}/src/main/resources/bindings</bindingDirectory>
+							<bindingFiles>
+								<bindingFile>longProcessServiceBinding.xml</bindingFile>
+							</bindingFiles>
+							<verbose>true</verbose>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+			
+			<plugin>
+			    <groupId>org.apache.cxf</groupId>
+			    <artifactId>cxf-codegen-plugin</artifactId>
+			    <version>${cxf.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-simple</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+			    <executions>
+			        <execution>
+			            <id>generate-sources</id>
+			            <phase>generate-sources</phase>
+			            <configuration>
+			                <sourceRoot>${basedir}/src/main/java</sourceRoot>
+			                <wsdlOptions>
+			                    <wsdlOption>
+			                        <wsdl>${basedir}/src/main/resources/wsdl/LongProcessService.wsdl</wsdl>
+			                    </wsdlOption>
+			                </wsdlOptions>
+			            </configuration>
+			            <goals>
+			                <goal>wsdl2java</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+			
 		</plugins>
 	</build>
 </project>
