@@ -76,7 +76,7 @@
   </wsdl:binding>
   <wsdl:service name="LongProcessService">
     <wsdl:port binding="tns:LongProcessServiceSOAP" name="LongProcessServiceSOAP">
-      <soap:address location="http://localhost:8080/app-war-project/LongProcessImpl?wsdl"/>
+      <soap:address location="http://localhost:8080/app-war-project/LongProcessService?wsdl"/>
     </wsdl:port>
     <wsdl:port name="LongProcessServiceHTTP" binding="tns:NewBinding">
     	<http:address location="http://localhost:8080/app-war-project/LongProcessServicePort" />
