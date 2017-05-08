@@ -28,7 +28,7 @@ public class ProductsResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_XML)
-    public String createProductCatalog(
+    public Product createProductCatalog(
             @FormParam("code") String code,
             @FormParam("height") Double height,
             @FormParam("width") Double width,
@@ -38,14 +38,14 @@ public class ProductsResource {
         
         productSessionBean.save(product);
         
-        XStream xs =new XStream(new DomDriver());
-        //xs.registerConverter(new ProductConverter());
-        xs.alias("product", Product.class);
-        String xml = xs.toXML(product);
-        //System.out.println(xml);
-        Product p = (Product)xs.fromXML(xml);
-        System.out.println("id of created product " + p.getId());
-        return xml;
+//        XStream xs =new XStream(new DomDriver());
+//        //xs.registerConverter(new ProductConverter());
+//        xs.alias("product", Product.class);
+//        String xml = xs.toXML(product);
+//        //System.out.println(xml);
+//        Product p = (Product)xs.fromXML(xml);
+        System.out.println("id of created product " + product.getId());
+        return product;
     }
     
 }

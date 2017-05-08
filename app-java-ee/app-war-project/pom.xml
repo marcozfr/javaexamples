@@ -98,6 +98,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 			
+			<!-- 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
@@ -123,7 +124,6 @@
 				</executions>
 			</plugin>
 			
-			<!-- 
 			<plugin>
 			    <groupId>org.apache.cxf</groupId>
 			    <artifactId>cxf-codegen-plugin</artifactId>

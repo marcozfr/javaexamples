@@ -25,4 +25,9 @@ public class FeaturesResource {
         return new MediaTypeResource();
     }
     
+    @Path("uris")
+    public UrisResource getUrisFeatures(){
+        return new UrisResource();
+    }
+    
 }
