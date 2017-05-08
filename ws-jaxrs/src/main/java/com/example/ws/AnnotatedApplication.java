@@ -9,5 +9,5 @@ public class AnnotatedApplication extends Application {
     public AnnotatedApplication() {
         System.out.println("instantiating resources");
     }
-
+    
 }
