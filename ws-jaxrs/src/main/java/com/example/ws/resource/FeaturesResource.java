@@ -25,9 +25,14 @@ public class FeaturesResource {
         return new MediaTypeResource();
     }
     
-    @Path("uris")
-    public UrisResource getUrisFeatures(){
-        return new UrisResource();
+    @Path("exception")
+    public ExceptionMapResource getExceptionMapResource(){
+    	return new ExceptionMapResource();
     }
+    
+//    @Path("uris")
+//    public UrisResource getUrisFeatures(){
+//        return new UrisResource();
+//    }
     
 }

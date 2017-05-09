@@ -1,4 +1,4 @@
-package com.example.ws;
+package com.example.ws.geoip.client;
 
 import com.example.ws.geoip.GeoIPService;
 

@@ -3,7 +3,6 @@
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 	xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
 	jaxws:schemaLocation="http://java.sun.com/xml/ns/jaxws wsdl_customizationschema_2_0.xsd">
-	<jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
 	<jaxws:package name="com.example.ws.process">
 		<jaxws:javadoc>Long Process package Gen</jaxws:javadoc>
 	</jaxws:package>
@@ -15,6 +14,9 @@
 		<jaxws:method name="runProcess" />
 		<jaxws:parameter part="wsdl:definitions/wsdl:message[@name='run']/wsdl:part[@name='parameters']" name="processId"/>
         <jaxws:parameter part="wsdl:definitions/wsdl:message[@name='runResponse']/wsdl:part[@name='parameters']" name="processStatus"/>
+	</jaxws:bindings>
+	<jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='LongProcessPortType']/wsdl:operation[@name='runLong']">
+		<jaxws:enableAsyncMapping>false</jaxws:enableAsyncMapping>
 	</jaxws:bindings>
 	<jaxws:provider/>
 </jaxws:bindings>

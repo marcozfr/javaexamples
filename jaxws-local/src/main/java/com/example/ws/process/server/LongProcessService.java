@@ -31,14 +31,14 @@ public class LongProcessService {
         String pathInfo = (String) messageContext.get(MessageContext.QUERY_STRING);
         
         final int secs = ThreadLocalRandom.current().nextInt(1, 3);
-        new Thread(() -> {
+//        new Thread(() -> {
             try {
                 Thread.sleep(secs*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             System.out.println("Done in " + Thread.currentThread().getName());
-        }).start();
+//        }).start();
         
         return "Wroking "+ in +" in background for " + secs+ " seconds";
     }

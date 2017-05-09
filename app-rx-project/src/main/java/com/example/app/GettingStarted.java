@@ -35,6 +35,7 @@ public class GettingStarted {
 		};
 		
 		observable.subscribe(onNextAction,onErrorAction,onCompleteAction);
+		
 	}
 
 }

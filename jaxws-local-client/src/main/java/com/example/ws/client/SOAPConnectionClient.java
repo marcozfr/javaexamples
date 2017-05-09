@@ -1,12 +1,10 @@
-package com.example.web.ws.client;
+package com.example.ws.client;
 
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-
-import com.example.web.ws.provider.WsUtils;
 
 public class SOAPConnectionClient {
 	

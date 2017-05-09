@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://messages.example.com/" xmlns:tns="http://messages.example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="exchange" type="tns:exchange"/>
+
+  <xs:element name="exchangeResponse" type="tns:exchangeResponse"/>
+
+  <xs:element name="receive" type="tns:receive"/>
+
+  <xs:element name="receiveResponse" type="tns:receiveResponse"/>
+
+  <xs:complexType name="receive">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receiveResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="exchange">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exchangeResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
