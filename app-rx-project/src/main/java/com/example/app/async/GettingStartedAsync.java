@@ -23,8 +23,8 @@ public class GettingStartedAsync {
 		
 		Observable.fromCallable(callableString).subscribe(sub);	
 		
-		Thread.sleep(10*1000);
-		System.out.println("Finished main thread");
+//		Thread.sleep(10*1000);
+//		System.out.println("Finished main thread");
 	}
 
 }

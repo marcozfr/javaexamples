@@ -6,7 +6,14 @@ import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.example.ws.client.handler.LogPayloadLogicalHandler;
+
 public class SOAPConnectionClient {
+	
+	private static Logger logger = LoggerFactory.getLogger(SOAPConnectionClient.class);
 	
 	public static void main(String[] args) {
 		if(args.length < 2){
@@ -29,12 +36,12 @@ public class SOAPConnectionClient {
 			soapMessage.getSOAPBody().setTextContent(message);
 			
 			System.out.println("Sending:");
-			WsUtils.logSOAPMessage(soapMessage);
+			WsUtils.logSOAPMessage(logger,soapMessage);
 			
 			SOAPMessage response = connection.call( soapMessage,endpoint);
 			
 			System.out.println("Receiving:");
-			WsUtils.logSOAPMessage(response);
+			WsUtils.logSOAPMessage(logger,response);
 			
 			connection.close();
 		} catch (SOAPException e) {

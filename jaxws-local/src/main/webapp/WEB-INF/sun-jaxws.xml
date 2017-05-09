@@ -3,5 +3,13 @@
 	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
 	<endpoint implementation="com.example.ws.process.server.LongProcessService" 
 		name="LongProcessService" 
-		url-pattern="/LongProcessService" />
+		url-pattern="/LongProcessService" >
+		<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+			<handler-chain>
+				<handler>
+					<handler-class>com.example.ws.process.server.handler.LogHeadersProtocolHandler</handler-class>
+				</handler>
+			</handler-chain>
+		</handler-chains>
+	</endpoint>
 </endpoints>

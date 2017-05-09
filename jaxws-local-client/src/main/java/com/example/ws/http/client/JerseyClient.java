@@ -35,7 +35,7 @@ public class JerseyClient {
 		form.add("firstName", "M");
 		form.add("lastName", "F");
 		
-		Builder b = client.target("http://localhost:8180/ws-jaxrs-impl/resources/params/form").request(MediaType.TEXT_PLAIN);
+		Builder b = client.target("http://localhost:8180/ws-jaxrs-impl/resources/features/params/form").request(MediaType.TEXT_PLAIN);
 		Response response = b.post(Entity.form(form));
 		
 		System.out.println(response.readEntity(String.class));

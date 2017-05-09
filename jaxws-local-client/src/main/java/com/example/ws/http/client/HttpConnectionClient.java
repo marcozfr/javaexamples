@@ -7,7 +7,7 @@ import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
 
-public class HttpClient {
+public class HttpConnectionClient {
 	
 	public static void main(String[] args) throws IOException {
 		

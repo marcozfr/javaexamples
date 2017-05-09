@@ -44,10 +44,11 @@ public class MediaTypeResource {
     
     @POST
     @Path("save-book")
-    @Consumes("application/books+xml")
+    @Consumes({"application/books+xml","text/xml"})
+    @Produces("text/xml")
     public Response saveBook(Book book){
         System.out.println("Book received: " + book);
-        return Response.accepted().build();
+        return Response.accepted(book).build();
     }
     
     @GET

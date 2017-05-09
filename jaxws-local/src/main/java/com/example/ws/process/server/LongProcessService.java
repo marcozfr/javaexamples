@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
+import javax.jws.HandlerChain;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -17,8 +18,9 @@ import javax.xml.ws.handler.MessageContext;
 
 @WebService(name="LongProcessPortType",portName="LongProcessPort",
     serviceName="LongProcessService",targetNamespace="http://process.ws.example.com")
+//@HandlerChain(file="handler-chain.xml")
 public class LongProcessService {
-    
+	
     @Resource
     WebServiceContext webServiceContext;
 
