@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://domain.ws.example.com/PersonSchema" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:p="http://domain.ws.example.com/PersonSchema">
+    <annotation>
+    	<documentation>Schema for Person abstraction</documentation></annotation>
+
+    <complexType name="PersonType">
+    	<sequence>
+    		<element name="firstName" type="string"></element>
+    		<element name="lastName" type="string"></element>
+    		<element name="birthDate" type="dateTime"></element>
+    		<element name="mail" type="string"></element>
+    	</sequence>
+    	<attribute name="id" type="int"></attribute>
+    </complexType>
+    <complexType name="PersonList">
+    	<sequence>
+    		<element name="person" type="p:PersonType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="list" type="p:PersonList"></element>
+</schema>
