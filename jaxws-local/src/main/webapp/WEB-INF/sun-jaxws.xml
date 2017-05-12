@@ -2,7 +2,7 @@
 <endpoints version="2.0"
 	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
 	<endpoint implementation="com.example.ws.process.server.LongProcessService" 
-		name="LongProcessService" 
+		name="LongProcessService"
 		url-pattern="/LongProcessService" >
 		<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
 			<handler-chain>
@@ -11,5 +11,10 @@
 				</handler>
 			</handler-chain>
 		</handler-chains>
+	</endpoint>
+	
+	<endpoint implementation="com.example.ws.topdown.TopDownService" 
+		name="TopDownService" wsdl="wsdl/TopDownService.wsdl" 
+		url-pattern="/TopDownService" enable-mtom="true">
 	</endpoint>
 </endpoints>

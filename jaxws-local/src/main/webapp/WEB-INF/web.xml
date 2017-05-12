@@ -15,15 +15,6 @@
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	 
-	 <servlet>
-	 	<servlet-name>LongProcess</servlet-name>
-	 	<servlet-class>com.example.ws.process.server.LongProcessService</servlet-class>
-	 </servlet>
-	 <servlet-mapping>
-	 	<servlet-name>LongProcess</servlet-name>
-	 	<url-pattern>/LongProcessEndpoint</url-pattern>
-	 </servlet-mapping>
-	 
 	 <security-role>
 	 	<role-name>admin</role-name>
 	 </security-role>
