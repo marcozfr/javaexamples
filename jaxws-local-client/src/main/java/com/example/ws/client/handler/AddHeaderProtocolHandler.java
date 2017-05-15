@@ -13,7 +13,7 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.client.WsUtils;
+import com.example.ws.domain.util.WsUtils;
 
 public class AddHeaderProtocolHandler implements SOAPHandler<SOAPMessageContext>{
 	

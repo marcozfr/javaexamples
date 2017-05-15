@@ -13,8 +13,18 @@
 		</handler-chains>
 	</endpoint>
 	
-	<endpoint implementation="com.example.ws.topdown.TopDownService" 
+	<endpoint implementation="com.example.ws.topdown.TopDownServiceBean" 
 		name="TopDownService" wsdl="wsdl/TopDownService.wsdl" 
 		url-pattern="/TopDownService" enable-mtom="true">
+	</endpoint>
+	
+	<endpoint implementation="com.example.ws.process.server.PeopleService" 
+		name="PeopleService"
+		url-pattern="/PeopleService" >
+	</endpoint>
+	
+	<endpoint implementation="com.example.ws.process.server.PeopleInstanceService" 
+		name="PeopleInstanceService"
+		url-pattern="/PeopleInstanceService" >
 	</endpoint>
 </endpoints>
