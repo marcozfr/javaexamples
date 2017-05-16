@@ -36,16 +36,8 @@ public class SecuredMessageHandler implements SOAPHandler<SOAPMessageContext> {
 			XWSSProcessorFactory wssProcessorFactory = XWSSProcessorFactory.newInstance();
 			InputStream clientConfig = this.getClass().getClassLoader().getResourceAsStream("secure-client.xml");
 			processor = wssProcessorFactory.createProcessorForSecurityConfiguration(clientConfig, new CallbackHandler() {
-				@Override
 				public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
-					for (int i = 0; i < callbacks.length; i++) {
-						if(callbacks[i] instanceof UsernameCallback){
-							((UsernameCallback)callbacks[i]).setUsername("adm");
-						}
-						if(callbacks[i] instanceof PasswordCallback){
-							((PasswordCallback)callbacks[i]).setPassword("admpwd".toCharArray());
-						}
-					}
+					logger.info("CallBack Handler");
 				}
 			});
 			clientConfig.close();
@@ -66,9 +58,9 @@ public class SecuredMessageHandler implements SOAPHandler<SOAPMessageContext> {
 				
 				SOAPMessage securedSOAPMessage = processor.secureOutboundMessage(processingContext);
 				
-				logger.info("Securing SOAP Message");
-				WsUtils.logSOAPMessage(logger, securedSOAPMessage);
-				logger.info("End Securing SOAP Message");
+//				logger.info("Securing SOAP Message");
+//				WsUtils.logSOAPMessage(logger, securedSOAPMessage);
+//				logger.info("End Securing SOAP Message");
 				
 				context.setMessage(securedSOAPMessage);
 				
@@ -83,7 +75,7 @@ public class SecuredMessageHandler implements SOAPHandler<SOAPMessageContext> {
 	@Override
 	public boolean handleFault(SOAPMessageContext context) {
 		logger.info("Fault on "+this.getClass());
-		return false;
+		return true;
 	}
 	
 	@Override

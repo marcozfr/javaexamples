@@ -9,12 +9,15 @@
 				<handler>
 					<handler-class>com.example.ws.process.server.handler.LogHeadersProtocolHandler</handler-class>
 				</handler>
+				<handler>
+					<handler-class>com.example.ws.process.server.handler.SecureCheckerHandler</handler-class>
+				</handler>
 			</handler-chain>
 		</handler-chains>
 	</endpoint>
 	
 	<endpoint implementation="com.example.ws.topdown.TopDownServiceBean" 
-		name="TopDownService" wsdl="wsdl/TopDownService.wsdl" 
+		name="TopDownService" wsdl="WEB-INF/wsdl/TopDownService.wsdl" 
 		url-pattern="/TopDownService" enable-mtom="true">
 	</endpoint>
 	

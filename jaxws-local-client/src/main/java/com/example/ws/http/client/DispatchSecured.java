@@ -1,5 +1,7 @@
 package com.example.ws.http.client;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.namespace.QName;
@@ -12,6 +14,9 @@ import javax.xml.ws.Dispatch;
 import javax.xml.ws.Response;
 import javax.xml.ws.Service;
 import javax.xml.ws.Service.Mode;
+import javax.xml.ws.handler.Handler;
+import javax.xml.ws.handler.HandlerResolver;
+import javax.xml.ws.handler.PortInfo;
 import javax.xml.ws.soap.SOAPBinding;
 
 import org.slf4j.Logger;
@@ -31,13 +36,20 @@ public class DispatchSecured {
 		
 		Service service = Service.create(serviceName);
 		
+		service.setHandlerResolver(new HandlerResolver() {
+			
+			@Override
+			public List getHandlerChain(PortInfo portInfo) {
+				return Arrays.asList(new SecuredMessageHandler());
+			}
+		});
+		
 		service.addPort(portName, SOAPBinding.SOAP11HTTP_BINDING , "http://localhost:8180/jaxws-local/LongProcessService?wsdl");
 		
 		Dispatch<SOAPMessage> dispatch = service.createDispatch(portName, SOAPMessage.class, Mode.MESSAGE);
 		
-		((BindingProvider)dispatch).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "admin");
-		((BindingProvider)dispatch).getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "c90100a");
-		((BindingProvider)dispatch).getBinding().getHandlerChain().add(new SecuredMessageHandler());
+		dispatch.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "admin");
+		dispatch.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "c90100a");
 		
 		MessageFactory mf = MessageFactory.newInstance();
 		SOAPMessage soapMessage = mf.createMessage();

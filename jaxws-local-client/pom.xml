@@ -42,12 +42,11 @@
 					<groupId>javax.xml.crypto</groupId>
 			        <artifactId>xmldsig</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>javax.activation</groupId>
+					<artifactId>activation</artifactId>
+				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-		    <groupId>javax.xml</groupId>
-		    <artifactId>xmldsig</artifactId>
-		    <version>1.0</version>
 		</dependency>
 	</dependencies>
 
