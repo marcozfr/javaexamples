@@ -14,7 +14,7 @@ import javax.ws.rs.core.UriBuilderException;
 import javax.ws.rs.core.UriInfo;
 
 public class UrisResource {
-    
+	
     @Path("/info")
     @GET
     public Response getUriInformation(@Context UriInfo uriInfo,@Context Request request){
@@ -31,6 +31,26 @@ public class UrisResource {
         return Response.ok(sb.toString()).type("application/json").build();
     }
     
+    @Path("/path/{a}/{b}")
+    @GET
+    public Response getLookupPathInfo(@Context UriInfo uriInfo){
+    	 StringBuilder sb = new StringBuilder();
+         sb.append("{ \"path\" : \""+uriInfo.getPath()+"\" ,");
+         sb.append(" \"path-segments\" : \""+uriInfo.getPathSegments()+"\" ,");
+         sb.append(" \"path-parameters\" : \""+uriInfo.getPathParameters()+"\" }");
+         
+         return Response.ok(sb.toString()).type("application/json").build();
+    }
+    
+    @Path("/query")
+    @GET
+    public Response getLookupQueryInfo(@Context UriInfo uriInfo){
+    	 StringBuilder sb = new StringBuilder();
+         sb.append("{ \"query\" : \""+uriInfo.getQueryParameters()+"\" ,");
+         sb.append(" \"query-unencoded\" : \""+uriInfo.getQueryParameters(false)+"\" }");
+         
+         return Response.ok(sb.toString()).type("application/json").build();
+    }
     
     @Path("/build")
     @GET

@@ -30,9 +30,9 @@ public class FeaturesResource {
     	return new ExceptionMapResource();
     }
     
-//    @Path("uris")
-//    public UrisResource getUrisFeatures(){
-//        return new UrisResource();
-//    }
+    @Path("uris")
+    public UrisResource getUrisFeatures(){
+        return new UrisResource();
+    }
     
 }

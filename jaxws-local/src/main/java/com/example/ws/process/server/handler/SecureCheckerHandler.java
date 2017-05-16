@@ -10,6 +10,7 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPMessage;
+import javax.xml.ws.WebServiceException;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
@@ -96,16 +97,16 @@ public class SecureCheckerHandler implements SOAPHandler<SOAPMessageContext> {
 				context.setMessage(verifiedSoapMessage);
 				
 			} catch (XWSSecurityException e) {
-				e.printStackTrace();
+				throw new WebServiceException(e);
 			}
 		}
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean handleFault(SOAPMessageContext context) {
 		logger.info("Fault on " +this.getClass());
-		return true;
+		return false;
 	}
 
 	@Override

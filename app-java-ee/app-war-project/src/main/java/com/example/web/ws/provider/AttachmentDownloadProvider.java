@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,6 +29,7 @@ import com.example.model.demo.Attachment;
 	portName="AttachmentDownloadPort",targetNamespace="http://download.ws.web.example.com")
 @ServiceMode(Mode.MESSAGE)
 @Stateless(name="AttachmentDownload")
+@RolesAllowed("wsaccess")
 public class AttachmentDownloadProvider implements Provider<SOAPMessage>{
 
 	@PersistenceContext(unitName="catalogPU")

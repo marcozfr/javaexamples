@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.activation.DataHandler;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +31,7 @@ import com.example.model.demo.Attachment;
 	portName="AttachmentUploadPort",targetNamespace="http://attachment.ws.web.example.com")
 @ServiceMode(Mode.MESSAGE)
 @Stateless(name="AttachmentUpload")
+@RolesAllowed("wsaccess")
 public class AttachmentUploadProvider implements Provider<SOAPMessage>{
 
 	@PersistenceContext(unitName="catalogPU")

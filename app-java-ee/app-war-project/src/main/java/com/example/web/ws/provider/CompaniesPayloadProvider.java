@@ -2,8 +2,13 @@ package com.example.web.ws.provider;
 
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.security.Principal;
 
 import javax.annotation.Resource;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
 import javax.servlet.ServletContext;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -27,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 )
 @ServiceMode(Mode.PAYLOAD)
 @BindingType(HTTPBinding.HTTP_BINDING)
+@Stateless
 public class CompaniesPayloadProvider implements Provider<Source>{
 	
 	public static Logger logger = LogManager.getLogger(CompaniesPayloadProvider.class);
@@ -34,8 +40,15 @@ public class CompaniesPayloadProvider implements Provider<Source>{
 	@Resource
 	WebServiceContext webServiceContext;
 	
+	@Resource
+	SessionContext sessionContext;
+	
 	@Override
+	@RolesAllowed("wsaccess-companies")
 	public Source invoke(Source request) {
+		
+		Principal principal = sessionContext.getCallerPrincipal();
+		logger.info("User Principal calling: " + principal.getName());
 		
 		MessageContext messageContext = webServiceContext.getMessageContext();
 		
@@ -54,7 +67,7 @@ public class CompaniesPayloadProvider implements Provider<Source>{
 		}
 		
 		// return XML file to String and build a StreamSource
-		InputStream is = servletContext.getResourceAsStream("mock/companies.xml");
+		InputStream is = servletContext.getResourceAsStream("/WEB-INF/mock/companies.xml");
 		return new StreamSource(is);
 	}
 

@@ -14,16 +14,15 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
+import javax.jws.soap.SOAPMessageHandler;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.soap.Addressing;
 import javax.xml.ws.soap.MTOM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.example.ws.domain.files.File;
-import com.example.ws.process.server.handler.LogHeadersProtocolHandler;
 
 @WebService(name="LongProcessPortType",portName="LongProcessPort",
     serviceName="LongProcessService",targetNamespace="http://process.ws.example.com")
@@ -32,7 +31,7 @@ import com.example.ws.process.server.handler.LogHeadersProtocolHandler;
 @MTOM(enabled=true,threshold=3000)
 public class LongProcessService {
 	
-	private static Logger logger = LoggerFactory.getLogger(LogHeadersProtocolHandler.class);
+	private static Logger logger = LoggerFactory.getLogger(LongProcessService.class);
 	
 	private static Map<String,File> fileHolder = new HashMap<>(); ;
 	
@@ -48,7 +47,6 @@ public class LongProcessService {
     WebServiceContext webServiceContext;
 
     @WebMethod(operationName="run", exclude=false)
-    @RolesAllowed("home")
     public String run(String in) throws ProcessException {
         
         MessageContext messageContext = webServiceContext.getMessageContext();
