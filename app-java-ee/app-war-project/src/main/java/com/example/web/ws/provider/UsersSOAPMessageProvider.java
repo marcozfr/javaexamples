@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
+import javax.ejb.Stateless;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.namespace.QName;
@@ -32,6 +34,8 @@ import org.xml.sax.SAXException;
 
 @WebServiceProvider(serviceName = "UsersService", portName = "UsersServicePort", targetNamespace = "http://users.ws.web.example.com")
 @ServiceMode(Mode.MESSAGE)
+@Stateless
+@RolesAllowed("wsaccess-users")
 public class UsersSOAPMessageProvider implements Provider<SOAPMessage> {
 
 	@Resource
@@ -54,7 +58,7 @@ public class UsersSOAPMessageProvider implements Provider<SOAPMessage> {
 		try {
 			
 			// Load xml
-			InputStream is = servletContext.getResourceAsStream("mock/customers.xml");
+			InputStream is = servletContext.getResourceAsStream("/WEB-INF/mock/customers.xml");
 			if(is == null){
 				String strPayload = "<data>no data available</data>";
 				is = IOUtils.toInputStream(strPayload,Charset.defaultCharset());

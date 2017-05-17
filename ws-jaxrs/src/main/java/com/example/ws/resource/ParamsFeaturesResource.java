@@ -75,9 +75,7 @@ public class ParamsFeaturesResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response postForm(MultivaluedMap<String, String> form){
-    	
     	System.out.println(form);
-    	
     	return Response.ok("Received data").type(MediaType.TEXT_PLAIN).build();
     }
     

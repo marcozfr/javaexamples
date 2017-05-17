@@ -9,7 +9,6 @@ import javax.xml.soap.SOAPMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.client.handler.LogPayloadLogicalHandler;
 import com.example.ws.domain.util.WsUtils;
 
 public class SOAPConnectionClient {

@@ -5,9 +5,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 
+import com.sun.istack.logging.Logger;
+
 public class PathFeaturesResource {
+	
+	private static Logger logger = Logger.getLogger(PathFeaturesResource.class); 
 	
 	/**
 	 * defaultGet will be chosen over defaultGetJson as the default GET for this resource {@link #defaultGetJson()}
@@ -29,15 +35,31 @@ public class PathFeaturesResource {
 		return Response.ok(" { \"default\" : \""+this.getClass()+"\" }").build();
 	}
 
+	/**
+	 * PathSegment Usage
+	 * @param id
+	 * @return
+	 */
     @GET
-    @Path("{id:\\d+}")
+    @Path("{id:\\d+}/lookup")
     @Produces(MediaType.TEXT_HTML)
-    public Response getResourceRegex(@PathParam("id") Integer id){
-        return Response.ok(id).build();
+    public Response getResourceRegex(@PathParam("id") PathSegment id){
+    	MultivaluedMap<String, String> matrixParams = id.getMatrixParameters();
+    	logger.info("Matrix Params: " + matrixParams);
+    	logger.info("Path Segment's path:" + id.getPath());
+    	
+        return Response.accepted("Received " + id.getPath()).build();
     }
     
+    /**
+     * surname path will take the last occurrence value only 
+     * 
+     * @param surname
+     * @param lastname
+     * @return
+     */
     @GET
-    @Path("{surname}-{lastname}")
+    @Path("{surname}-{lastname}-{surname}")
     @Produces(MediaType.TEXT_HTML)
     public Response getResourceComposed(
             @PathParam("surname")String surname, 

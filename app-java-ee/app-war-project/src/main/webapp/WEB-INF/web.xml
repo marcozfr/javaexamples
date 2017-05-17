@@ -50,4 +50,37 @@
     <url-pattern>/servlet/AdminServlet</url-pattern>
   </servlet-mapping>
    -->
+   <security-role>
+   		<role-name>wsaccess</role-name>
+   </security-role>
+   <security-role>
+   		<role-name>wsaccess-users</role-name>
+   </security-role>
+   <security-role>
+   		<role-name>wsaccess-companies</role-name>
+   </security-role>
+   
+   <security-constraint>
+   		<web-resource-collection>
+   			<web-resource-name>secured ws</web-resource-name>
+   			<url-pattern>/UsersSOAPMessageProvider</url-pattern>
+   			<url-pattern>/CompaniesPayloadProvider</url-pattern>
+   			<url-pattern>/AttachmentDownloadProvider</url-pattern>
+   			<url-pattern>/AttachmentUploadProvider</url-pattern>
+   			<http-method>POST</http-method>
+   		</web-resource-collection>
+   		<auth-constraint>
+   			<role-name>wsaccess</role-name>
+   			<role-name>wsaccess-users</role-name>
+   			<role-name>wsaccess-companies</role-name>
+   		</auth-constraint>
+   		<user-data-constraint>
+   			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+   		</user-data-constraint>
+   </security-constraint>
+   
+   <login-config>
+   		<auth-method>BASIC</auth-method>
+   		<realm-name>ApplicationRealm</realm-name>
+   </login-config>
 </web-app>

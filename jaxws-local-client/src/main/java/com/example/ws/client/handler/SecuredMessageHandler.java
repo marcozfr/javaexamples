@@ -27,7 +27,7 @@ import com.sun.xml.wss.impl.callback.UsernameCallback;
 
 public class SecuredMessageHandler implements SOAPHandler<SOAPMessageContext> {
 
-	private Logger logger = LoggerFactory.getLogger(LogPayloadLogicalHandler.class);
+	private Logger logger = LoggerFactory.getLogger(SecuredMessageHandler.class);
 	
 	private XWSSProcessor processor = null;
 	

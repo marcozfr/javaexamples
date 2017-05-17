@@ -1,6 +1,7 @@
 package com.example.web.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -30,7 +31,14 @@ public class AppRequestFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		
 		logger.info("# Request received # ");
-		logger.info("{} {} {}" ,request.getMethod(),request.getRequestURL() , request.getRemoteAddr());
+		logger.info("{} {} {}" ,request.getMethod(), request.getRequestURL() , request.getRemoteAddr());
+		Enumeration enm = request.getHeaderNames();
+		while(enm.hasMoreElements()){
+			String headerName = (String)enm.nextElement();
+			logger.info("{}:{}", headerName, request.getHeader(headerName));
+		}
+		
+		logger.info("Query String: {}", request.getQueryString());
 		
 		arg2.doFilter(arg0, arg1);
 	}

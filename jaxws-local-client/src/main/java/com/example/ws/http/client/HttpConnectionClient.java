@@ -14,14 +14,17 @@ public class HttpConnectionClient {
 		if(args[0] == null){
 			System.out.println("Usage: HttpClient <method> <url> <user> <pwd>");
 		}
-		if(args[2]!=null && args[3]!=null){
-			Authenticator.setDefault(new SimpleAuthenticator(args[2],args[3].toCharArray()));
-		}
+//		if(args[2]!=null && args[3]!=null){
+//			Authenticator.setDefault(new SimpleAuthenticator(args[2],args[3].toCharArray()));
+//		}
 		
 		String endpoint = args[1];
 		String method = args[0];
 		URL url = new URL(endpoint);
 		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+		conn.setRequestProperty("Lolz", "Value1"); // Header
+		conn.setDoInput(true);
+		conn.setDoOutput(false);
 		conn.setRequestMethod(method);
 		conn.setReadTimeout(5000);
 		conn.connect();
