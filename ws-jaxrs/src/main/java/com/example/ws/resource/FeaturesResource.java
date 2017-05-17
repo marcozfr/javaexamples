@@ -35,4 +35,9 @@ public class FeaturesResource {
         return new UrisResource();
     }
     
+    @Path("handlers")
+    public HandlersResource getHandlersFeatures(){
+        return new HandlersResource();
+    }
+    
 }
