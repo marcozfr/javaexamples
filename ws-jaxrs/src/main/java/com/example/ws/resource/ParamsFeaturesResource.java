@@ -5,7 +5,10 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Encoded;
 import javax.ws.rs.GET;
@@ -16,20 +19,28 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.StreamingOutput;
 import javax.ws.rs.core.UriInfo;
 
+import com.example.ws.annotation.SetSession;
 import com.example.ws.model.Book;
 import com.example.ws.model.BookType;
+import com.example.ws.model.CustomerBean;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.istack.logging.Logger;
 
 public class ParamsFeaturesResource {
 
+    private static Logger logger = Logger.getLogger(ParamsFeaturesResource.class);
+    
     /**
      * 
      * 
@@ -57,7 +68,7 @@ public class ParamsFeaturesResource {
     @GET
     @Produces("application/json")
     public StreamingOutput showHeaders(@Context HttpHeaders headers){
-    	
+        
     	return new StreamingOutput(){
     		@Override
     		public void write(OutputStream output) throws IOException, WebApplicationException {
@@ -69,6 +80,15 @@ public class ParamsFeaturesResource {
     			}
     		}
     	};
+    }
+    
+    @Path("customer-bean")
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postCustomerBean(@BeanParam CustomerBean customer){
+        
+        return Response.ok(customer).build();
     }
     
     @Path("form")
@@ -102,7 +122,25 @@ public class ParamsFeaturesResource {
         return Response.ok(new GenericEntity<List<String>>(supportedContentTypes){}).build();
     }
 
-    
+    @Path("/cookies")
+    @GET
+    @SetSession
+    public Response getCookies(
+            @CookieParam("JTRACKER") Cookie jtracker,
+            @Context HttpHeaders headers, @Context HttpServletRequest httpServletRequest){
+
+        ResponseBuilder b = Response.ok(headers.getCookies());
+        
+        if(jtracker==null){
+            Cookie cookie = new Cookie("JTRACKER", httpServletRequest.getRemoteHost(), 
+                    httpServletRequest.getServletContext().getContextPath(), httpServletRequest.getServerName());
+            NewCookie newcookie = new NewCookie(cookie);
+            
+            b.cookie(newcookie);
+        }
+        
+        return b.build();
+    }
     
 }
 

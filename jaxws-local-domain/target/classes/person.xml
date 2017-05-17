@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<p:list xmlns:p="http://domain.ws.example.com/PersonSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://domain.ws.example.com/PersonSchema PersonSchema.xsd ">
-	<p:person>
-		<p:firstName>marco</p:firstName>
-		<p:lastName>flores</p:lastName>
-		<p:birthDate>1988-12-12T03:02:22</p:birthDate>
-		<p:mail>marcozfr@gmail.com</p:mail>
-	</p:person>
-</p:list>
