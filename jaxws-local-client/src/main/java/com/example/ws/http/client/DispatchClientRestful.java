@@ -12,7 +12,7 @@ import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.http.HTTPBinding;
 
-import com.example.ws.client.WsUtils;
+import com.example.ws.domain.util.WsUtils;
 
 public class DispatchClientRestful {
 	

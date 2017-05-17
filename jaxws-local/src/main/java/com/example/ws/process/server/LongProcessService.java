@@ -16,12 +16,13 @@ import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.soap.Addressing;
 import javax.xml.ws.soap.MTOM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.process.server.dto.File;
+import com.example.ws.domain.files.File;
 import com.example.ws.process.server.handler.LogHeadersProtocolHandler;
 
 @WebService(name="LongProcessPortType",portName="LongProcessPort",
@@ -98,5 +99,11 @@ public class LongProcessService {
     public File download(@WebParam String fileName){
     	return getFile(fileName);
     }
+    
+//    @WebMethod
+//    @Addressing(enabled=true)
+//    public String runAddressed(){
+//    	
+//    }
 
 }

@@ -10,7 +10,7 @@ import javax.xml.ws.handler.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.client.WsUtils;
+import com.example.ws.domain.util.WsUtils;
 
 public class LogPayloadLogicalHandler implements LogicalHandler<LogicalMessageContext>{
 	
