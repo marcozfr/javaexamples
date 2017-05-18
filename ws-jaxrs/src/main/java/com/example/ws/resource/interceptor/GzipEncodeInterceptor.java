@@ -1,4 +1,4 @@
-package com.example.ws.resource.filter;
+package com.example.ws.resource.interceptor;
 
 import java.io.IOException;
 import java.util.zip.GZIPOutputStream;

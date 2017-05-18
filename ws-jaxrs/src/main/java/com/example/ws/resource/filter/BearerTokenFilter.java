@@ -16,6 +16,4 @@ public class BearerTokenFilter implements ContainerRequestFilter{
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 		System.out.println("check for Bearer");
 	}
-
-
 }

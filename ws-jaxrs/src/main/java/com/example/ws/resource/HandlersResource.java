@@ -25,6 +25,11 @@ import javax.xml.transform.Source;
 
 import com.example.ws.model.Book;
 
+/**
+ * shows usage of Source, StreamingOutput, byte[] and Reader
+ * @author floma4y
+ *
+ */
 public class HandlersResource {
     
     @Path("put-book-xml")

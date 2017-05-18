@@ -8,6 +8,11 @@ import javax.ws.rs.ext.Provider;
 import com.example.ws.annotation.MaxAge;
 import com.example.ws.resource.filter.CacheControlFilter;
 
+/**
+ * Feature is going to register a Filter on resource methods that have the @MaxAge annotation
+ * @author floma4y
+ *
+ */
 @Provider
 public class MaxAgeFeature implements DynamicFeature {
 

@@ -80,8 +80,7 @@ public class CacheFeaturesResource {
 	}
 	
 	@Path("check-performance")
-	@Produces("text/html")
-	@Performance
+	@Produces("text/plain")
 	@GET
 	public Response getCheckPerformance(){
 		

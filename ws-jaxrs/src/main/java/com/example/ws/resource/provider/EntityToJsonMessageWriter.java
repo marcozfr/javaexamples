@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Produces(MediaType.APPLICATION_JSON)
 public class EntityToJsonMessageWriter implements MessageBodyWriter<Object>{
 
+	private ObjectMapper mapper = new ObjectMapper();
+	
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         
@@ -33,7 +35,7 @@ public class EntityToJsonMessageWriter implements MessageBodyWriter<Object>{
     public void writeTo(Object t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType,
             MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream)
             throws IOException, WebApplicationException {
-        new ObjectMapper().writeValue(entityStream, t);
+    	mapper.writeValue(entityStream, t);
         
     }
 

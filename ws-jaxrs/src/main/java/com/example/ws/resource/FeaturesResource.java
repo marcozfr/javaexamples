@@ -40,4 +40,9 @@ public class FeaturesResource {
         return new HandlersResource();
     }
     
+    @Path("async")
+    public AsyncResponseResource getAsyncResponseResource(){
+        return new AsyncResponseResource();
+    }
+    
 }
