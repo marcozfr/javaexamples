@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 
 @WebService
-@HandlerChain(file="handlers.xml")
+//@HandlerChain(file="handlers.xml")
 public class PeopleService {
 	
 	@WebMethod

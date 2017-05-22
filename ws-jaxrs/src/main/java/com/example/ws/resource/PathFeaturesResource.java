@@ -1,6 +1,7 @@
 package com.example.ws.resource;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.MatrixParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,7 +44,8 @@ public class PathFeaturesResource {
     @GET
     @Path("{id:\\d+}/lookup")
     @Produces(MediaType.TEXT_HTML)
-    public Response getResourceRegex(@PathParam("id") PathSegment id){
+    public Response getResourceRegex(@PathParam("id") PathSegment id, @MatrixParam("mparam") String mparam){
+    	logger.info("Matrix mparam: " + mparam);
     	MultivaluedMap<String, String> matrixParams = id.getMatrixParameters();
     	logger.info("Matrix Params: " + matrixParams);
     	logger.info("Path Segment's path:" + id.getPath());
