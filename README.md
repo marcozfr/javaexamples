@@ -20,3 +20,7 @@ https://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&
 
 VS Benefits
 https://app.vsaex.visualstudio.com/me?mkt=es-ES
+
+
+WSIT:
+http://docs.oracle.com/cd/E17802_01/webservices/webservices/reference/tutorials/wsit/doc/index.html

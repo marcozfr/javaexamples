@@ -14,7 +14,6 @@ import javax.xml.ws.handler.PortInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.client.SOAPConnectionClient;
 import com.example.ws.client.handler.LogPayloadLogicalHandler;
 import com.example.ws.process.LongProcessService;
 import com.example.ws.process.LongProcessServicePort;
@@ -24,6 +23,10 @@ import com.example.ws.process.RunResponse;
 public class LongProcessClient {
 	
 	private static Logger logger = LoggerFactory.getLogger(LongProcessClient.class);
+	
+//	@WebServiceRef(wsdlLocation = 
+//	        "http://localhost:8180/jaxws-local/LongProcessService?wsdl")
+//	private static LongProcessService longProcessService;
     
     public static void main(String[] args) throws ProcessException_Exception, InterruptedException, ExecutionException {
         LongProcessService longProcessService = new LongProcessService();
