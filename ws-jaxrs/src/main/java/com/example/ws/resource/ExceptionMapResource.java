@@ -1,8 +1,12 @@
 package com.example.ws.resource;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -23,6 +27,12 @@ public class ExceptionMapResource {
 		//ForbiddenException
 		//NotAcceptableException etc..
 		throw new NotAuthorizedException("Bearer");
+	}
+	
+	@Path("temporary-redirect")
+	@POST
+	public Response temporaryRedirect() throws URISyntaxException{
+		throw new WebApplicationException(Response.temporaryRedirect(new URI("http://localhost:8180/ws-jaxrs-impl/resources/features/exception/throw")).build());
 	}
 	
 	@Path("bad-request")

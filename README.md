@@ -24,3 +24,7 @@ http://java.globinch.com/category/enterprise-java/web-services/jax-ws/
 VS Benefits
 https://app.vsaex.visualstudio.com/me?mkt=es-ES
 
+
+WSIT:
+http://docs.oracle.com/cd/E17802_01/webservices/webservices/reference/tutorials/wsit/doc/index.html
+

@@ -1,5 +1,6 @@
 package com.example.ws.resource;
 
+import javax.activation.DataSource;
 import javax.ws.rs.Path;
 
 @Path("features")

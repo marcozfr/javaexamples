@@ -1,88 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://topdown.ws.example.com/TopDownService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TopDownService" targetNamespace="http://topdown.ws.example.com/TopDownService/">
-  <wsdl:types>
-    <xsd:schema targetNamespace="http://topdown.ws.example.com/TopDownService/">
-      <xsd:element name="downloadImage">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="in" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="downloadImageResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="out" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="registerUser">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-      <xsd:element name="registerUserResponse">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-    </xsd:schema>
-  </wsdl:types>
-  <wsdl:message name="downloadImageRequest">
-    <wsdl:part element="tns:downloadImage" name="parameters" />
-  </wsdl:message>
-  <wsdl:message name="downloadImageResponse">
-    <wsdl:part element="tns:downloadImageResponse" name="parameters"/>
-  </wsdl:message>
-  <wsdl:message name="registerUserRequest">
-  	<wsdl:part name="parameters" element="tns:registerUser"></wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="registerUserResponse">
-  	<wsdl:part name="parameters" element="tns:registerUserResponse"></wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="TopDownService">
-    <wsdl:operation name="downloadImage">
-      <wsdl:input message="tns:downloadImageRequest"/>
-      <wsdl:output message="tns:downloadImageResponse"/>
-    </wsdl:operation>
-    <wsdl:operation name="registerUser">
-    	<wsdl:input message="tns:registerUserRequest"></wsdl:input>
-    	<wsdl:output message="tns:registerUserResponse"></wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="TopDownServiceSOAP" type="tns:TopDownService">
-  	<soap:binding style="document"
-  		transport="http://schemas.xmlsoap.org/soap/http" />
-  	<wsdl:operation name="downloadImage">
-  		<soap:operation
-  			soapAction="http://topdown.ws.example.com/TopDownService/downloadImage" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  	</wsdl:operation>
-  	<wsdl:operation name="registerUser">
-  		<soap:operation
-  			soapAction="http://topdown.ws.example.com/TopDownService/registerUser" />
-  		<wsdl:input>
-  			<soap:body use="literal" />
-  		</wsdl:input>
-  		<wsdl:output>
-  			<soap:body use="literal" />
-  		</wsdl:output>
-  	</wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="TopDownService">
-    <wsdl:port binding="tns:TopDownServiceSOAP" name="TopDownServiceSOAP">
-      <soap:address location="http://topdown.ws.example.com/"/>
-    </wsdl:port>
-  </wsdl:service>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://topdown.ws.example.com/TopDownService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TopDownService"
+	targetNamespace="http://topdown.ws.example.com/TopDownService/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://topdown.ws.example.com/TopDownService/">
+			<xsd:element name="downloadImage">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="downloadImageResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="registerUser">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="registerUserResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="downloadImageRequest">
+		<wsdl:part element="tns:downloadImage" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="downloadImageResponse">
+		<wsdl:part element="tns:downloadImageResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="registerUserRequest">
+		<wsdl:part name="parameters" element="tns:registerUser"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="registerUserResponse">
+		<wsdl:part name="parameters" element="tns:registerUserResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="TopDownService">
+		<wsdl:operation name="downloadImage">
+			<wsdl:input message="tns:downloadImageRequest" />
+			<wsdl:output message="tns:downloadImageResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="registerUser">
+			<wsdl:input message="tns:registerUserRequest"></wsdl:input>
+			<wsdl:output message="tns:registerUserResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="TopDownServiceSOAP" type="tns:TopDownService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="downloadImage">
+			<soap:operation
+				soapAction="http://topdown.ws.example.com/TopDownService/downloadImage" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="registerUser">
+			<soap:operation
+				soapAction="http://topdown.ws.example.com/TopDownService/registerUser" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="TopDownService">
+		<wsdl:port binding="tns:TopDownServiceSOAP" name="TopDownServiceSOAP">
+			<soap:address location="http://topdown.ws.example.com/" />
+		</wsdl:port>
+	</wsdl:service>
 </wsdl:definitions>

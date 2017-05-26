@@ -60,7 +60,6 @@ public class AsyncFeaturesClient extends BaseClient {
 	public void getServerAsyncResponse(){
 		WebTarget target = client.target(BASE_APP + "/resources/features/async/book");
 		Builder builder = target.request();
-		Entity entity = Entity.entity("<book><id>13</id></book>","application/books+xml");
 		builder.async().get(new InvocationCallback<Response>(){
 
 			@Override
