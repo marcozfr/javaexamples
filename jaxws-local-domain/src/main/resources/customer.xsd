@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<xs:schema  
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+	<!-- targetNamespace="http://customer.example.org" xmlns:c="http://customer.example.org" -->
+<xs:element name="customers" type="CustomerList" />
+<xs:complexType name="CustomerList">
+	<xs:sequence>
+		<xs:element name="customer" type="CustomerType" minOccurs="1" maxOccurs="unbounded"></xs:element>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CustomerType">
+	<xs:sequence>
+		<xs:element name="firstName" type="xs:string"></xs:element>
+		<xs:element name="lastName">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"></xs:maxLength>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="birthDate">
+			<xs:simpleType>
+				<xs:restriction base="xs:date">
+					<xs:minInclusive value="1890-01-01"></xs:minInclusive>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="type">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="JURIDIC"></xs:enumeration>
+					<xs:enumeration value="NATURAL"></xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="email">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value=".+\@.+\..+"></xs:pattern>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		<xs:element name="notes" type="NotesType"></xs:element>
+		<xs:element name="customer-ref" minOccurs="0">
+			<xs:complexType>
+				<xs:attribute name="id" type="xs:integer"></xs:attribute>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="address" type="SimpleAddressType" minOccurs="0" maxOccurs="unbounded"></xs:element>
+	</xs:sequence>
+	<xs:attribute name="id" default="0" use="optional"></xs:attribute>
+</xs:complexType>
+<xs:complexType name="SimpleAddressType">
+	<xs:sequence>
+		<xs:element name="address1" type="xs:string" ></xs:element>
+		<xs:element name="city" type="xs:string" ></xs:element>
+		<xs:element name="country" type="xs:string" ></xs:element>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FullAddressType">
+	<xs:complexContent>
+		<xs:extension base="SimpleAddressType">
+			<xs:sequence>
+				<xs:element name="altitude" type="xs:double" minOccurs="0"></xs:element>
+				<xs:element name="latitude" type="xs:double" minOccurs="0"></xs:element>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="NotesType">
+	<xs:simpleContent>
+		<xs:extension base="xs:string"></xs:extension>
+	</xs:simpleContent>
+</xs:complexType>
+</xs:schema>

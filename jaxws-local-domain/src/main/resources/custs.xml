@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="customer.xsd">
+	<customer id="1">
+		<firstName>firstName</firstName>
+		<lastName>last Name</lastName>
+		<birthDate>2001-01-01</birthDate>
+		<type>JURIDIC</type>
+		<email>firstlast@gmail.com</email>
+		<notes>Available from 9:00 to 15:00</notes>
+		<address>
+			<address1>NTH 23</address1>
+			<city>Lima</city>
+			<country>Peru</country>
+		</address>
+	</customer>
+	<customer id="2">
+		<firstName>marco</firstName>
+		<lastName>zr</lastName>
+		<birthDate>1988-01-12</birthDate>
+		<type>NATURAL</type>
+		<email>marcozfr@gmail.com</email>
+		<notes>Does not have home plan</notes>
+	</customer>
+</customers>

@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.annotation.Resource;
-import javax.annotation.security.RolesAllowed;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -14,7 +13,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
-import javax.jws.soap.SOAPMessageHandler;
+import javax.jws.soap.SOAPBinding.Style;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.soap.MTOM;

@@ -18,5 +18,9 @@ http://java.boot.by/ocewsd6-guide/index.html
 Examn Topics:
 https://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&get_params=p_exam_id:1Z0-897
 
+Additional info:
+http://java.globinch.com/category/enterprise-java/web-services/jax-ws/
+
 VS Benefits
 https://app.vsaex.visualstudio.com/me?mkt=es-ES
+
