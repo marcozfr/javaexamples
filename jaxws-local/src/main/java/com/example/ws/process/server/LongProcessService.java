@@ -13,7 +13,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
-import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.ws.BindingType;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.soap.MTOM;
@@ -26,6 +26,7 @@ import com.example.ws.domain.files.File;
 @WebService(name="LongProcessPortType",portName="LongProcessPort",
     serviceName="LongProcessService",targetNamespace="http://process.ws.example.com")
 //@HandlerChain(file="handler-chain.xml")
+@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 //@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP11HTTP_MTOM_BINDING) does not work.
 @MTOM(enabled=true,threshold=3000)
 public class LongProcessService {
@@ -46,11 +47,7 @@ public class LongProcessService {
     WebServiceContext webServiceContext;
 
     @WebMethod(operationName="run", exclude=false)
-    public String run(String in) throws ProcessException {
-        
-        MessageContext messageContext = webServiceContext.getMessageContext();
-        
-        String pathInfo = (String) messageContext.get(MessageContext.QUERY_STRING);
+    public String run(String in, @WebParam(header=true,name="reference",targetNamespace="http://www.example.org/Headers") String reference) throws ProcessException {
         
         final int secs = ThreadLocalRandom.current().nextInt(1, 3);
 //        new Thread(() -> {
@@ -62,7 +59,7 @@ public class LongProcessService {
             logger.info("Done in " + Thread.currentThread().getName());
 //        }).start();
         
-        return "Wroking "+ in +" in background for " + secs+ " seconds";
+        return "Wroking "+ in +" in background for " + secs+ " seconds. Ref: " + reference;
     }
     
     @WebMethod

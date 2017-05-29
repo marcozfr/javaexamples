@@ -16,8 +16,10 @@
 		</handler-chains>
 	</endpoint>
 	
-	<endpoint implementation="com.example.ws.topdown.TopDownServiceBean" 
+	<endpoint implementation="com.example.ws.topdown.TopDownServiceImpl" 
 		name="TopDownService" wsdl="WEB-INF/wsdl/TopDownService.wsdl" 
+		service="{http://topdown.ws.example.com/TopDownService/}TopDownService" 
+		port="{http://topdown.ws.example.com/TopDownService/}TopDownServiceSOAP"
 		url-pattern="/TopDownService" enable-mtom="true">
 	</endpoint>
 	
