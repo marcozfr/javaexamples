@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", wsdlLocation = "http://localhost:8180/TopDownService?wsdl")
+@WebServiceClient(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", wsdlLocation = "file:/C:/opt/javaexamples/jaxws-local/src/main/webapp/WEB-INF/wsdl/TopDownService.wsdl")
 public class TopDownService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class TopDownService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8180/TopDownService?wsdl");
+            url = new URL("file:/C:/opt/javaexamples/jaxws-local/src/main/webapp/WEB-INF/wsdl/TopDownService.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

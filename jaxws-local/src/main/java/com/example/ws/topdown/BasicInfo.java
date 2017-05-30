@@ -1,9 +1,11 @@
 
 package com.example.ws.topdown;
 
+import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -32,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="image" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -44,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "firstName",
     "lastName",
-    "address"
+    "address",
+    "image"
 })
 @XmlRootElement(name = "BasicInfo")
 public class BasicInfo {
@@ -55,6 +59,9 @@ public class BasicInfo {
     protected String lastName;
     @XmlElement(required = true)
     protected BasicInfo.Address address;
+    @XmlElement(required = true)
+    @XmlMimeType("image/png")
+    protected DataHandler image;
 
     /**
      * Gets the value of the firstName property.
@@ -126,6 +133,30 @@ public class BasicInfo {
      */
     public void setAddress(BasicInfo.Address value) {
         this.address = value;
+    }
+
+    /**
+     * Gets the value of the image property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataHandler }
+     *     
+     */
+    public DataHandler getImage() {
+        return image;
+    }
+
+    /**
+     * Sets the value of the image property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DataHandler }
+     *     
+     */
+    public void setImage(DataHandler value) {
+        this.image = value;
     }
 
 

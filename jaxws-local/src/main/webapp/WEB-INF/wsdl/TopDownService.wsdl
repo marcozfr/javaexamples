@@ -42,6 +42,22 @@
 								</xsd:sequence>
 							</xsd:complexType>
 						</xsd:element>
+						<xsd:element name="image" type="xsd:base64Binary"
+							xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
+							xmime:expectedContentTypes="image/png" />
+							<!-- enable mtom: generated java classes will handle it with DataHandler if xmime is specified, otherwise it ll be handled with byte[]-->
+							<!-- 
+						<xsd:element name="documentation" 
+							xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:restriction base="xmime:base64Binary">
+										<xsd:attribute ref="xmime:contentType" use="required" />
+									</xsd:restriction>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						 -->
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
