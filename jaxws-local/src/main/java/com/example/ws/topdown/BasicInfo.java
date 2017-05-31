@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="image" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/>
+ *         &lt;element name="documentation" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
     "firstName",
     "lastName",
     "address",
-    "image"
+    "documentation"
 })
 @XmlRootElement(name = "BasicInfo")
 public class BasicInfo {
@@ -60,8 +60,8 @@ public class BasicInfo {
     @XmlElement(required = true)
     protected BasicInfo.Address address;
     @XmlElement(required = true)
-    @XmlMimeType("image/png")
-    protected DataHandler image;
+    @XmlMimeType("*/*")
+    protected DataHandler documentation;
 
     /**
      * Gets the value of the firstName property.
@@ -136,27 +136,27 @@ public class BasicInfo {
     }
 
     /**
-     * Gets the value of the image property.
+     * Gets the value of the documentation property.
      * 
      * @return
      *     possible object is
      *     {@link DataHandler }
      *     
      */
-    public DataHandler getImage() {
-        return image;
+    public DataHandler getDocumentation() {
+        return documentation;
     }
 
     /**
-     * Sets the value of the image property.
+     * Sets the value of the documentation property.
      * 
      * @param value
      *     allowed object is
      *     {@link DataHandler }
      *     
      */
-    public void setImage(DataHandler value) {
-        this.image = value;
+    public void setDocumentation(DataHandler value) {
+        this.documentation = value;
     }
 
 

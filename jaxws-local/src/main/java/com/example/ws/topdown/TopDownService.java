@@ -1,6 +1,8 @@
 
 package com.example.ws.topdown;
 
+import java.awt.Image;
+import javax.activation.DataHandler;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -25,20 +27,39 @@ public interface TopDownService {
 
 
     /**
+     * Example using SOAP With Attachments (SWARef) for response
      * 
      * @param in
      * @return
-     *     returns java.lang.String
+     *     returns javax.activation.DataHandler
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/downloadImage")
     @WebResult(name = "out", targetNamespace = "")
     @RequestWrapper(localName = "downloadImage", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImage")
     @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImageResponse")
-    public String downloadImage(
+    public DataHandler downloadImage(
         @WebParam(name = "in", targetNamespace = "")
         String in);
 
     /**
+     * Example using MIME Attachments with jaxws:enableMIMEContext:true (allows contentType resolution)
+     * 
+     * @param file
+     * @param parameters
+     * @return
+     *     returns java.awt.Image
+     */
+    @WebMethod(action = "http://topdown.ws.example.com/TopDownService/resizeImage")
+    @WebResult(name = "fileResponse", targetNamespace = "", partName = "fileResponse")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public Image resizeImage(
+        @WebParam(name = "resizeImageRequest", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
+        ResizeImageRequest parameters,
+        @WebParam(name = "file", targetNamespace = "", partName = "file")
+        Image file);
+
+    /**
+     * Example using MTOM (XOP:Include in SOAP)
      * 
      * @param basicInfo
      * @return

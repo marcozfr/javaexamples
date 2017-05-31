@@ -1,10 +1,13 @@
 
 package com.example.ws.topdown;
 
+import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttachmentRef;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -18,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="out" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="out" type="{http://ws-i.org/profiles/basic/1.1/xsd}swaRef"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,8 +37,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "downloadImageResponse")
 public class DownloadImageResponse {
 
-    @XmlElement(required = true)
-    protected String out;
+    @XmlElement(required = true, type = String.class)
+    @XmlAttachmentRef
+    @XmlSchemaType(name = "anyURI")
+    protected DataHandler out;
 
     /**
      * Gets the value of the out property.
@@ -45,7 +50,7 @@ public class DownloadImageResponse {
      *     {@link String }
      *     
      */
-    public String getOut() {
+    public DataHandler getOut() {
         return out;
     }
 
@@ -57,7 +62,7 @@ public class DownloadImageResponse {
      *     {@link String }
      *     
      */
-    public void setOut(String value) {
+    public void setOut(DataHandler value) {
         this.out = value;
     }
 

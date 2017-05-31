@@ -69,4 +69,12 @@ public class ObjectFactory {
         return new RegisterUserResponse();
     }
 
+    /**
+     * Create an instance of {@link ResizeImageRequest }
+     * 
+     */
+    public ResizeImageRequest createResizeImageRequest() {
+        return new ResizeImageRequest();
+    }
+
 }
