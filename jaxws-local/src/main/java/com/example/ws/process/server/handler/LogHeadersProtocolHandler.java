@@ -32,6 +32,9 @@ public class LogHeadersProtocolHandler implements SOAPHandler<SOAPMessageContext
 					logger.info("- Namespace: " + header.getNamespaceURI());
 					logger.info("- Prefix: " + header.getPrefix());
 					logger.info("- Value: " + header.getValue());
+					logger.info("- Role(1.2) " + header.getRole()); // for SOAP 1.2
+					logger.info("- Actor(1.1) " + header.getActor()); // for SOAP 1.1
+					logger.info("- MustUnderstand " + header.getMustUnderstand()); 
 				}
 			} catch (SOAPException e) {
 				// TODO Auto-generated catch block

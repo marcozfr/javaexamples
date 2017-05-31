@@ -20,9 +20,9 @@ public class LogMessageHandler implements SOAPHandler<SOAPMessageContext> {
 	public boolean handleMessage(SOAPMessageContext context) {
 		Boolean isOutRequest = (Boolean)context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
 		if(isOutRequest){
-			logger.info("Ongoing Message : \n");
-		}else{
 			logger.info("Return Message : \n");
+		}else{
+			logger.info("Incoming Message : \n");
 		}
 		WsUtils.logSOAPMessage(logger, context.getMessage());
 		return true;
