@@ -167,11 +167,7 @@
 		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="TopDownService">
-<<<<<<< HEAD
-		<wsdl:port binding="tns:TopDownServiceSOAP" name="TopDownServicePort">
-=======
 		<wsdl:port binding="tns1:TopDownServiceSOAP" name="TopDownServiceSOAP">
->>>>>>> 0165392c4a5c5f8ee406832051bda7e640257d63
 			<soap:address location="http://topdown.ws.example.com/" />
 		</wsdl:port>
 	</wsdl:service>
