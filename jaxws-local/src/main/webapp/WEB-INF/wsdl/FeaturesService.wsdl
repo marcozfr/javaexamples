@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.example.org/FeaturesService/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:type="http://www.example.org/FeaturesTypes" name="FeaturesService"
+	targetNamespace="http://www.example.org/FeaturesService/">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.org/FeaturesTypes">
+			<xsd:complexType name="Numbers">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="Number" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="number" type="xsd:int"></xsd:element>
+			<xsd:element name="numbers" type="type:Numbers"></xsd:element>
+			<xsd:element name="numbersFaultMessage" type="xsd:string"></xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="getFibNumbers">
+		<wsdl:part name="number" element="type:number"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="getFibNumbersResponse">
+		<wsdl:part name="numbers" element="type:numbers"></wsdl:part>
+	</wsdl:message>
+	
+	<wsdl:message name="getFibNumbersRPC">
+		<wsdl:part name="number" type="xsd:int"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="getFibNumbersRPCResponse">
+		<wsdl:part name="numbers" type="type:Numbers"></wsdl:part>
+	</wsdl:message>
+	
+	<wsdl:message name="fibNumbersFault">
+		<wsdl:part name="messageDetails" element="type:numbersFaultMessage"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="FeaturesPortType" >
+		<wsdl:operation name="getFibNumbers" parameterOrder="number numbers">
+			<wsdl:input message="tns:getFibNumbers" name="inputNumber" ></wsdl:input>
+			<wsdl:output message="tns:getFibNumbersResponse" name="outputNumbers" ></wsdl:output>
+			<wsdl:fault message="tns:fibNumbersFault" name="numbersFault" ></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:portType name="FeaturesRPCPortType">
+		<wsdl:operation name="getFibNumbersRPC" parameterOrder="number numbers">
+			<wsdl:input message="tns:getFibNumbersRPC" name="inputNumberRPC" ></wsdl:input>
+			<wsdl:output message="tns:getFibNumbersRPCResponse" name="outputNumbersRPC" ></wsdl:output>
+			<wsdl:fault message="tns:fibNumbersFault" name="numbersFault" ></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="FeaturesSOAPBindingRPC" type="tns:FeaturesRPCPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getFibNumbersRPC" >
+			<soap:operation soapAction="fibNumbersSOAPAction" />
+			<wsdl:input>
+				<soap:body parts="number" use="literal" namespace="http://www.example.org/FeaturesTypes" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="numbers" use="literal" namespace="http://www.example.org/FeaturesTypes"/>
+			</wsdl:output>
+			<wsdl:fault name="numbersFault">
+				<soap:fault name="numbersFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:binding name="FeaturesSOAPBindingDocument" type="tns:FeaturesPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getFibNumbers" >
+			<soap:operation soapAction="fibNumbersSOAPAction" />
+			<wsdl:input>
+				<soap:body parts="number" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="numbers" use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="numbersFault">
+				<soap:fault name="numbersFault" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="FeaturesService">
+		<wsdl:port name="FeaturesServiceRPCPort" binding="tns:FeaturesSOAPBindingRPC">
+			<soap:address location="http://localhost:8180/jaxws-local/FeaturesRpcService"/>
+		</wsdl:port>
+		<wsdl:port name="FeaturesServiceDocumentPort" binding="tns:FeaturesSOAPBindingDocument">
+			<soap:address location="http://localhost:8180/jaxws-local/FeaturesDocumentService"/>
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
