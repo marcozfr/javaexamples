@@ -7,7 +7,7 @@ import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
 @WebService(portName="TopDownServicePort", 
-	serviceName="TopDownServiceEndpoint", name="TopDownServicePortType", 
+serviceName="TopDownService", name="TopDownServicePortType", 
 	targetNamespace="http://topdown.ws.example.com/TopDownService/",endpointInterface="com.example.ws.topdown.TopDownService")
 @SOAPBinding(parameterStyle=ParameterStyle.BARE,style=Style.DOCUMENT,use=Use.LITERAL)
 public class TopDownServiceBean implements TopDownService{
