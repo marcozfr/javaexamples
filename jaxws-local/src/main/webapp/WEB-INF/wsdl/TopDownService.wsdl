@@ -10,9 +10,6 @@
 			xmlns:tns="http://www.example.org/ServiceTypes" targetNamespace="http://www.example.org/ServiceTypes"
 			xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd">
 
-			<xsd:import namespace="http://ws-i.org/profiles/basic/1.1/xsd"
-				schemaLocation="swaref.xsd"></xsd:import>
-			<!-- schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd"/> -->
 			<xsd:element name="resizeImageRequest">
 				<xsd:complexType>
 					<xsd:sequence>

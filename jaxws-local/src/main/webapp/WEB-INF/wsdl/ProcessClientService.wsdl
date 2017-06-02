@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.com/ProcessClientService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcessClientService"
+	targetNamespace="http://www.example.com/ProcessClientService/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.example.com/ProcessClientService/">
+			<xsd:element name="processResumedRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="processId" type="xsd:int"></xsd:element>
+						<xsd:element name="processStatus" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="processResumedResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="executionStatus" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="processResumed">
+		<wsdl:part name="processResumedRequest" element="tns:processResumedRequest" />
+	</wsdl:message>
+	<wsdl:message name="processResumedResponse">
+		<wsdl:part name="processResumedResponse" element="tns:processResumedResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ProcessClientService">
+		<wsdl:operation name="processResumed">
+			<wsdl:input message="tns:processResumed"></wsdl:input>
+			<wsdl:output message="tns:processResumedResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="ProcessClientServiceSOAP" type="tns:ProcessClientService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="processResumed">
+			<soap:operation
+				soapAction="http://www.example.com/ProcessClientService/processResumed" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ProcessClientService">
+		<wsdl:port binding="tns:ProcessClientServiceSOAP" name="ProcessClientServiceSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

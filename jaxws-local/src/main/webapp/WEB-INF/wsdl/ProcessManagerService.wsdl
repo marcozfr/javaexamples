@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://www.example.com/ProcessManagerService/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:wsa="http://www.w3.org/2005/08/addressing"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	name="ProcessManagerService" targetNamespace="http://www.example.com/ProcessManagerService/">
+	<wsp:Policy>
+    	<wsam:Addressing>
+    		<wsp:Policy wsp:Optional="false"> 
+    			<wsam:NonAnonymousResponses/>
+    		</wsp:Policy>
+    	</wsam:Addressing>
+    </wsp:Policy>
+    <!-- 
+    <wsp:Policy>
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing>
+                    <wsp:Policy/>
+                </wsam:Addressing>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+     -->
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.com/ProcessManagerService/">
+    	<xsd:element name="startProcessRequest">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processType" type="xsd:string" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="startProcessResponse">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processStatus" type="xsd:string" />
+    				<xsd:element name="processId" type="xsd:int" />
+    				<xsd:element name="executionResult" type="xsd:string" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="checkProcessStatusRequest">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processId" type="xsd:int" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="checkProcessStatusResponse">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processStatus" type="xsd:string" />
+    				<xsd:element name="executionResult" type="xsd:string" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="finishProcessRequest">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processId" type="xsd:int" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="finishProcessResponse">
+    		<xsd:complexType>
+    			<xsd:sequence>
+    				<xsd:element name="processStatus" type="xsd:string" />
+    				<xsd:element name="executionResult" type="xsd:string" />
+    			</xsd:sequence>
+    		</xsd:complexType>
+    	</xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="startProcessRequest">
+  	<wsdl:part name="parameters" element="tns:startProcessRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startProcessResponse">
+  	<wsdl:part name="parameters" element="tns:startProcessResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkProcessStatusRequest">
+  	<wsdl:part name="parameters" element="tns:checkProcessStatusRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkProcessStatusResponse">
+  	<wsdl:part name="parameters" element="tns:checkProcessStatusResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="finishProcessRequest">
+  	<wsdl:part name="parameters" element="tns:finishProcessRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="finishProcessResponse">
+  	<wsdl:part name="parameters" element="tns:finishProcessResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProcessManagerService">
+    <wsdl:operation name="startProcess">
+      <wsdl:input message="tns:startProcessRequest" name="startProcessRequest" wsam:Action="http://www.example.com/ProcessManagerService/startProcessRequest"/>
+      <wsdl:output message="tns:startProcessResponse" name="startProcessResponse" wsam:Action="http://www.example.com/ProcessManagerService/startProcessResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="checkProcessStatus">
+      <wsdl:input message="tns:checkProcessStatusRequest" wsam:Action="checkProcessRequest" />
+      <wsdl:output message="tns:checkProcessStatusResponse" wsam:Action="checkProcessResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="finishProcess">
+      <wsdl:input message="tns:finishProcessRequest" wsam:Action="http://www.example.com/finishProcessRequest"/>
+      <wsdl:output message="tns:finishProcessResponse" wsam:Action="http://www.example.com/finishProcessResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProcessManagerServiceSOAP" type="tns:ProcessManagerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="startProcess">
+      <soap:operation soapAction="http://www.example.com/ProcessManagerService/startProcess"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkProcessStatus">
+      <soap:operation soapAction="http://www.example.com/ProcessManagerService/checkProcessStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="finishProcess">
+      <soap:operation soapAction="http://www.example.com/ProcessManagerService/finishProcess"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcessManagerService">
+    <wsdl:port binding="tns:ProcessManagerServiceSOAP" name="ProcessManagerServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
