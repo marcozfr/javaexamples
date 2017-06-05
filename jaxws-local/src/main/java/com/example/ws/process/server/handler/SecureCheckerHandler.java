@@ -18,15 +18,12 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.example.ws.process.server.validator.UsersPasswordValidator;
 import com.sun.xml.wss.ProcessingContext;
 import com.sun.xml.wss.XWSSProcessor;
 import com.sun.xml.wss.XWSSProcessorFactory;
 import com.sun.xml.wss.XWSSecurityException;
 import com.sun.xml.wss.impl.callback.PasswordValidationCallback;
-import com.sun.xml.wss.impl.callback.PasswordValidationCallback.DigestPasswordRequest;
-import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidationException;
-import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidator;
-import com.sun.xml.wss.impl.callback.PasswordValidationCallback.Request;
 import com.sun.xml.wss.impl.callback.TimestampValidationCallback;
 import com.sun.xml.wss.impl.callback.TimestampValidationCallback.TimestampValidationException;
 import com.sun.xml.wss.impl.callback.TimestampValidationCallback.TimestampValidator;
@@ -48,19 +45,7 @@ public class SecureCheckerHandler implements SOAPHandler<SOAPMessageContext> {
 					for (int i = 0; i < callbacks.length; i++) {
 						if(callbacks[i] instanceof PasswordValidationCallback){
 							PasswordValidationCallback pwdCback = (PasswordValidationCallback)callbacks[i];
-							pwdCback.setValidator(new PasswordValidator() {
-								
-								@Override
-								public boolean validate(Request arg0) throws PasswordValidationException {
-									if(((DigestPasswordRequest)arg0).getUsername().equals("adm")){
-										logger.info("Validating, user is adm");
-										return true;
-									}else{
-										logger.info("Validating, user is not adm");
-										return false;
-									}
-								}
-							});
+							pwdCback.setValidator(new UsersPasswordValidator());
 						}
 						if(callbacks[i] instanceof TimestampValidationCallback){
 							TimestampValidationCallback tmpBack = (TimestampValidationCallback)callbacks[i];

@@ -30,51 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CheckProcessStatusResponse }
+     * Create an instance of {@link ProcessResumedRequest }
      * 
      */
-    public CheckProcessStatusResponse createCheckProcessStatusResponse() {
-        return new CheckProcessStatusResponse();
+    public ProcessResumedRequest createProcessResumedRequest() {
+        return new ProcessResumedRequest();
     }
 
     /**
-     * Create an instance of {@link FinishProcessResponse }
+     * Create an instance of {@link ProcessResumedResponse }
      * 
      */
-    public FinishProcessResponse createFinishProcessResponse() {
-        return new FinishProcessResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartProcessResponse }
-     * 
-     */
-    public StartProcessResponse createStartProcessResponse() {
-        return new StartProcessResponse();
-    }
-
-    /**
-     * Create an instance of {@link StartProcessRequest }
-     * 
-     */
-    public StartProcessRequest createStartProcessRequest() {
-        return new StartProcessRequest();
-    }
-
-    /**
-     * Create an instance of {@link FinishProcessRequest }
-     * 
-     */
-    public FinishProcessRequest createFinishProcessRequest() {
-        return new FinishProcessRequest();
-    }
-
-    /**
-     * Create an instance of {@link CheckProcessStatusRequest }
-     * 
-     */
-    public CheckProcessStatusRequest createCheckProcessStatusRequest() {
-        return new CheckProcessStatusRequest();
+    public ProcessResumedResponse createProcessResumedResponse() {
+        return new ProcessResumedResponse();
     }
 
 }

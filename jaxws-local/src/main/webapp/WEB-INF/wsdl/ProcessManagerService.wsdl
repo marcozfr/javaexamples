@@ -7,14 +7,17 @@
 	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
 	xmlns:wsa="http://www.w3.org/2005/08/addressing"
 	xmlns:wsp="http://www.w3.org/ns/ws-policy"
+	xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	
 	name="ProcessManagerService" targetNamespace="http://www.example.com/ProcessManagerService/">
-	<wsp:Policy>
-    	<wsam:Addressing>
+	<!-- 
+	<wsam:Addressing>
     		<wsp:Policy wsp:Optional="false"> 
     			<wsam:NonAnonymousResponses/>
     		</wsp:Policy>
     	</wsam:Addressing>
-    </wsp:Policy>
+    -->
     <!-- 
     <wsp:Policy>
         <wsp:ExactlyOne>
@@ -110,6 +113,31 @@
   </wsdl:portType>
   <wsdl:binding name="ProcessManagerServiceSOAP" type="tns:ProcessManagerService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:Policy wsu:Id="ProcessManagerBindingPolicy">
+    	<wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing>
+                    <wsp:Policy/>
+                </wsam:Addressing>
+                
+                <sp:SupportingTokens>
+                	<wsp:Policy>
+                		<sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+							<wsp:Policy>
+								<sp:WssUsernameToken10/>
+							</wsp:Policy>
+                		</sp:UsernameToken>
+                	</wsp:Policy>
+                	<wsss:ValidatorConfiguration wspp:visibility="private" 
+                		xmlns:wsss="http://schemas.sun.com/2006/03/wss/server"
+                		xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy">
+                		<wsss:Validator name="usernameValidator"
+                			classname="com.example.ws.process.server.validator.UsersPasswordValidator" />
+                	</wsss:ValidatorConfiguration>
+                </sp:SupportingTokens>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
     <wsdl:operation name="startProcess">
       <soap:operation soapAction="http://www.example.com/ProcessManagerService/startProcess"/>
       <wsdl:input>
