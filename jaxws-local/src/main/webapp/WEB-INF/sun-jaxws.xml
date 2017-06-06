@@ -16,12 +16,6 @@
 		</handler-chains>
 	</endpoint>
 	
-	<endpoint implementation="com.example.ws.process.manager.ProcessManagerServiceImpl" 
-		name="ProcessManagerService" wsdl="WEB-INF/wsdl/ProcessManagerService.wsdl" 
-		service="{http://www.example.com/ProcessManagerService/}ProcessManagerService" 
-		port="{http://www.example.com/ProcessManagerService/}ProcessManagerServiceSOAP"
-		url-pattern="/ProcessManagerService" >
-	
 	<endpoint implementation="com.example.ws.topdown.TopDownServiceImpl" 
 		name="TopDownService" wsdl="WEB-INF/wsdl/TopDownService.wsdl" 
 		service="{http://topdown.ws.example.com/TopDownService/}TopDownService" 
