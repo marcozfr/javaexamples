@@ -77,4 +77,12 @@ public class ObjectFactory {
         return new ResizeImageRequest();
     }
 
+    /**
+     * Create an instance of {@link ResizeImageResponse }
+     * 
+     */
+    public ResizeImageResponse createResizeImageResponse() {
+        return new ResizeImageResponse();
+    }
+
 }

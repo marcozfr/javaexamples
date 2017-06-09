@@ -2,19 +2,30 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://www.example.org/ServiceTypes" xmlns:tns1="http://topdown.ws.example.com/TopDownService/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" name="TopDownService"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	name="TopDownService"
 	targetNamespace="http://topdown.ws.example.com/TopDownService/">
 
 	<wsdl:types>
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			xmlns:tns="http://www.example.org/ServiceTypes" targetNamespace="http://www.example.org/ServiceTypes"
-			xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd">
-
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://www.example.org/ServiceTypes" 
+			xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd"
+			targetNamespace="http://www.example.org/ServiceTypes">
+			<xsd:import namespace="http://ws-i.org/profiles/basic/1.1/xsd" 
+				schemaLocation="file:///c:/opt/javaexamples/schema/swaref.xsd" />
 			<xsd:element name="resizeImageRequest">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="targetHeight" type="xsd:int" />
 						<xsd:element name="targetWidth" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="resizeImageResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="status" type="xsd:string"></xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -65,7 +76,7 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-		</schema>
+		</xsd:schema>
 	</wsdl:types>
 	
 	<wsdl:message name="resizeImageRequest">
@@ -73,6 +84,7 @@
 		<wsdl:part type="xsd:base64Binary" name="file" />
 	</wsdl:message>
 	<wsdl:message name="resizeImageResponse">
+		<wsdl:part element="tns:resizeImageResponse" name="status"></wsdl:part>
 		<wsdl:part type="xsd:base64Binary" name="fileResponse" />
 	</wsdl:message>
 	
@@ -144,7 +156,7 @@
 			<wsdl:output>
 				<mime:multipartRelated>
 					<mime:part>
-						<soap:body parts="" use="literal"/> 
+						<soap:body parts="status" use="literal"/> 
 					</mime:part>
 					<mime:part>
 						<mime:content part="fileResponse" type="image/jpeg"/>

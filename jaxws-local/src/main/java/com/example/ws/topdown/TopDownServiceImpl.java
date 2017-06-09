@@ -9,9 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -129,8 +127,16 @@ public class TopDownServiceImpl implements TopDownService {
 	}
 	
 	@Override
-	public Image resizeImage(ResizeImageRequest parameters, Image file) {
-		return TopDownServiceImpl.resizeImage((BufferedImage)file, parameters.getTargetWidth(), parameters.getTargetHeight());
+	public void resizeImage(ResizeImageRequest parameters, Image file,Holder<ResizeImageResponse> response, Holder<Image> responseImg) {
+		response.value = new ResizeImageResponse(){
+			{
+				setStatus("OK");
+			}
+		};
+		
+		Image img = TopDownServiceImpl.resizeImage((BufferedImage)file, parameters.getTargetWidth(), parameters.getTargetHeight());
+		responseImg.value = img;
+		
 	}
 
 }

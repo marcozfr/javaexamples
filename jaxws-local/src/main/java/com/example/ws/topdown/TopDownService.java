@@ -9,6 +9,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -46,17 +47,20 @@ public interface TopDownService {
      * 
      * @param file
      * @param parameters
-     * @return
-     *     returns java.awt.Image
+     * @param status
+     * @param fileResponse
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/resizeImage")
-    @WebResult(name = "fileResponse", targetNamespace = "", partName = "fileResponse")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-    public Image resizeImage(
+    public void resizeImage(
         @WebParam(name = "resizeImageRequest", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
         ResizeImageRequest parameters,
         @WebParam(name = "file", targetNamespace = "", partName = "file")
-        Image file);
+        Image file,
+        @WebParam(name = "resizeImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", mode = WebParam.Mode.OUT, partName = "status")
+        Holder<ResizeImageResponse> status,
+        @WebParam(name = "fileResponse", targetNamespace = "", mode = WebParam.Mode.OUT, partName = "fileResponse")
+        Holder<Image> fileResponse);
 
     /**
      * Example using MTOM (XOP:Include in SOAP)
