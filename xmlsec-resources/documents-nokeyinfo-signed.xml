@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+<documents>
+	<document id="100232">
+		<ref id="1222"/>
+		<owner>Bob</owner>
+	</document>
+	<document id="100233">
+		<ref id="1222"/>
+		<owner>Alice</owner>
+	</document>
+</documents>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <SignedInfo>
+   <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+    <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+     <Reference URI="">
+      <Transforms>
+       <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+      </Transforms>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>m8GQTiw9LYvhjzuG/To2Q2Hbd68=</DigestValue>
+     </Reference>
+  </SignedInfo>
+  <SignatureValue>mDVLztUWbusaSdyR8DLIvYmUw498zBgR60hacbJ0ZygHhK08viHrIMPUe0M+Jx1d
+qR9lUcU6yO/j4AmuODjhdl9g4fCGNrxitOON5DoGEEb8txwbyyKwWTkNgNFxxUOq
+YTHNG+RXfSfchh4dITItLApMC6Cux9yljx59gi/5VPuuRuudUt8axK293CXBTJ5/
+0tjzJZKp0b6k5+PAFT/7oBWsxwFJsg9+CHpeMUFTjCfnx5qteTcUzxWdEPdSWVTv
+0Id/cnoUNvwMsYHnj6QbNieVgG8nqW/wVR0HV6PhALYyuiwipiTxhVA2pLnsIdTK
+Ud6SiBYOcsVzfKaLMkmzcQ==</SignatureValue>
+</Signature>
+</root>

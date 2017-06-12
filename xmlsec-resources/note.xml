@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<note xml:id="TheNote">
+		<to>Tove</to>
+		<from>Jani</from>
+		<heading>Reminder</heading>
+		<body>Don't forget me this weekend!</body>
+	</note>
+	<Signature Id="NoteSignature" xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/2006/12/xml-c14n11"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference URI="#TheNote">
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue/>
+			</Reference>
+			<Reference URI="#SignaturePropertiesObject" Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties">
+				<Transforms>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue/>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue/>
+		<KeyInfo>
+			<KeyValue />
+		</KeyInfo>
+		<Object>
+			<SignatureProperties>
+				<SignatureProperty Id="SignaturePropertiesObject" Target="#NoteSignature">
+					<timestamp xmlns="http://example.org/timestamp">
+						<date>20170404</date>
+						<time>13:23:44:44</time>
+					</timestamp>
+				</SignatureProperty>
+			</SignatureProperties>
+		</Object>
+	</Signature>
+</root>

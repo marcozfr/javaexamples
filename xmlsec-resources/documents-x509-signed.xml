@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<root>
+<documents>
+	<document id="100232">
+		<ref id="1222"/>
+		<owner>Bob</owner>
+	</document>
+	<document id="100233">
+		<ref id="1222"/>
+		<owner>Alice</owner>
+	</document>
+</documents>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <SignedInfo>
+   <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+    <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+     <Reference URI="">
+      <Transforms>
+       <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+      </Transforms>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>m8GQTiw9LYvhjzuG/To2Q2Hbd68=</DigestValue>
+     </Reference>
+  </SignedInfo>
+  <SignatureValue>f8wH3JkdaJBL7JpjISxGBYBOh/B5bt8S3Tv1K48CZpmmrDebpTQo3YZ7XY60d40p
+A3mJDk9T0QPjmJG9AV/B1AsLd1vHUt9fD+k1R30bkUp2CPtZT7iuleyCNlhveQVp
+j4ErPVlDRO5Ve1ceDWit5NI9lFKqcHQxBFbZkLQzd6c=</SignatureValue>
+  <KeyInfo>
+   <X509Data>
+    
+    
+    
+   <X509Certificate>MIICVjCCAb+gAwIBAgIEQOCQAjANBgkqhkiG9w0BAQsFADBeMQswCQYDVQQGEwJQ
+RTENMAsGA1UECBMETGltYTENMAsGA1UEBxMETGltYTEKMAgGA1UEChMBTTEOMAwG
+A1UECxMFTVRlY2gxFTATBgNVBAMTDE1hcmNvIEZsb3JlczAeFw0xNzA2MTAxNzU5
+MzVaFw0xODA2MTAxNzU5MzVaMF4xCzAJBgNVBAYTAlBFMQ0wCwYDVQQIEwRMaW1h
+MQ0wCwYDVQQHEwRMaW1hMQowCAYDVQQKEwFNMQ4wDAYDVQQLEwVNVGVjaDEVMBMG
+A1UEAxMMTWFyY28gRmxvcmVzMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCk
+yE00hEHKWQlIW/W1VKnvRC8TubR9knAnAmCOwiKbZbbOSqAblEFyuAxD9IIKqf/S
+getR5iSH27qKfjkemhwO7tVrQlcxD6D6NsJERXIXOWRaeYKyD7bfXkDFNIIZI/oa
+kTyOEhBMMXoQG6BBtXAsANCjKFsy6C6BKn+c/Ha8FQIDAQABoyEwHzAdBgNVHQ4E
+FgQUiXLVr2ipgxdPnJHMJNm5scdSqQAwDQYJKoZIhvcNAQELBQADgYEAkqJjCeg/
+ACrwup02qWO9FkNYZvmuoqFCnoyTgiKoYbnaZk6kl/FcBU/hZGl8z/ke0G5z38+0
+Tm46GgTlDGNzWrbLeV4MbZpnCuOQT3CcfgznFMFnm3PV3hLkeOGREy9IHS3SHe/8
+oJLHer3kN3BKgWn0Uzq06XWVAGV3Uv4bW+c=</X509Certificate>
+<X509SubjectName>CN=Marco Flores,OU=MTech,O=M,L=Lima,ST=Lima,C=PE</X509SubjectName>
+<X509IssuerSerial>
+<X509IssuerName>CN=Marco Flores,OU=MTech,O=M,L=Lima,ST=Lima,C=PE</X509IssuerName>
+<X509SerialNumber>1088458754</X509SerialNumber>
+</X509IssuerSerial>
+</X509Data>
+   <KeyValue>
+<RSAKeyValue>
+<Modulus>
+pMhNNIRBylkJSFv1tVSp70QvE7m0fZJwJwJgjsIim2W2zkqgG5RBcrgMQ/SCCqn/
+0oHrUeYkh9u6in45HpocDu7Va0JXMQ+g+jbCREVyFzlkWnmCsg+2315AxTSCGSP6
+GpE8jhIQTDF6EBugQbVwLADQoyhbMugugSp/nPx2vBU=
+</Modulus>
+<Exponent>
+AQAB
+</Exponent>
+</RSAKeyValue>
+</KeyValue>
+  </KeyInfo>
+</Signature>
+</root>

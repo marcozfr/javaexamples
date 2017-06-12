@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<root>
+<documents>
+	<document id="100232">
+		<ref id="1222"/>
+		<owner>Bob</owner>
+	</document>
+	<document id="100233">
+		<ref id="1222"/>
+		<owner>Alice</owner>
+	</document>
+</documents>
+<confidential xml:id="signed-by-board">
+	<keyPhrase>x88494mjfkju4mmdsd</keyPhrase>
+</confidential>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <SignedInfo>
+   <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+    <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+     <Reference URI="#signed-by-board">
+      <Transforms>
+       <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+      </Transforms>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>4B8Y4klcKHL6bA0yWTDmwMT7hAI=</DigestValue>
+     </Reference>
+  </SignedInfo>
+  <SignatureValue>vXZHK7VFfPkXPoR3Y0REgtfylazPO1L1k8NXzsuKk2JTIS1HdiAluVdtZLp21GU/
+6A3HkUPsZ0ZTMiXgZjPdNWDpYhSbOz/wQYA0Pv5DLFa/CepNXWYlKdcZ09dN9O44
+omtOUQE+kvzWRGM/iY0bTJDBk/fdOR83ggTggwbTdcenEuxAD6qLQ22rbE/MQ4jP
+3eU+BC7P1riT8miqgQlCLtoHH78VsVViBsGQiBAMZ8FwVO/Y41Xky4Dj0GrFCPAg
+J96Ub0BEemyfjKAoY6+M8aPy4r0zHLi3votgVLkTxWy3RIVfw/RjGC45Rp6TEU1K
+EBq4jCd9+I7fmB9FXOL3Zg==</SignatureValue>
+  <KeyInfo>
+   <KeyValue>
+<RSAKeyValue>
+<Modulus>
+yc8zNHq3mFkE7WE/tCNawN3/pxTkG8fqo/AuZDX2rBGD2DQ3bzR+DZEDhDRMwky4
+J+dNRB0XoEtQK7f63L/QPYXkm3SbmrEdK5lPbrkDWd5HgbHXT7LCizSs6Nzd4+ur
+v3IqVKmYaHknLOGHMRN4Aa5mqL2FR9tm9hFTy+zypnS8AeQYotcblYWlcoYG4YBk
+hD+47YhNf1c8txjDERaR3cW7/nzzyDYSSOFibdwIgOtNfV0NnG9cDkdWkcCyyQfm
+8M7f1Jhnf6ztq2HLDxENrzN+tgNRv7PaLrfoL7VBJRFvyTZwgUbSx2wx3RxrUNVM
+sao/Z8RiS6ykrqGYc0BFzQ==
+</Modulus>
+<Exponent>
+AQAB
+</Exponent>
+</RSAKeyValue>
+</KeyValue>
+  </KeyInfo>
+</Signature>
+</root>
