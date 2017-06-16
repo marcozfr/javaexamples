@@ -44,6 +44,9 @@ xmlsec --sign --output documents-x509-signed.xml --pkcs12 marcof.p12 --pwd store
 ## Sign document using enveloping-signature with Object content
 ## payment-object-enveloping.xml
 
+## Encrypt document using tripledes symmaetric alg & RSA asymmetric alg
+## payment-encrypted.xml / encryption-template.xml
+xmlsec encrypt --pubkey-pem pub-key.pem --session-key des-192 --xml-data payment.xml --output payment-encrypted.xml encryption-template.xml
 
 
    
