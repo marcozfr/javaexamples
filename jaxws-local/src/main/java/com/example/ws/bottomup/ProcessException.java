@@ -1,4 +1,4 @@
-package com.example.ws.process.server;
+package com.example.ws.bottomup;
 
 public class ProcessException extends Exception {
 

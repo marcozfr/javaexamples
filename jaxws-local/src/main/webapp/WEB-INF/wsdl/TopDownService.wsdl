@@ -60,8 +60,7 @@
 						<xsd:element name="documentation" type="xsd:base64Binary"
 							xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
 							xmime:expectedContentTypes="*/*" />
-						<!-- generated java classes will handle it with DataHandler 
-							if xmime is specified, otherwise it ll be handled with byte[] -->
+						<!-- generated java classes will handle it with DataHandler if xmime is specified, otherwise it ll be handled with byte[] -->
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -96,7 +95,7 @@
 	</wsdl:message>
 	
 	<wsdl:message name="registerUserRequest">
-		<wsdl:part name="basicInfo" element="tns:BasicInfo"></wsdl:part>
+		<wsdl:part name="registerUser" element="tns:BasicInfo"></wsdl:part>
 	</wsdl:message>
 	<wsdl:message name="registerUserResponse">
 		<wsdl:part name="parameters" element="tns:registerUserResponse"></wsdl:part>
@@ -113,9 +112,10 @@
 			<wsdl:input name="downloadImageRequest" message="tns1:downloadImageRequest" />
 			<wsdl:output name="downloadImageRespone" message="tns1:downloadImageResponse" />
 		</wsdl:operation>
-		<wsdl:operation name="registerUser" parameterOrder="basicInfo">
+		<wsdl:operation name="registerUser">
 			<wsdl:documentation>Example using MTOM (XOP:Include in SOAP)</wsdl:documentation>
-			<wsdl:input message="tns1:registerUserRequest"></wsdl:input>
+			<wsdl:input message="tns1:registerUserRequest" ></wsdl:input> 
+			<!-- will not comply with Wrapper-style requirements. Schema Type of this param does not have the same name as the op name . Spec 2.3.1.2-->
 			<wsdl:output message="tns1:registerUserResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -146,9 +146,7 @@
 						<soap:body parts="parameters" use="literal"/>
 					</mime:part>
 					<mime:part>
-						<!-- watch out: JAXWS-RI-> SOAP MIME, Content-ID needs to have the following format
-								to work in accordance with WSI-Attachment Profile: <part-name>=somereallybignumberlikeauuid@example.com 
-								otherwise it wont work in JAXWS-RI -->
+						<!-- watch out: JAXWS-RI-> SOAP MIME, Content-ID needs to have the following format to work in accordance with WSI-Attachment Profile: <part-name>=somereallybignumberlikeauuid@example.com  otherwise it wont work in JAXWS-RI -->
 						<mime:content part="file" type="image/jpeg"/>
 					</mime:part>
 				</mime:multipartRelated>
@@ -178,9 +176,6 @@
 	<wsdl:service name="TopDownService">
 		<wsdl:port name="TopDownServiceSOAP" binding="tns1:TopDownServiceSOAP">
 			<soap:address location="http://topdown.ws.example.com/" />
-		</wsdl:port>
-		<wsdl:port name="TopDownServiceSOAP1" binding="tns1:TopDownServiceSOAP">
-			<soap:address location="http://localhost:9900/"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

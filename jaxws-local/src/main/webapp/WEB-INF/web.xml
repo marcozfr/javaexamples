@@ -24,6 +24,7 @@
 	 	<role-name>admin</role-name>
 	 </security-role>
 	 
+	 <!-- 
 	 <security-constraint>
 	 	<web-resource-collection>
 	 		<web-resource-name>ssl transport</web-resource-name>
@@ -35,7 +36,7 @@
 	 		<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 	 	</user-data-constraint>
 	 </security-constraint>
-	 
+	  -->
 	 <security-constraint>
 	 	<web-resource-collection>
 	 		<web-resource-name>admin jaxws</web-resource-name>

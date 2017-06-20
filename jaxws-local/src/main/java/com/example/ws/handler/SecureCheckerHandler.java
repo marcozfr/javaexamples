@@ -1,4 +1,4 @@
-package com.example.ws.process.server.handler;
+package com.example.ws.handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,7 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.process.server.validator.UsersPasswordValidator;
+import com.example.ws.validator.UsersPasswordValidator;
 import com.sun.xml.wss.ProcessingContext;
 import com.sun.xml.wss.XWSSProcessor;
 import com.sun.xml.wss.XWSSProcessorFactory;

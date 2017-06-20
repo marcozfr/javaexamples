@@ -1,4 +1,4 @@
-package com.example.ws.process.server.handler;
+package com.example.ws.handler;
 
 import java.util.Set;
 

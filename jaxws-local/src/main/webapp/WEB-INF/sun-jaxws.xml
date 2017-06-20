@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints version="2.0"
 	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
-	<endpoint implementation="com.example.ws.process.server.LongProcessService" 
+	<endpoint implementation="com.example.ws.bottomup.LongProcessService" 
 		name="LongProcessService"
 		url-pattern="/LongProcessService" >
 		<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
 			<handler-chain>
 				<handler>
-					<handler-class>com.example.ws.process.server.handler.LogHeadersProtocolHandler</handler-class>
+					<handler-class>com.example.ws.handler.LogHeadersProtocolHandler</handler-class>
 				</handler>
 				<handler>
-					<handler-class>com.example.ws.process.server.handler.SecureCheckerHandler</handler-class>
+					<handler-class>com.example.ws.handler.SecureCheckerHandler</handler-class>
 				</handler>
 			</handler-chain>
 		</handler-chains>
@@ -32,13 +32,4 @@
 		<!-- #### when handlers are used, MTOM optimization does not happen.--> 
 	</endpoint>
 	
-	<endpoint implementation="com.example.ws.process.server.PeopleService" 
-		name="PeopleService"
-		url-pattern="/PeopleService" >
-	</endpoint>
-	
-	<endpoint implementation="com.example.ws.process.server.PeopleInstanceService" 
-		name="PeopleInstanceService"
-		url-pattern="/PeopleInstanceService" >
-	</endpoint>
 </endpoints>

@@ -1,9 +1,10 @@
-package com.example.ws.process.server;
+package com.example.ws.bottomup;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.activation.DataHandler;
 import javax.annotation.Resource;
 import javax.jws.Oneway;
 import javax.jws.WebMethod;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.example.ws.domain.files.File;
+import com.example.ws.domain.files.FileRef;
 
 @WebService(name="LongProcessPortType",portName="LongProcessPort",
     serviceName="LongProcessService",targetNamespace="http://process.ws.example.com")
@@ -46,7 +48,7 @@ public class LongProcessService {
     @Resource
     WebServiceContext webServiceContext;
 
-    @WebMethod(operationName="run", exclude=false)
+    @WebMethod(operationName="run", exclude=false, action="http://process.ws.example.com/run")
     public String run(String in, @WebParam(header=true,name="reference",targetNamespace="http://www.example.org/Headers") String reference) throws ProcessException {
         
         final int secs = ThreadLocalRandom.current().nextInt(1, 3);
@@ -92,6 +94,15 @@ public class LongProcessService {
     @WebMethod
     public File download(@WebParam String fileName){
     	return getFile(fileName);
+    }
+    
+    @WebMethod
+    public FileRef downloadWithswaRef(@WebParam String fileName){
+    	File file = getFile(fileName);
+    	FileRef f = new FileRef();
+    	f.setContent(new DataHandler(file.getContent(), "image/jpeg"));
+    	f.setName(file.getName());
+    	return f;
     }
     
 //    @WebMethod

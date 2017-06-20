@@ -1,4 +1,4 @@
-package com.example.ws.process.rmi;
+package com.example.rmi;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

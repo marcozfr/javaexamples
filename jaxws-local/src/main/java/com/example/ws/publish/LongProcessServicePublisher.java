@@ -1,4 +1,4 @@
-package com.example.ws.process.server.endpoint;
+package com.example.ws.publish;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import javax.xml.ws.Endpoint;
 import javax.xml.ws.soap.MTOMFeature;
 import javax.xml.ws.soap.SOAPBinding;
 
-import com.example.ws.process.server.LongProcessService;
+import com.example.ws.bottomup.LongProcessService;
 
 public class LongProcessServicePublisher {
 	
