@@ -25,12 +25,10 @@ import javax.xml.ws.handler.MessageContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.process.server.handler.LogHeadersProtocolHandler;
-
 @WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", endpointInterface="com.example.ws.topdown.TopDownService")
 public class TopDownServiceImpl implements TopDownService {
 	
-    private static Logger logger = LoggerFactory.getLogger(LogHeadersProtocolHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(TopDownServiceImpl.class);
     
 	@Resource
 	private WebServiceContext webServiceContext;

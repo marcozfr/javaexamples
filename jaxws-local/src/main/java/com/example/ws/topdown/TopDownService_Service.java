@@ -84,6 +84,28 @@ public class TopDownService_Service
         return super.getPort(new QName("http://topdown.ws.example.com/TopDownService/", "TopDownServiceSOAP"), TopDownService.class, features);
     }
 
+    /**
+     * 
+     * @return
+     *     returns TopDownService
+     */
+    @WebEndpoint(name = "TopDownServiceSOAP1")
+    public TopDownService getTopDownServiceSOAP1() {
+        return super.getPort(new QName("http://topdown.ws.example.com/TopDownService/", "TopDownServiceSOAP1"), TopDownService.class);
+    }
+
+    /**
+     * 
+     * @param features
+     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
+     * @return
+     *     returns TopDownService
+     */
+    @WebEndpoint(name = "TopDownServiceSOAP1")
+    public TopDownService getTopDownServiceSOAP1(WebServiceFeature... features) {
+        return super.getPort(new QName("http://topdown.ws.example.com/TopDownService/", "TopDownServiceSOAP1"), TopDownService.class, features);
+    }
+
     private static URL __getWsdlLocation() {
         if (TOPDOWNSERVICE_EXCEPTION!= null) {
             throw TOPDOWNSERVICE_EXCEPTION;

@@ -1,0 +1,1 @@
+http%3A%2F%2Flocalhost%2Ftest%2Furl%3Fencoded%3Dfalse%26jsonRequest%3D%7B%22test%22+%3A+%22global%22%7D

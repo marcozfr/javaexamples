@@ -67,7 +67,7 @@ public interface TopDownService {
     /**
      * Example using MTOM (XOP:Include in SOAP)
      * 
-     * @param basicInfo
+     * @param registerUser
      * @return
      *     returns com.example.ws.topdown.RegisterUserResponse
      */
@@ -75,8 +75,8 @@ public interface TopDownService {
     @WebResult(name = "registerUserResponse", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     public RegisterUserResponse registerUser(
-        @WebParam(name = "BasicInfo", targetNamespace = "http://www.example.org/ServiceTypes", partName = "basicInfo")
-        BasicInfo basicInfo);
+        @WebParam(name = "BasicInfo", targetNamespace = "http://www.example.org/ServiceTypes", partName = "registerUser")
+        BasicInfo registerUser);
 
     /**
      * Example of defining SOAP Binding elements (header, fault, headerfault)

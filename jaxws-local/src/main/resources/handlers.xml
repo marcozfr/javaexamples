@@ -7,7 +7,7 @@
 	<handler-chain>
 		<handler>
 			<handler-name>LongMessageHandler</handler-name>
-			<handler-class>com.example.ws.process.server.handler.LogMessageHandler</handler-class>
+			<handler-class>com.example.ws.handler.LogMessageHandler</handler-class>
 		</handler>
 	</handler-chain>
 </handler-chains>
