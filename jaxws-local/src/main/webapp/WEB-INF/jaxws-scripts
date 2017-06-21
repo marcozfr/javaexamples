@@ -1,0 +1,2 @@
+wsimport -keep -d ..\..\..\java\ -p com.example.ws.topdown TopDownService.wsdl
+

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-	xmlns:tns="http://www.example.org/ServiceTypes" xmlns:tns1="http://topdown.ws.example.com/TopDownService/"
+	xmlns:tns="http://www.example.org/ServiceTypes" 
+	xmlns:ser="http://topdown.ws.example.com/TopDownService/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+	xmlns:wsa="http://www.w3.org/2005/08/addressing"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy"
 	name="TopDownService"
 	targetNamespace="http://topdown.ws.example.com/TopDownService/">
 
+	<wsp:Policy>
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing>
+                    <wsp:Policy/>
+                </wsam:Addressing>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+	
 	<wsdl:types>
 		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -76,8 +90,46 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-		</xsd:schema>
-	</wsdl:types>
+        	<xsd:element name="lookUpUser">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="in" type="xsd:string"></xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="lookUpUserResponse">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="out" type="xsd:string"></xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="lookUpUserFault">
+        		<xsd:complexType>
+        			<xsd:sequence>
+
+        				<xsd:element name="fault" type="xsd:string"></xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="transactionHeader">
+        		<xsd:complexType>
+        			<xsd:sequence>
+        				<xsd:element name="transactionId" type="xsd:string"></xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        	<xsd:element name="evaluateUser">
+        		<xsd:complexType>
+        			<xsd:sequence>
+        				<xsd:element name="in" type="xsd:string"></xsd:element>
+        			</xsd:sequence>
+        		</xsd:complexType>
+        	</xsd:element>
+        </xsd:schema>
+    </wsdl:types>
 	
 	<wsdl:message name="resizeImageRequest">
 		<wsdl:part element="tns:resizeImageRequest" name="parameters" />
@@ -101,29 +153,52 @@
 	<wsdl:message name="registerUserResponse">
 		<wsdl:part name="parameters" element="tns:registerUserResponse"></wsdl:part>
 	</wsdl:message>
-	
+
+	<wsdl:message name="lookUpUserRequest" >
+		<wsdl:part name="parameters" element="tns:lookUpUser"></wsdl:part>
+		<wsdl:part name="transactionHeader" element="tns:transactionHeader"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="lookUpUserResponse">
+		<wsdl:part name="parameters" element="tns:lookUpUserResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="lookUpUserFault">
+		<wsdl:part name="parameters" element="tns:lookUpUserFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="evaluateUserRequest">
+		<wsdl:part name="parameters" element="tns:evaluateUser"></wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="TopDownService">
 		<wsdl:operation name="resizeImage">
 			<wsdl:documentation>Example using MIME Attachments with jaxws:enableMIMEContext:true (allows contentType resolution)</wsdl:documentation>
-			<wsdl:input name="resizeImageRequest" message="tns1:resizeImageRequest" />
-			<wsdl:output name="resizeImageRespone" message="tns1:resizeImageResponse" />
+			<wsdl:input name="resizeImageRequest" message="ser:resizeImageRequest" />
+			<wsdl:output name="resizeImageRespone" message="ser:resizeImageResponse" />
 		</wsdl:operation>
 		<wsdl:operation name="downloadImage">
 			<wsdl:documentation>Example using SOAP With Attachments (SWARef) for response</wsdl:documentation>
-			<wsdl:input name="downloadImageRequest" message="tns1:downloadImageRequest" />
-			<wsdl:output name="downloadImageRespone" message="tns1:downloadImageResponse" />
+			<wsdl:input name="downloadImageRequest" message="ser:downloadImageRequest" />
+			<wsdl:output name="downloadImageRespone" message="ser:downloadImageResponse" />
 		</wsdl:operation>
 		<wsdl:operation name="registerUser" parameterOrder="basicInfo">
 			<wsdl:documentation>Example using MTOM (XOP:Include in SOAP)</wsdl:documentation>
-			<wsdl:input message="tns1:registerUserRequest"></wsdl:input>
-			<wsdl:output message="tns1:registerUserResponse"></wsdl:output>
+			<wsdl:input message="ser:registerUserRequest"></wsdl:input>
+			<wsdl:output message="ser:registerUserResponse"></wsdl:output>
 		</wsdl:operation>
+		<wsdl:operation name="lookUpUser">
+			<wsdl:documentation>Example of defining SOAP Binding elements (header, fault, headerfault)</wsdl:documentation>
+			<wsdl:input message="ser:lookUpUserRequest"></wsdl:input>
+			<wsdl:output message="ser:lookUpUserResponse"></wsdl:output>
+			<wsdl:fault message="ser:lookUpUserFault" name="fault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="evaluateUser">
+			<wsdl:documentation>One Way Operation Using WS Addressing</wsdl:documentation>
+			<wsdl:input message="ser:evaluateUserRequest" wsam:Action="http://topdown.ws.example.com/TopDownService/evaluateUserAction"></wsdl:input>		</wsdl:operation>
 	</wsdl:portType>
 	
-	<wsdl:binding name="TopDownServiceSOAP" type="tns1:TopDownService">
+	<wsdl:binding name="TopDownServiceSOAP" type="ser:TopDownService">
 		<wsdl:documentation>Binding section doc</wsdl:documentation>
 		<jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
 		   	 <jaxws:enableMIMEContent>true</jaxws:enableMIMEContent>
+		   	 <!-- <jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>-->
 		</jaxws:bindings>
 		<soap:binding style="document"
 			transport="http://schemas.xmlsoap.org/soap/http" />	
@@ -174,13 +249,33 @@
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
+		<wsdl:operation name="lookUpUser">
+			<soap:operation style="document" soapAction="http://topdown.ws.example.com/TopDownService/lookUpUser"/>
+			<wsdl:input>
+				<soap:body parts="parameters" />
+				<soap:header use="literal" part="transactionHeader" message="ser:lookUpUserRequest">
+				</soap:header>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="parameters"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="evaluateUser">
+			<soap:operation style="document" soapAction="http://topdown.ws.example.com/TopDownService/evaluateUser"/>
+			<wsdl:input>
+				<soap:body parts="parameters"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body/>
+			</wsdl:output>
+		</wsdl:operation>
 	</wsdl:binding>
 	<wsdl:service name="TopDownService">
-		<wsdl:port name="TopDownServiceSOAP" binding="tns1:TopDownServiceSOAP">
+		<wsdl:port name="TopDownServiceSOAP" binding="ser:TopDownServiceSOAP">
 			<soap:address location="http://topdown.ws.example.com/" />
-		</wsdl:port>
-		<wsdl:port name="TopDownServiceSOAP1" binding="tns1:TopDownServiceSOAP">
-			<soap:address location="http://localhost:9900/"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

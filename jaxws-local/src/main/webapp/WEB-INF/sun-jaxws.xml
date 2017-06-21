@@ -16,6 +16,13 @@
 		</handler-chains>
 	</endpoint>
 	
+	<endpoint implementation="com.example.ws.rpc.topdown.TopDownRpcServiceImpl" 
+		name="TopDownRpcService" wsdl="WEB-INF/wsdl/TopDownRpcService.wsdl" 
+		service="{http://www.example.org/TopDownRpcService/}TopDownRpcService" 
+		port="{http://www.example.org/TopDownRpcService/}TopDownRpcServiceSOAP"
+		url-pattern="/TopDownRpcService" enable-mtom="true" >
+	</endpoint>
+	
 	<endpoint implementation="com.example.ws.topdown.TopDownServiceImpl" 
 		name="TopDownService" wsdl="WEB-INF/wsdl/TopDownService.wsdl" 
 		service="{http://topdown.ws.example.com/TopDownService/}TopDownService" 

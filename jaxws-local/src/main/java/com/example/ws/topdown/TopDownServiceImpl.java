@@ -22,9 +22,16 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.WebServiceException;
 import javax.xml.ws.handler.MessageContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.example.ws.process.server.handler.LogHeadersProtocolHandler;
+
 @WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", endpointInterface="com.example.ws.topdown.TopDownService")
 public class TopDownServiceImpl implements TopDownService {
 	
+    private static Logger logger = LoggerFactory.getLogger(LogHeadersProtocolHandler.class);
+    
 	@Resource
 	private WebServiceContext webServiceContext;
 	
@@ -137,6 +144,21 @@ public class TopDownServiceImpl implements TopDownService {
 		Image img = TopDownServiceImpl.resizeImage((BufferedImage)file, parameters.getTargetWidth(), parameters.getTargetHeight());
 		responseImg.value = img;
 		
+	}
+	
+	@Override
+	public LookUpUserResponse lookUpUser(LookUpUser parameters, TransactionHeader transactionHeader)
+	        throws LookUpUserFault_Exception {
+	    return new LookUpUserResponse(){
+	        {
+	            setOut("Ok Response w transaction id: " + transactionHeader.getTransactionId());
+	        }
+	    };
+	}
+	
+	@Override
+	public void evaluateUser(String in) {
+	   logger.info("Will evaluate user " + in);
 	}
 
 }

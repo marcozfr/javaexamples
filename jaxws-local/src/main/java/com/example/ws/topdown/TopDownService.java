@@ -3,12 +3,14 @@ package com.example.ws.topdown;
 
 import java.awt.Image;
 import javax.activation.DataHandler;
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.ws.Action;
 import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
@@ -75,5 +77,38 @@ public interface TopDownService {
     public RegisterUserResponse registerUser(
         @WebParam(name = "BasicInfo", targetNamespace = "http://www.example.org/ServiceTypes", partName = "basicInfo")
         BasicInfo basicInfo);
+
+    /**
+     * Example of defining SOAP Binding elements (header, fault, headerfault)
+     * 
+     * @param transactionHeader
+     * @param parameters
+     * @return
+     *     returns com.example.ws.topdown.LookUpUserResponse
+     * @throws LookUpUserFault_Exception
+     */
+    @WebMethod(action = "http://topdown.ws.example.com/TopDownService/lookUpUser")
+    @WebResult(name = "lookUpUserResponse", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public LookUpUserResponse lookUpUser(
+        @WebParam(name = "lookUpUser", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
+        LookUpUser parameters,
+        @WebParam(name = "transactionHeader", targetNamespace = "http://www.example.org/ServiceTypes", header = true, partName = "transactionHeader")
+        TransactionHeader transactionHeader)
+        throws LookUpUserFault_Exception
+    ;
+
+    /**
+     * One Way Operation Using WS Addressing
+     * 
+     * @param in
+     */
+    @WebMethod(action = "http://topdown.ws.example.com/TopDownService/evaluateUser")
+    @Oneway
+    @RequestWrapper(localName = "evaluateUser", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.EvaluateUser")
+    @Action(input = "http://topdown.ws.example.com/TopDownService/evaluateUserAction")
+    public void evaluateUser(
+        @WebParam(name = "in", targetNamespace = "")
+        String in);
 
 }

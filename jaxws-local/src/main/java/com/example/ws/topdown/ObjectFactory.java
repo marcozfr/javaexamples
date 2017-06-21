@@ -38,6 +38,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LookUpUser }
+     * 
+     */
+    public LookUpUser createLookUpUser() {
+        return new LookUpUser();
+    }
+
+    /**
      * Create an instance of {@link DownloadImageResponse }
      * 
      */
@@ -46,11 +54,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TransactionHeader }
+     * 
+     */
+    public TransactionHeader createTransactionHeader() {
+        return new TransactionHeader();
+    }
+
+    /**
+     * Create an instance of {@link EvaluateUser }
+     * 
+     */
+    public EvaluateUser createEvaluateUser() {
+        return new EvaluateUser();
+    }
+
+    /**
      * Create an instance of {@link BasicInfo.Address }
      * 
      */
     public BasicInfo.Address createBasicInfoAddress() {
         return new BasicInfo.Address();
+    }
+
+    /**
+     * Create an instance of {@link LookUpUserResponse }
+     * 
+     */
+    public LookUpUserResponse createLookUpUserResponse() {
+        return new LookUpUserResponse();
     }
 
     /**
@@ -83,6 +115,14 @@ public class ObjectFactory {
      */
     public ResizeImageResponse createResizeImageResponse() {
         return new ResizeImageResponse();
+    }
+
+    /**
+     * Create an instance of {@link LookUpUserFault }
+     * 
+     */
+    public LookUpUserFault createLookUpUserFault() {
+        return new LookUpUserFault();
     }
 
 }
