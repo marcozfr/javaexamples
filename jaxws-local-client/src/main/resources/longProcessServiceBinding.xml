@@ -13,7 +13,7 @@
 		<jaxws:enableWrapperStyle>true</jaxws:enableWrapperStyle>
 		<jaxws:method name="runProcess" />
 		<jaxws:parameter part="wsdl:definitions/wsdl:message[@name='run']/wsdl:part[@name='parameters']" name="processId"/>
-        <jaxws:parameter part="wsdl:definitions/wsdl:message[@name='runResponse']/wsdl:part[@name='parameters']" name="processStatus"/>
+        <jaxws:parameter part="wsdl:definitions/wsdl:message[@name='runResponse']/wsdl:part[@name='result']" name="processStatus"/>
 	</jaxws:bindings>
 	<jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='LongProcessPortType']/wsdl:operation[@name='runLong']">
 		<jaxws:enableAsyncMapping>false</jaxws:enableAsyncMapping>

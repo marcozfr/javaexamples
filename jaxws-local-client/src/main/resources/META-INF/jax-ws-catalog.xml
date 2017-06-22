@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmln="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8180/jaxws-local/LongProcessService?wsdl" uri="LongProcessService.wsdl" />
+</catalog>
