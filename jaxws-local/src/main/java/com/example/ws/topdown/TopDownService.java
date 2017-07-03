@@ -12,6 +12,11 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
+import org.example.servicetypes.BasicInfo;
+import org.example.servicetypes.ObjectFactory;
+import org.example.servicetypes.RegisterUserResponse;
+import org.example.servicetypes.ResizeImageRequest;
+import org.example.servicetypes.ResizeImageResponse;
 
 
 /**
@@ -36,8 +41,8 @@ public interface TopDownService {
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/downloadImage")
     @WebResult(name = "out", targetNamespace = "")
-    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImage")
-    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImageResponse")
+    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://www.example.org/ServiceTypes", className = "org.example.servicetypes.DownloadImage")
+    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", className = "org.example.servicetypes.DownloadImageResponse")
     public DataHandler downloadImage(
         @WebParam(name = "in", targetNamespace = "")
         String in);
@@ -67,7 +72,7 @@ public interface TopDownService {
      * 
      * @param registerUser
      * @return
-     *     returns com.example.ws.topdown.RegisterUserResponse
+     *     returns org.example.servicetypes.RegisterUserResponse
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/registerUser")
     @WebResult(name = "registerUserResponse", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")

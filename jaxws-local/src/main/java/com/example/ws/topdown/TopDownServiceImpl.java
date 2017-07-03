@@ -22,7 +22,14 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.WebServiceException;
 import javax.xml.ws.handler.MessageContext;
 
-@WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", endpointInterface="com.example.ws.topdown.TopDownService")
+import org.example.servicetypes.BasicInfo;
+import org.example.servicetypes.DownloadImageResponse;
+import org.example.servicetypes.RegisterUserResponse;
+import org.example.servicetypes.ResizeImageRequest;
+import org.example.servicetypes.ResizeImageResponse;
+
+@WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", 
+	endpointInterface="com.example.ws.topdown.TopDownService", wsdlLocation="TopDownService.wsdl")
 public class TopDownServiceImpl implements TopDownService {
 	
 	@Resource

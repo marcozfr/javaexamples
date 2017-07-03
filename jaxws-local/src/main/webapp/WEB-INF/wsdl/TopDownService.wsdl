@@ -5,7 +5,12 @@
 	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
 	name="TopDownService"
 	targetNamespace="http://topdown.ws.example.com/TopDownService/">
-
+	<jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+		<jaxws:enableWrapperStyle>true</jaxws:enableWrapperStyle>
+		<jaxws:package name="com.example.ws.topdown">
+			<jaxws:javadoc>Top Down Package Gen</jaxws:javadoc>
+		</jaxws:package>
+	</jaxws:bindings>
 	<wsdl:types>
 		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"

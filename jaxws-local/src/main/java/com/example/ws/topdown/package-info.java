@@ -1,2 +1,5 @@
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.example.org/ServiceTypes")
+/**
+ * Top Down Package Gen
+ * 
+ */
 package com.example.ws.topdown;

@@ -49,8 +49,8 @@ public class LongProcessService {
     WebServiceContext webServiceContext;
 
     @WebMethod(operationName="run", exclude=false, action="http://process.ws.example.com/run")
-    public String run(String in, @WebParam(header=true,name="reference",targetNamespace="http://www.example.org/Headers") String reference) throws ProcessException {
-        
+    public String run(String in) throws ProcessException {
+    	
         final int secs = ThreadLocalRandom.current().nextInt(1, 3);
 //        new Thread(() -> {
             try {
@@ -61,12 +61,12 @@ public class LongProcessService {
             logger.info("Done in " + Thread.currentThread().getName());
 //        }).start();
         
-        return "Wroking "+ in +" in background for " + secs+ " seconds. Ref: " + reference;
+        return "Wroking "+ in +" in background for " + secs+ " seconds. ";
     }
     
     @WebMethod
     @Oneway
-    public void runLong(@WebParam(mode=Mode.IN) String in){
+    public void runLong(@WebParam(mode=Mode.IN) String in, @WebParam(header=true,name="reference",targetNamespace="http://www.example.org/Headers") String reference){
         int secs = ThreadLocalRandom.current().nextInt(6, 10);
         try {
             Thread.sleep(secs*1000);

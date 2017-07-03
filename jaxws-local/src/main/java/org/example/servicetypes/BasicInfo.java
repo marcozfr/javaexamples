@@ -1,5 +1,5 @@
 
-package com.example.ws.topdown;
+package org.example.servicetypes;
 
 import javax.activation.DataHandler;
 import javax.xml.bind.annotation.XmlAccessType;
