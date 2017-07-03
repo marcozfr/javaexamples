@@ -76,5 +76,8 @@
 		<wsdl:port binding="tns:TopDownRpcServiceSOAP" name="TopDownRpcServiceSOAP">
 			<soap:address location="http://www.example.org/" />
 		</wsdl:port>
+		<wsdl:port binding="tns:TopDownRpcServiceSOAP" name="TopDownRpcServiceSOAP2" >
+			<soap:address location="http://localhost:8180/jaxws-local/TopDownRpcService2"/>
+		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

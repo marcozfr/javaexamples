@@ -34,7 +34,7 @@ public interface TopDownRpcService {
      * @param label
      * @param tag
      * @return
-     *     returns com.example.ws.rpc.topdown.ProductResponse
+     *     returns com.example.ws.topdown.rpc.ProductResponse
      * @throws RegisterProductFault
      */
     @WebMethod(action = "http://www.example.org/TopDownRpcService/registerProduct")

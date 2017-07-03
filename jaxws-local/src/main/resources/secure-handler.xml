@@ -6,8 +6,8 @@
   http://java.sun.com/xml/ns/javaee/javaee_web_services_metadata_handler_2_0.xsd">
 	<handler-chain>
 		<handler>
-			<handler-name>LongMessageHandler</handler-name>
-			<handler-class>com.example.ws.handler.LogMessageHandler</handler-class>
+			<handler-name>SecureCheckerHandler</handler-name>
+			<handler-class>com.example.ws.handler.SecureCheckerHandler</handler-class>
 		</handler>
 	</handler-chain>
 </handler-chains>

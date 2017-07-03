@@ -45,7 +45,7 @@ public class RegisterProductFault
     /**
      * 
      * @return
-     *     returns fault bean: com.example.ws.rpc.topdown.ProductResponseFault
+     *     returns fault bean: com.example.ws.topdown.rpc.ProductResponseFault
      */
     public ProductResponseFault getFaultInfo() {
         return faultInfo;

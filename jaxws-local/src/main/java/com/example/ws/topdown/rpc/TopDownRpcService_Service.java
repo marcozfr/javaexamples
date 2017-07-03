@@ -84,6 +84,28 @@ public class TopDownRpcService_Service
         return super.getPort(new QName("http://www.example.org/TopDownRpcService/", "TopDownRpcServiceSOAP"), TopDownRpcService.class, features);
     }
 
+    /**
+     * 
+     * @return
+     *     returns TopDownRpcService
+     */
+    @WebEndpoint(name = "TopDownRpcServiceSOAP2")
+    public TopDownRpcService getTopDownRpcServiceSOAP2() {
+        return super.getPort(new QName("http://www.example.org/TopDownRpcService/", "TopDownRpcServiceSOAP2"), TopDownRpcService.class);
+    }
+
+    /**
+     * 
+     * @param features
+     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
+     * @return
+     *     returns TopDownRpcService
+     */
+    @WebEndpoint(name = "TopDownRpcServiceSOAP2")
+    public TopDownRpcService getTopDownRpcServiceSOAP2(WebServiceFeature... features) {
+        return super.getPort(new QName("http://www.example.org/TopDownRpcService/", "TopDownRpcServiceSOAP2"), TopDownRpcService.class, features);
+    }
+
     private static URL __getWsdlLocation() {
         if (TOPDOWNRPCSERVICE_EXCEPTION!= null) {
             throw TOPDOWNRPCSERVICE_EXCEPTION;

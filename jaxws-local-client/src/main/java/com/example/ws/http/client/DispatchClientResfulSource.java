@@ -10,6 +10,7 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.Source;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.ws.Action;
 import javax.xml.ws.Dispatch;
 import javax.xml.ws.Service;
 import javax.xml.ws.handler.MessageContext;
@@ -39,7 +40,6 @@ public class DispatchClientResfulSource {
 		Source response2 = dispatch2.invoke(new StreamSource(new StringReader("<book><id>100</id><isbn>ISBN102</isbn></book>")));
 		
 		System.out.println(WsUtils.fromSource(response2));
-		
 	}
 	
 }

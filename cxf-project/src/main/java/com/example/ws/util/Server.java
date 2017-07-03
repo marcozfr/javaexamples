@@ -28,11 +28,11 @@ import org.apache.cxf.bus.spring.SpringBusFactory;
 
 public class Server {
 
-    protected Server(URL busURL) throws Exception {
+    protected Server(String cfgFile) throws Exception {
         System.out.println("Starting Server");
 
         SpringBusFactory bf = new SpringBusFactory();
-        Bus bus = bf.createBus(busURL.toString());
+        Bus bus = bf.createBus(cfgFile);
         BusFactory.setDefaultBus(bus);
 
         //Object implementor = new GreeterImpl();
@@ -42,26 +42,7 @@ public class Server {
 
     public static void main(String args[]) throws Exception {
 
-        if (args.length == 0) {
-            System.out.println("please specify configuration file");
-            System.exit(1);
-        }
-
-        System.out.println("The server's security configuration will be taken "
-                           + "from server.xml using the bean name : "
-                           + "\"{http://apache.org/hello_world_soap_http}"
-                           + "GreeterImplPort.http-destination\".");
-        System.out.println();
-
-        URL busURL;
-        File busFile = new File(args[0]);
-        if (busFile.exists()) {
-            busURL = busFile.toURI().toURL();
-        } else {
-            busURL = new URL(args[0]);
-        }
-
-        new Server(busURL);
+        new Server("ServiceConfig.xml");
         System.out.println("Server ready...");
 
         Thread.sleep(5 * 60 * 1000);

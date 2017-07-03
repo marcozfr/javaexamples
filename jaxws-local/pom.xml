@@ -7,9 +7,10 @@
 	<packaging>war</packaging>
 	<properties>
 		<slf4j.version>1.7.25</slf4j.version>
+		<metro.version>2.3.1</metro.version>
 	</properties>
 	<dependencies>
-	<!-- 
+		<!-- 
 		<dependency>
 		    <groupId>javax.xml.ws</groupId>
 		    <artifactId>jaxws-api</artifactId>
@@ -17,9 +18,18 @@
 		</dependency>
 		 -->
 		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>jaxws-rt</artifactId>
-			<version>2.2.10</version>
+			<groupId>org.glassfish.metro</groupId>
+			<artifactId>webservices-rt</artifactId>
+			<version>${metro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.metro</groupId>
+			<artifactId>wsit-impl</artifactId>
+			<version>${metro.version}</version>
+			<!-- contains 
+				+ WS SX Web services Secure Exchange (SecurityPolicy, Trust, SecureConversation)
+				+ Metro CM - Config Management
+				+ Reliable Messaging -->
 		</dependency>
 		<dependency>
 		    <groupId>javax.servlet</groupId>
@@ -47,6 +57,7 @@
 			<artifactId>jaxws-local-domain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>com.sun.xml.wss</groupId>
 			<artifactId>xws-security</artifactId>
@@ -62,6 +73,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		 -->
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-core</artifactId>

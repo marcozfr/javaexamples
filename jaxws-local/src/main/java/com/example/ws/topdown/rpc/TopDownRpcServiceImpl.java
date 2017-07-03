@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 @WebService(name = "TopDownRpcService", targetNamespace = "http://www.example.org/TopDownRpcService/",
-        endpointInterface="com.example.ws.rpc.topdown.TopDownRpcService")
+        endpointInterface="com.example.ws.topdown.rpc.TopDownRpcService")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class TopDownRpcServiceImpl implements TopDownRpcService {
     

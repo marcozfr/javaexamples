@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xwss:SecurityConfiguration xmlns:xwss="http://java.sun.com/xml/ns/xwss/config" dumpMessages="true" >
+<xwss:SecurityConfiguration xmlns:xwss="http://java.sun.com/xml/ns/xwss/config" dumpMessages="false" >
     <xwss:UsernameToken name="adm" digestPassword="true" password="admpwd" />
 </xwss:SecurityConfiguration>
