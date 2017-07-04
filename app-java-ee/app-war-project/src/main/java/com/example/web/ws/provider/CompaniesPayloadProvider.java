@@ -37,7 +37,7 @@ public class CompaniesPayloadProvider implements Provider<Source>{
 	
 	public static Logger logger = LogManager.getLogger(CompaniesPayloadProvider.class);
 
-	@Resource
+	@Resource()
 	WebServiceContext webServiceContext;
 	
 	@Resource

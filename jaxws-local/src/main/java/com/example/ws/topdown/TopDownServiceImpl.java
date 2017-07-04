@@ -22,16 +22,14 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.WebServiceException;
 import javax.xml.ws.handler.MessageContext;
 
-import org.example.servicetypes.BasicInfo;
-import org.example.servicetypes.DownloadImageResponse;
-import org.example.servicetypes.RegisterUserResponse;
-import org.example.servicetypes.ResizeImageRequest;
-import org.example.servicetypes.ResizeImageResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", 
-	endpointInterface="com.example.ws.topdown.TopDownService", wsdlLocation="TopDownService.wsdl")
+@WebService(name = "TopDownService", targetNamespace = "http://topdown.ws.example.com/TopDownService/", endpointInterface="com.example.ws.topdown.TopDownService")
 public class TopDownServiceImpl implements TopDownService {
 	
+    private static Logger logger = LoggerFactory.getLogger(TopDownServiceImpl.class);
+    
 	@Resource
 	private WebServiceContext webServiceContext;
 	
@@ -143,6 +141,22 @@ public class TopDownServiceImpl implements TopDownService {
 		
 		Image img = TopDownServiceImpl.resizeImage((BufferedImage)file, parameters.getTargetWidth(), parameters.getTargetHeight());
 		responseImg.value = img;
+		
+	}
+	
+	@Override
+	public LookUpUserResponse lookUpUser(LookUpUser parameters, TransactionHeader transactionHeader)
+	        throws LookUpUserFault_Exception {
+	    return new LookUpUserResponse(){
+	        {
+	            setOut("Ok Response w transaction id: " + transactionHeader.getTransactionId());
+	        }
+	    };
+	}
+
+	@Override
+	public void evaluateUser(String in) {
+		// TODO Auto-generated method stub
 		
 	}
 

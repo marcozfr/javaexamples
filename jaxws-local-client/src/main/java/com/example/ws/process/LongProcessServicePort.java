@@ -7,6 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
 import javax.xml.ws.AsyncHandler;
@@ -24,7 +25,9 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(name = "LongProcessPortType", targetNamespace = "http://process.ws.example.com")
 @XmlSeeAlso({
-    ObjectFactory.class
+    com.example.ws.process.ObjectFactory.class,
+    org.example.headers.ObjectFactory.class,
+    org.w3._2005._05.xmlmime.ObjectFactory.class
 })
 public interface LongProcessServicePort {
 
@@ -35,7 +38,7 @@ public interface LongProcessServicePort {
      * @return
      *     returns javax.xml.ws.Response<com.example.ws.process.RunResponse>
      */
-    @WebMethod(operationName = "run")
+    @WebMethod(operationName = "run", action = "http://process.ws.example.com/run")
     @RequestWrapper(localName = "run", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Run")
     @ResponseWrapper(localName = "runResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.RunResponse")
     public Response<RunResponse> runProcessAsync(
@@ -49,7 +52,7 @@ public interface LongProcessServicePort {
      * @return
      *     returns java.util.concurrent.Future<? extends java.lang.Object>
      */
-    @WebMethod(operationName = "run")
+    @WebMethod(operationName = "run", action = "http://process.ws.example.com/run")
     @RequestWrapper(localName = "run", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Run")
     @ResponseWrapper(localName = "runResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.RunResponse")
     public Future<?> runProcessAsync(
@@ -65,11 +68,11 @@ public interface LongProcessServicePort {
      *     returns java.lang.String
      * @throws ProcessException_Exception
      */
-    @WebMethod(operationName = "run")
+    @WebMethod(operationName = "run", action = "http://process.ws.example.com/run")
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "run", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Run")
     @ResponseWrapper(localName = "runResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.RunResponse")
-    @Action(input = "http://process.ws.example.com/LongProcessPortType/runRequest", output = "http://process.ws.example.com/LongProcessPortType/runResponse", fault = {
+    @Action(input = "http://process.ws.example.com/run", output = "http://process.ws.example.com/LongProcessPortType/runResponse", fault = {
         @FaultAction(className = ProcessException_Exception.class, value = "http://process.ws.example.com/LongProcessPortType/run/Fault/ProcessException")
     })
     public String runProcess(
@@ -81,12 +84,185 @@ public interface LongProcessServicePort {
     /**
      * 
      * @param arg0
+     * @return
+     *     returns javax.xml.ws.Response<com.example.ws.process.DownloadWithswaRefResponse>
+     */
+    @WebMethod(operationName = "downloadWithswaRef")
+    @RequestWrapper(localName = "downloadWithswaRef", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRef")
+    @ResponseWrapper(localName = "downloadWithswaRefResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRefResponse")
+    public Response<DownloadWithswaRefResponse> downloadWithswaRefAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "downloadWithswaRef")
+    @RequestWrapper(localName = "downloadWithswaRef", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRef")
+    @ResponseWrapper(localName = "downloadWithswaRefResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRefResponse")
+    public Future<?> downloadWithswaRefAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "asyncHandler", targetNamespace = "")
+        AsyncHandler<DownloadWithswaRefResponse> asyncHandler);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.example.ws.process.FileRef
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "downloadWithswaRef", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRef")
+    @ResponseWrapper(localName = "downloadWithswaRefResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadWithswaRefResponse")
+    @Action(input = "http://process.ws.example.com/LongProcessPortType/downloadWithswaRefRequest", output = "http://process.ws.example.com/LongProcessPortType/downloadWithswaRefResponse")
+    public FileRef downloadWithswaRef(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param reference
+     * @param parameters
      */
     @WebMethod
     @Oneway
-    @RequestWrapper(localName = "runLong", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.RunLong")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     @Action(input = "http://process.ws.example.com/LongProcessPortType/runLong")
     public void runLong(
+        @WebParam(name = "runLong", targetNamespace = "http://process.ws.example.com", partName = "parameters")
+        RunLong parameters,
+        @WebParam(name = "reference", targetNamespace = "http://www.example.org/Headers", header = true, partName = "reference")
+        String reference);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns javax.xml.ws.Response<java.lang.String>
+     */
+    @WebMethod(operationName = "runSecure")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public Response<String> runSecureAsync(
+        @WebParam(name = "arg0", targetNamespace = "http://process.ws.example.com", header = true, partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "runSecure")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public Future<?> runSecureAsync(
+        @WebParam(name = "arg0", targetNamespace = "http://process.ws.example.com", header = true, partName = "arg0")
+        String arg0,
+        @WebParam(name = "runSecureResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<String> asyncHandler);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(name = "runSecureResponse", targetNamespace = "http://process.ws.example.com", partName = "runResponse", header = true)
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    @Action(input = "http://process.ws.example.com/LongProcessPortType/runSecureRequest", output = "http://process.ws.example.com/LongProcessPortType/runSecureResponse")
+    public String runSecure(
+        @WebParam(name = "arg0", targetNamespace = "http://process.ws.example.com", header = true, partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param runUpload
+     * @return
+     *     returns javax.xml.ws.Response<java.lang.String>
+     */
+    @WebMethod(operationName = "runUpload")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public Response<String> runUploadAsync(
+        @WebParam(name = "runUpload", targetNamespace = "http://process.ws.example.com", partName = "runUpload")
+        File runUpload);
+
+    /**
+     * 
+     * @param runUpload
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "runUpload")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public Future<?> runUploadAsync(
+        @WebParam(name = "runUpload", targetNamespace = "http://process.ws.example.com", partName = "runUpload")
+        File runUpload,
+        @WebParam(name = "runUploadResponse", targetNamespace = "", partName = "asyncHandler")
+        AsyncHandler<String> asyncHandler);
+
+    /**
+     * 
+     * @param runUpload
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(name = "runUploadResponse", targetNamespace = "http://process.ws.example.com", partName = "runUploadResponse")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    @Action(input = "http://process.ws.example.com/LongProcessPortType/runUploadRequest", output = "http://process.ws.example.com/LongProcessPortType/runUploadResponse")
+    public String runUpload(
+        @WebParam(name = "runUpload", targetNamespace = "http://process.ws.example.com", partName = "runUpload")
+        File runUpload);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns javax.xml.ws.Response<com.example.ws.process.DownloadResponse>
+     */
+    @WebMethod(operationName = "download")
+    @RequestWrapper(localName = "download", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Download")
+    @ResponseWrapper(localName = "downloadResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadResponse")
+    public Response<DownloadResponse> downloadAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @param asyncHandler
+     * @return
+     *     returns java.util.concurrent.Future<? extends java.lang.Object>
+     */
+    @WebMethod(operationName = "download")
+    @RequestWrapper(localName = "download", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Download")
+    @ResponseWrapper(localName = "downloadResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadResponse")
+    public Future<?> downloadAsync(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "asyncHandler", targetNamespace = "")
+        AsyncHandler<DownloadResponse> asyncHandler);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.example.ws.process.File
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "download", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.Download")
+    @ResponseWrapper(localName = "downloadResponse", targetNamespace = "http://process.ws.example.com", className = "com.example.ws.process.DownloadResponse")
+    @Action(input = "http://process.ws.example.com/LongProcessPortType/downloadRequest", output = "http://process.ws.example.com/LongProcessPortType/downloadResponse")
+    public File download(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 

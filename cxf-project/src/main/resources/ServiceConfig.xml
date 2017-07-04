@@ -42,9 +42,12 @@
   <http:destination name="{http://apache.org/hello_world_soap_http}GreeterPort.http-destination"> 
   </http:destination>
   -->
-    <jaxws:endpoint xmlns:s="http://www.example.com/ProcessManagerService/" id="server" endpointName="s:ProcessManagerServiceSOAP" 
-    	serviceName="s:ProcessManagerService" implementor="com.example.ws.process.ProcessManagerServiceBean" address="https://localhost:9001/SoapContext/ProcessManagerService" 
-    	wsdlLocation="src/main/resources/ProcessManagerService.wsdl" depends-on="ClientAuthHttpsSettings">
+    <jaxws:endpoint xmlns:s="http://www.example.com/ProcessManagerService/" id="server" 
+    	endpointName="s:ProcessManagerServiceSOAP" 
+    	serviceName="s:ProcessManagerService" implementor="com.example.ws.process.ProcessManagerServiceBean" 
+    	address="https://localhost:9001/SoapContext/ProcessManagerService" 
+    	wsdlLocation="src/main/resources/ProcessManagerService.wsdl" 
+    	depends-on="ClientAuthHttpsSettings">
         <jaxws:properties>
             <entry key="security.callback-handler" value="com.example.ws.util.UTPasswordCallback"/>
             <!--<entry key="passwordCallbackRef">s

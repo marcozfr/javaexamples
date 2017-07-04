@@ -1,0 +1,1 @@
+wsimport -b longProcessServiceBinding.xml -catalog META-INF\jax-ws-catalog.xml -keep -d ..\java\ http://localhost:8180/jaxws-local/LongProcessService?wsdl -extension

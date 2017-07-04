@@ -14,13 +14,14 @@ import javax.xml.ws.handler.PortInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.example.ws.client.handler.LogPayloadLogicalHandler;
+import com.example.ws.client.handler.SecuredMessageHandler;
+import com.example.ws.http.client.AbstractPipeDumpDispatch;
 import com.example.ws.process.LongProcessService;
 import com.example.ws.process.LongProcessServicePort;
 import com.example.ws.process.ProcessException_Exception;
 import com.example.ws.process.RunResponse;
 
-public class LongProcessClient {
+public class LongProcessClient extends AbstractPipeDumpDispatch {
 	
 	private static Logger logger = LoggerFactory.getLogger(LongProcessClient.class);
 	
@@ -33,13 +34,12 @@ public class LongProcessClient {
         longProcessService.setHandlerResolver(new HandlerResolver() {
 			@Override
 			public List getHandlerChain(PortInfo portInfo) {
-				return Collections.singletonList(new LogPayloadLogicalHandler());
+				return Collections.singletonList(new SecuredMessageHandler());
 			}
 		});
         LongProcessServicePort port = longProcessService.getLongProcessPort();
         BindingProvider bp = (BindingProvider) port;
-        bp.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "admin");
-        bp.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "c90100a");
+        bp.getRequestContext().put(BindingProvider.SOAPACTION_USE_PROPERTY, false);
         
         if(args!=null && args[0].equals("async-pool")){
         	Future<?> resp = port.runProcessAsync("From Client", new AsyncHandler<RunResponse>() {
@@ -55,7 +55,7 @@ public class LongProcessClient {
         	
         	logger.info("Waiting to end " + resp.get());
         	
-        }else if(args!=null && args[0].equals("async-callback")){
+        }else if(args==null || args[0].equals("async-callback")){
         	Response<RunResponse> response = port.runProcessAsync("Long Processing");
         	int i = 0;
         	while(!response.isDone()){

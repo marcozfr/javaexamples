@@ -31,4 +31,16 @@
 	</servlet-mapping> 
 	-->
 	
+	<security-constraint>
+		<display-name>Confidential resource</display-name>
+		<web-resource-collection>
+			<web-resource-name>confidential</web-resource-name>
+			<url-pattern>/resources/features/confidential</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	
 </web-app>

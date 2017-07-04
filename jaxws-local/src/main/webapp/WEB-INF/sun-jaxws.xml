@@ -4,16 +4,13 @@
 	<endpoint implementation="com.example.ws.bottomup.LongProcessService" 
 		name="LongProcessService"
 		url-pattern="/LongProcessService" >
-		<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
-			<handler-chain>
-				<handler>
-					<handler-class>com.example.ws.handler.LogHeadersProtocolHandler</handler-class>
-				</handler>
-				<handler>
-					<handler-class>com.example.ws.handler.SecureCheckerHandler</handler-class>
-				</handler>
-			</handler-chain>
-		</handler-chains>
+	</endpoint>
+	
+	<endpoint implementation="com.example.ws.topdown.rpc.TopDownRpcServiceImpl" 
+		name="TopDownRpcService" wsdl="WEB-INF/wsdl/TopDownRpcService.wsdl" 
+		service="{http://www.example.org/TopDownRpcService/}TopDownRpcService" 
+		port="{http://www.example.org/TopDownRpcService/}TopDownRpcServiceSOAP"
+		url-pattern="/TopDownRpcService" enable-mtom="true" >
 	</endpoint>
 	
 	<endpoint implementation="com.example.ws.topdown.TopDownServiceImpl" 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/TopDownRpcService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TopDownRpcService"
+	targetNamespace="http://www.example.org/TopDownRpcService/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.example.org/TopDownRpcService/">
+			<xsd:complexType name="productRequest">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="weight" type="xsd:string" />
+					<xsd:element name="label" type="xsd:string" />
+					<xsd:element name="tag" type="xsd:string" />
+					<xsd:element name="price" type="xsd:double" />
+				</xsd:sequence>			
+			</xsd:complexType>
+			<xsd:complexType name="productResponse">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:long" />
+					<xsd:element name="status" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:element name="productResponseFault">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="details" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="registerProductRequest">
+		<!-- <wsdl:part name="registerProductRequest" type="tns:productRequest" /> -->
+		<wsdl:part name="name" type="xsd:string" />
+		<wsdl:part name="weight" type="xsd:string" />
+		<wsdl:part name="label" type="xsd:string" />
+		<wsdl:part name="tag" type="xsd:string" />
+		<wsdl:part name="price" type="xsd:double" />
+	</wsdl:message>
+	<wsdl:message name="registerProductResponse">
+		<wsdl:part name="registerProductResponse" type="tns:productResponse" />
+	</wsdl:message>
+	<wsdl:message name="registerProductFault">
+		<wsdl:part name="registerProductFault" element="tns:productResponseFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="TopDownRpcService">
+		<wsdl:documentation>RPC/literal service, WS-I BP allows document/literal or rpc/literal only</wsdl:documentation>
+		<wsdl:operation name="registerProduct">
+			<wsdl:documentation>Notice SOAP Message wraps parts into an element named 'registerProduct', same with output</wsdl:documentation>
+			<wsdl:input message="tns:registerProductRequest" />
+			<wsdl:output message="tns:registerProductResponse" />
+			<wsdl:fault message="tns:registerProductFault" name="fault"></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="TopDownRpcServiceSOAP" type="tns:TopDownRpcService">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="registerProduct">
+			<soap:operation
+				soapAction="http://www.example.org/TopDownRpcService/registerProduct" />
+			<wsdl:input>
+				<soap:body namespace="http://www.example.org/TopDownRpcService/"
+					use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body namespace="http://www.example.org/TopDownRpcService/"
+					use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault name="fault"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="TopDownRpcService">
+		<wsdl:port binding="tns:TopDownRpcServiceSOAP" name="TopDownRpcServiceSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+		<wsdl:port binding="tns:TopDownRpcServiceSOAP" name="TopDownRpcServiceSOAP2" >
+			<soap:address location="http://localhost:8180/jaxws-local/TopDownRpcService2"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,1 +1,2 @@
-wsimport -keep -d ..\..\..\java\ TopDownService.wsdl 
+wsimport -keep -d ..\..\..\java\ -p com.example.ws.topdown -Xnocompile TopDownService.wsdl
+wsimport -keep -d ..\..\..\java\ -p com.example.ws.topdown.rpc -Xnocompile TopDownRpcService.wsdl

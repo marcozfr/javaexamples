@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 
 import javax.xml.namespace.QName;
 import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
@@ -25,9 +26,9 @@ import org.slf4j.LoggerFactory;
 import com.example.ws.client.handler.SecuredMessageHandler;
 import com.example.ws.domain.util.WsUtils;
 
-public class DispatchSecured {
+public class DispatchAsyncResponse extends AbstractPipeDumpDispatch {
 	
-	private static Logger logger = LoggerFactory.getLogger(DispatchSecured.class);
+	private static Logger logger = LoggerFactory.getLogger(DispatchAsyncResponse.class);
 
 	
 	public static void main(String[] args) throws SOAPException, InterruptedException, ExecutionException {
@@ -44,14 +45,11 @@ public class DispatchSecured {
 			}
 		});
 		
-		service.addPort(portName, SOAPBinding.SOAP11HTTP_BINDING , "http://localhost:8180/jaxws-local/LongProcessService?wsdl");
+		service.addPort(portName, SOAPBinding.SOAP12HTTP_MTOM_BINDING , "http://localhost:8180/jaxws-local/LongProcessService");
 		
 		Dispatch<SOAPMessage> dispatch = service.createDispatch(portName, SOAPMessage.class, Mode.MESSAGE);
 		
-		dispatch.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "admin");
-		dispatch.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "c90100a");
-		
-		MessageFactory mf = MessageFactory.newInstance();
+		MessageFactory mf = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
 		SOAPMessage soapMessage = mf.createMessage();
 		
 		SOAPElement element = soapMessage.getSOAPBody().addChildElement("run","proc","http://process.ws.example.com");
@@ -66,11 +64,7 @@ public class DispatchSecured {
 		
 		SOAPMessage soapResponse = response.get();
 		
-		logger.info("Received Response: \n");
-		WsUtils.logSOAPMessage(logger, soapResponse);
-		
-		
-		
+		logger.info("Received Response.");
 		
 	}
 

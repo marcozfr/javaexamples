@@ -1,6 +1,5 @@
 package com.example.ws.resource;
 
-import javax.activation.DataSource;
 import javax.ws.rs.Path;
 
 @Path("features")
@@ -44,6 +43,11 @@ public class FeaturesResource {
     @Path("async")
     public AsyncResponseResource getAsyncResponseResource(){
         return new AsyncResponseResource();
+    }
+    
+    @Path("confidential")
+    public ConfidentialResource getConfidential(){
+    	return new ConfidentialResource();
     }
     
 }

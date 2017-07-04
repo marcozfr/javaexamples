@@ -1,0 +1,8 @@
+#wsdl to java 
+#verbose
+wsdl2java -wv WSDL1.1 -p com.example.ws.process -sn ProcessManagerService -keep -d ..\java -compile -classdir ..\..\target -server -defaultValues -validate -verbose ProcessManagerService.wsdl
+
+#light
+wsdl2java -p com.example.ws.process -verbose -keep -d ..\java ProcessManagerService.wsdl
+
+	

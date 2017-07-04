@@ -28,3 +28,10 @@ https://app.vsaex.visualstudio.com/me?mkt=es-ES
 WSIT:
 http://docs.oracle.com/cd/E17802_01/webservices/webservices/reference/tutorials/wsit/doc/index.html
 
+Metro Documentation
+https://javaee.github.io/metro/doc/user-guide/index.html
+
+StAX, Comparison with SAX, DOM, TrAX
+http://docs.oracle.com/javaee/5/tutorial/doc/bnbdw.html
+
+

@@ -177,7 +177,7 @@
 	</wsdl:binding>
 	<wsdl:service name="ProcessManagerService">
 		<wsdl:port binding="tns:ProcessManagerServiceSOAP" name="ProcessManagerServiceSOAP">
-			<soap:address location="http://www.example.org/" />
+			<soap:address location="https://localhost:9001/SoapContext/ProcessManagerService" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

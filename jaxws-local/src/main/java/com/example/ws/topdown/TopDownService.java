@@ -3,20 +3,17 @@ package com.example.ws.topdown;
 
 import java.awt.Image;
 import javax.activation.DataHandler;
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.ws.Action;
 import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
-import org.example.servicetypes.BasicInfo;
-import org.example.servicetypes.ObjectFactory;
-import org.example.servicetypes.RegisterUserResponse;
-import org.example.servicetypes.ResizeImageRequest;
-import org.example.servicetypes.ResizeImageResponse;
 
 
 /**
@@ -41,8 +38,8 @@ public interface TopDownService {
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/downloadImage")
     @WebResult(name = "out", targetNamespace = "")
-    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://www.example.org/ServiceTypes", className = "org.example.servicetypes.DownloadImage")
-    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", className = "org.example.servicetypes.DownloadImageResponse")
+    @RequestWrapper(localName = "downloadImage", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImage")
+    @ResponseWrapper(localName = "downloadImageResponse", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.DownloadImageResponse")
     public DataHandler downloadImage(
         @WebParam(name = "in", targetNamespace = "")
         String in);
@@ -70,15 +67,48 @@ public interface TopDownService {
     /**
      * Example using MTOM (XOP:Include in SOAP)
      * 
-     * @param registerUser
+     * @param basicInfo
      * @return
-     *     returns org.example.servicetypes.RegisterUserResponse
+     *     returns com.example.ws.topdown.RegisterUserResponse
      */
     @WebMethod(action = "http://topdown.ws.example.com/TopDownService/registerUser")
     @WebResult(name = "registerUserResponse", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
     public RegisterUserResponse registerUser(
-        @WebParam(name = "BasicInfo", targetNamespace = "http://www.example.org/ServiceTypes", partName = "registerUser")
-        BasicInfo registerUser);
+        @WebParam(name = "BasicInfo", targetNamespace = "http://www.example.org/ServiceTypes", partName = "basicInfo")
+        BasicInfo basicInfo);
+
+    /**
+     * Example of defining SOAP Binding elements (header, fault, headerfault)
+     * 
+     * @param transactionHeader
+     * @param parameters
+     * @return
+     *     returns com.example.ws.topdown.LookUpUserResponse
+     * @throws LookUpUserFault_Exception
+     */
+    @WebMethod(action = "http://topdown.ws.example.com/TopDownService/lookUpUser")
+    @WebResult(name = "lookUpUserResponse", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public LookUpUserResponse lookUpUser(
+        @WebParam(name = "lookUpUser", targetNamespace = "http://www.example.org/ServiceTypes", partName = "parameters")
+        LookUpUser parameters,
+        @WebParam(name = "transactionHeader", targetNamespace = "http://www.example.org/ServiceTypes", header = true, partName = "transactionHeader")
+        TransactionHeader transactionHeader)
+        throws LookUpUserFault_Exception
+    ;
+
+    /**
+     * One Way Operation Using WS Addressing
+     * 
+     * @param in
+     */
+    @WebMethod(action = "http://topdown.ws.example.com/TopDownService/evaluateUser")
+    @Oneway
+    @RequestWrapper(localName = "evaluateUser", targetNamespace = "http://www.example.org/ServiceTypes", className = "com.example.ws.topdown.EvaluateUser")
+    @Action(input = "http://topdown.ws.example.com/TopDownService/evaluateUserAction")
+    public void evaluateUser(
+        @WebParam(name = "in", targetNamespace = "")
+        String in);
 
 }

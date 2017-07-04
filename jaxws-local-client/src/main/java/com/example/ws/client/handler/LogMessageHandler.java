@@ -6,6 +6,7 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
+import javax.xml.ws.http.HTTPBinding;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ public class LogMessageHandler implements SOAPHandler<SOAPMessageContext> {
 	
 	@Override
 	public boolean handleMessage(SOAPMessageContext context) {
+
 		Boolean isOutRequest = (Boolean)context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
 		if(isOutRequest){
 			logger.info("Ongoing Message : \n");
