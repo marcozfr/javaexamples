@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example.ws</groupId>
+  <artifactId>axis2-project</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+  	<axis2.home>1.7.5</axis2.home>
+  </properties>
+  <dependencies>
+  	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2-kernel</artifactId>
+	    <version>${axis2.home}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2-transport-http</artifactId>
+	    <version>${axis2.home}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2-adb</artifactId>
+	    <version>${axis2.home}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.axis2</groupId>
+	    <artifactId>axis2-transport-local</artifactId>
+	    <version>${axis2.home}</version>
+	</dependency>
+  </dependencies>
+</project>
