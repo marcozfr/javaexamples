@@ -3,8 +3,7 @@ package com.example.app.async;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadLocalRandom;
 
-import rx.Observable;
-import rx.functions.Action1;
+import io.reactivex.Observable;
 
 public class GettingStartedAsync {
 	
@@ -19,9 +18,7 @@ public class GettingStartedAsync {
 			}
 		}; 
 		
-		Action1<String> sub = s -> System.out.println(s); 
-		
-		Observable.fromCallable(callableString).subscribe(sub);	
+		Observable.fromCallable(callableString).subscribe(System.out::println);	
 		
 //		Thread.sleep(10*1000);
 //		System.out.println("Finished main thread");

@@ -1,21 +1,22 @@
 package com.example.app.async;
 
-import rx.Emitter;
-import rx.Emitter.BackpressureMode;
-import rx.Observable;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableOnSubscribe;
+import io.reactivex.schedulers.Schedulers;
 
 public class GettingStartedAsync1 {
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		Observable.create(new Action1<Emitter<String>>() {
-			@Override
-			public void call(Emitter<String> t) {
-				t.onNext("to-sub");
-			}
-		}, BackpressureMode.NONE).subscribeOn(Schedulers.io()).observeOn(Schedulers.newThread()).subscribe(System.out::println);	
+		Flowable.create(new FlowableOnSubscribe<String>() {
+			public void subscribe(io.reactivex.FlowableEmitter<String> emitter) throws Exception {
+				emitter.onNext("Goal!");
+			};
+		}, BackpressureStrategy.BUFFER)
+				.subscribeOn(Schedulers.io())
+				.observeOn(Schedulers.newThread())
+				.subscribe(System.out::println);	
 		Thread.sleep(2000l);
 	}
 
