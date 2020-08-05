@@ -1,7 +1,9 @@
 package com.example.products.service.impl;
 
+import com.example.products.model.ProductImageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.stereotype.Service;
 
 import com.example.products.dao.ProductsMongoRepository;
@@ -40,6 +42,11 @@ public class ProductsServiceImpl implements ProductsService {
 	@Override
 	public Mono<Product> getProduct(String productId) {
 		return productsMongoRepository.findById(productId);
+	}
+
+	@Override
+	public Flux<ProductImageResult> saveProductImages(Flux<FilePart> productImages) {
+		return null;
 	}
 
 }

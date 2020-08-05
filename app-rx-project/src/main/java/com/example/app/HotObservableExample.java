@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class HotObservableExample {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Observable<String> consoleInputObservable =
             Observable.create(e -> {
@@ -27,6 +27,7 @@ public class HotObservableExample {
             System.out.println("Input - FirstTerminal: " + c);
         });
 
+        Thread.sleep(10000);
     }
 
 }
