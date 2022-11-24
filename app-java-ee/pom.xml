@@ -13,7 +13,7 @@
 		<module>app-ear-project</module>
 	</modules>
 	<properties>
-		<hibernate-version>5.0.9.Final</hibernate-version>
+		<hibernate-version>5.3.20.Final</hibernate-version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
